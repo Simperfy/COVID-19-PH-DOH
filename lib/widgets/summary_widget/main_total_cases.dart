@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:Covid19_PH/util/constants.dart';
+import 'package:Covid19_PH/widgets/summary_widget/main/main_text_count.dart';
 
 class TotalCases extends StatelessWidget {
+  final _count;
+  TotalCases(count) : this._count = count;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,8 +19,8 @@ class TotalCases extends StatelessWidget {
           Text('Total Cases',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.w300)),
           // SizedBox(height: 22.0),
-          Text('122, 754',
-              style: TextStyle(fontSize: 52, fontWeight: FontWeight.bold)),
+          TextCountWidget(_count, summaryMainFontSize)
+          
         ],
       ),
     );
