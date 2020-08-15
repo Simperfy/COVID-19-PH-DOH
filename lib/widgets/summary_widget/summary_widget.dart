@@ -15,23 +15,23 @@ class _SummaryWidgetState extends State<SummaryWidget> {
   var activeCases;
   var recovered;
   var died;
-  
+
   /// Gets Summary from the api
   /// @returns void
-  Future _getSummary() async{
+  Future _getSummary() async {
     print('getting summary');
     final Database database = Database();
-    final Map<String, dynamic> summary = await database.getSummary();
+    // final Map<String, dynamic> summary = await database.getSummary();
 
-    if (summary != null) {
-      setState(() {
-        print('summary response: $summary ');
-        totalCase = summary['data']['total'];
-        activeCases = summary['data']['active_cases'];
-        recovered = summary['data']['recoveries'];
-        died = summary['data']['deaths'];
-      });
-    }
+    // if (summary != null) {
+    //   setState(() {
+    //     print('summary response: $summary ');
+    //     totalCase = summary['data']['total'];
+    //     activeCases = summary['data']['active_cases'];
+    //     recovered = summary['data']['recoveries'];
+    //     died = summary['data']['deaths'];
+    //   });
+    // }
   }
 
   @override
