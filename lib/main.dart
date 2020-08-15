@@ -2,7 +2,7 @@ import 'package:Covid19_PH/ui/views/home/home_view.dart';
 import 'package:Covid19_PH/widgets/search_bar_widget/search_bar_widget.dart';
 import 'package:flutter/material.dart';
 
-import 'services/database.dart';
+import 'package:Covid19_PH/services/database.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,15 +15,11 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Master extends StatefulWidget {
+class Master extends StatelessWidget {
   @override
-  _MasterState createState() => _MasterState();
-}
-
-class _MasterState extends State<Master> {
   Widget build(BuildContext context) {
     //TODO: To be removed if finished hard-testing
-    testDb();
+    // testDb();
 
     return Scaffold(
       appBar: SearchBarWidget(),
