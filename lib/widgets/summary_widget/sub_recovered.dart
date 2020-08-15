@@ -14,7 +14,7 @@ class Recovered extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text('Recoverd',
+          Text('Recovered',
               style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300)),
           // SizedBox(height: 22.0),
           Text('66, 852',
