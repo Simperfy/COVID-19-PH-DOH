@@ -20,9 +20,13 @@ class SimpleTimeSeriesChart extends StatelessWidget {
       ),
     ];
 
+    // @TODO @DOGGO change fontSizes to dynamic value
     // https://google.github.io/charts/flutter/example/axes/custom_font_size_and_color.html
     return Container(
       height: mainHeight * 3,
+      decoration: BoxDecoration(
+        color: dailyCasesBgColor,
+      ),
       padding: EdgeInsets.symmetric(horizontal: 30.0),
       child: Column(
         children: [
