@@ -1,6 +1,6 @@
-import 'dart:convert';
 
-import 'package:Covid19_PH/model/region.dart';
+import 'package:Covid19_PH/model/case_timeline.dart';
+import 'package:Covid19_PH/model/recordList.dart';
 import 'package:Covid19_PH/model/regionList.dart';
 import 'package:Covid19_PH/model/summary.dart';
 import 'package:meta/meta.dart';
@@ -13,7 +13,7 @@ class Database {
   Future<Summary> getSummary() async {
     NetworkHelper networkHelper = NetworkHelper('${APIPath.getSummary()}');
 
-    print(json.decode(await networkHelper.getData()));
+    // print(json.decode(await networkHelper.getData()));1
 
     return Summary.fromJson(await networkHelper.getData());
   }
@@ -31,47 +31,49 @@ class Database {
     return RegionList.fromJson(await networkHelper.getData());
   }
 
-  // Future<CaseTimeline> getCasesTimeline() async {
-  //   NetworkHelper networkHelper =
-  //       NetworkHelper('${APIPath.getCasesTimeline()}');
+  Future<CaseTimeLine> getCasesTimeline() async {
+    NetworkHelper networkHelper =
+        NetworkHelper('${APIPath.getCasesTimeline()}');
 
-  //   return Cases.fromJson(await networkHelper.getData());
-  // }
+    return CaseTimeLine.fromJson(await networkHelper.getData());
+  }
 
-  // Future<dynamic> fetchRecord(
-  //     {@required int pageNumber, @required int limit}) async {
-  //   NetworkHelper networkHelper =
-  //       NetworkHelper('${APIPath.fetchRecord(pageNumber, limit)}');
+  Future<RecordList> fetchRecord(
+      {@required int pageNumber, @required int limit}) async {
+    NetworkHelper networkHelper =
+        NetworkHelper('${APIPath.fetchRecord(pageNumber, limit)}');
 
-  //   return networkHelper.getData();
-  // }
+    return RecordList.fromJson(await networkHelper.getData());
+  }
 
-  // Future<dynamic> fetchRecordByAge({@required int age}) async {
-  //   NetworkHelper networkHelper =
-  //       NetworkHelper('${APIPath.fetchRecordByAge(age)}');
+  Future<RecordList> fetchRecordByAge({@required int age}) async {
+    NetworkHelper networkHelper =
+        NetworkHelper('${APIPath.fetchRecordByAge(age)}');
 
-  //   return networkHelper.getData();
-  // }
+    return RecordList.fromJson(await networkHelper.getData());
+  }
 
-  // Future<dynamic> fetchRecordByAgeGroup(
-  //     {@required int minAge, @required int maxAge}) async {
-  //   NetworkHelper networkHelper =
-  //       NetworkHelper('${APIPath.fetchRecordByAgeGroup(minAge, maxAge)}');
+  Future<RecordList> fetchRecordByAgeGroup(
+      {@required int minAge, @required int maxAge}) async {
+    NetworkHelper networkHelper =
+        NetworkHelper('${APIPath.fetchRecordByAgeGroup(minAge, maxAge)}');
 
-  //   return networkHelper.getData();
-  // }
+    print(await networkHelper.getData());
 
-  // Future<dynamic> fetchRecordByMonth({@required int monthNumber}) async {
-  //   NetworkHelper networkHelper =
-  //       NetworkHelper('${APIPath.fetchRecordByAge(monthNumber)}');
+    return RecordList.fromJson(await networkHelper.getData());
+  }
 
-  //   return networkHelper.getData();
-  // }
+  Future<RecordList> fetchRecordByMonth({@required int monthNumber}) async {
+    NetworkHelper networkHelper =
+        NetworkHelper('${APIPath.fetchRecordByAge(monthNumber)}');
 
-  // Future<dynamic> fetchRecordByRegion({@required String region}) async {
-  //   NetworkHelper networkHelper =
-  //       NetworkHelper('${APIPath.fetchRecordByRegion(region)}');
+    return RecordList.fromJson(await networkHelper.getData());
+  }
 
-  //   return networkHelper.getData();
-  // }
+  Future<RecordList> fetchRecordByRegion({@required String region}) async {
+    NetworkHelper networkHelper =
+        NetworkHelper('${APIPath.fetchRecordByRegion(region)}');
+
+    return RecordList.fromJson(await networkHelper.getData());
+  }
 }

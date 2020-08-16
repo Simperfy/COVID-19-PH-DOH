@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 class Region {
   String region;
@@ -18,7 +17,7 @@ class Region {
     );
   }
 
-  factory Region.fromMap(Map<String, dynamic> map) {
+  factory Region.fromJson(Map<String, dynamic> map) {
     if (map == null) return null;
 
     return Region(
@@ -26,8 +25,6 @@ class Region {
       cases: map['cases'],
     );
   }
-
-  factory Region.fromJson(String source) => Region.fromMap(json.decode(source));
 
   @override
   String toString() => 'Region(region: $region, cases: $cases)';
