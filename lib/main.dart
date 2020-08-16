@@ -19,7 +19,7 @@ class Master extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //TODO: To be removed if finished hard-testing
-    testDb();
+    // testDb();
 
     return Scaffold(
       appBar: SearchBarWidget(),
