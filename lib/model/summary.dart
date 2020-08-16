@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 class Summary {
   int total;
@@ -18,7 +17,7 @@ class Summary {
     this.lastUpdate,
   });
 
-  factory Summary.fromMap(Map<String, dynamic> map) {
+  factory Summary.fromJson(Map<String, dynamic> map) {
     if (map == null) return null;
 
     return Summary(
@@ -31,9 +30,6 @@ class Summary {
       lastUpdate: map['last_update'],
     );
   }
-
-  factory Summary.fromJson(String source) =>
-      Summary.fromMap(json.decode(source));
 
   @override
   String toString() {

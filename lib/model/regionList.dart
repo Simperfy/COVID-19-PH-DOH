@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
@@ -12,18 +11,15 @@ class RegionList {
     this.lastUpdate,
   });
 
-  factory RegionList.fromMap(Map<String, dynamic> map) {
+  factory RegionList.fromJson(Map<String, dynamic> map) {
     if (map == null) return null;
 
     return RegionList(
       regionList:
-          List<Region>.from(map['data']?.map((x) => Region.fromMap(x))),
+          List<Region>.from(map['data']?.map((x) => Region.fromJson(x))),
       lastUpdate: map['last_update'],
     );
   }
-
-  factory RegionList.fromJson(String source) =>
-      RegionList.fromMap(json.decode(source));
 
   @override
   String toString() =>
