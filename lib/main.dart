@@ -47,38 +47,48 @@ Future<void> testDb() async {
 
     var topRegions = await database.getTopRegions();
     print('topRegions : $topRegions');
-    print('topRegions region 1 : ${topRegions.regionList.first}');
+    print('topRegions region #1 : ${topRegions.regionList.first}');
 
     print('\n\n\n');
 
-    // var casesTimeline = await database.getCasesTimeline();
-    // print('casesTimeline : $casesTimeline');
+    var caseTimeline = await database.getCasesTimeline();
+    print('caseTimeline : $caseTimeline');
+    print('caseTimeline case #1 : ${caseTimeline.caseList.first}');
 
-    // print('\n\n\n');
+    print('\n\n\n');
 
-    // var fetchRecord = await database.fetchRecord(pageNumber: 1, limit: 5);
-    // print('fetchRecord : $fetchRecord');
+    var fetchRecord = await database.fetchRecord(pageNumber: 1, limit: 5);
+    print('fetchRecord : $fetchRecord');
 
-    // print('\n\n\n');
+    print('fetchRecord record #1 : ${fetchRecord.recordList.first}');
 
-    // var fetchRecordByAge = await database.fetchRecordByAge(age: 30);
-    // print('fetchRecordByAge : $fetchRecordByAge');
+    print('\n\n\n');
 
-    // print('\n\n\n');
+    var fetchRecordByAge = await database.fetchRecordByAge(age: 30);
+    print('fetchRecordByAge : $fetchRecordByAge');
+    print('fetchRecordByAge record #1  : ${fetchRecordByAge.recordList.first}');
 
-    // var fetchRecordByAgeGroup =
-    //     await database.fetchRecordByAgeGroup(minAge: 15, maxAge: 20);
-    // print('fetchRecordByAgeGroup : $fetchRecordByAgeGroup');
+    print('\n\n\n');
 
-    // print('\n\n\n');
+    var fetchRecordByAgeGroup =
+        await database.fetchRecordByAgeGroup(minAge: 20, maxAge: 24);
+    print('fetchRecordByAgeGroup : $fetchRecordByAgeGroup');
+    print(
+        'fetchRecordByAgeGroup record #1 : ${fetchRecordByAgeGroup.recordList.first}');
 
-    // var fetchRecordByMonth = await database.fetchRecordByMonth(monthNumber: 5);
-    // print('fetchRecordByMonth : $fetchRecordByMonth');
+    print('\n\n\n');
 
-    // print('\n\n\n');
+    var fetchRecordByMonth = await database.fetchRecordByMonth(monthNumber: 5);
+    print('fetchRecordByMonth : $fetchRecordByMonth');
+    print(
+        'fetchRecordByMonth record #1: ${fetchRecordByMonth.recordList.first}');
 
-    // var fetchRecordByRegion = await database.fetchRecordByRegion(region: 'ncr');
-    // print('fetchRecordByMonth : $fetchRecordByRegion');
+    print('\n\n\n');
+
+    var fetchRecordByRegion = await database.fetchRecordByRegion(region: 'ncr');
+    print('fetchRecordByMonth : $fetchRecordByRegion');
+    print(
+        'fetchRecordByMonth record #1: ${fetchRecordByRegion.recordList.first}');
   } catch (e) {
     print(e);
     print('missing data in api');
