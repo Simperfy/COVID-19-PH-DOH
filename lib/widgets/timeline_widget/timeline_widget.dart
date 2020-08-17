@@ -57,7 +57,7 @@ class _SimpleTimeSeriesChartState extends State<SimpleTimeSeriesChart> {
       decoration: BoxDecoration(
         color: dailyCasesBgColor,
       ),
-      padding: EdgeInsets.symmetric(horizontal: 30.0),
+      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
       child: Column(
         children: [
           Text('Daily Cases', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w300)),
@@ -74,7 +74,7 @@ class _SimpleTimeSeriesChartState extends State<SimpleTimeSeriesChart> {
                     color: charts.MaterialPalette.black,
                   ),
                   labelAnchor: charts.TickLabelAnchor.after,
-                  labelOffsetFromAxisPx: -10,
+                  // labelOffsetFromAxisPx: -10,
                 ),
               ),
 
