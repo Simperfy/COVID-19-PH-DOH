@@ -14,7 +14,7 @@ class SimpleTimeSeriesChart extends StatefulWidget {
 }
 
 class _SimpleTimeSeriesChartState extends State<SimpleTimeSeriesChart> {
-  List<TimeSeries> data;
+  List<TimeSeries> data = [];
 
   @override
   void initState() {
