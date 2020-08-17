@@ -32,4 +32,6 @@ class APIPath {
 
   static fetchRecordByRegion(String region) =>
       '${baseUrl()}/api/filter/region_res/$region';
+
+  static fetchHospitalRecords() => '${baseUrl()}/api/facilities';
 }
