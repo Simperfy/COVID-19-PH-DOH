@@ -11,16 +11,19 @@ class TotalCases extends SummaryBase {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: mainHeight * 2,
-      padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
       decoration: BoxDecoration(color: totalCasesBgColor),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          MainTextLabel(label: 'Total Cases', fontSize: 16),
-          TextCountWidget(count: count, fontSize: summaryMainFontSize)
-        ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            MainTextLabel(label: 'Total Cases', fontSize: 16),
+            TextCountWidget(count: count, fontSize: summaryMainFontSize)
+          ],
+        ),
       ),
+      // padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
     );
   }
 }
