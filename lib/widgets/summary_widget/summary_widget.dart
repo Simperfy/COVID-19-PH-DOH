@@ -1,8 +1,8 @@
 import 'package:Covid19_PH/model/summary.dart';
-import 'package:Covid19_PH/widgets/summary_widget/sub_active_cases.dart';
-import 'package:Covid19_PH/widgets/summary_widget/sub_died.dart';
-import 'package:Covid19_PH/widgets/summary_widget/sub_recovered.dart';
-import 'package:Covid19_PH/widgets/summary_widget/main_total_cases.dart';
+import 'package:Covid19_PH/widgets/summary_widget/sub/sub_active_cases.dart';
+import 'package:Covid19_PH/widgets/summary_widget/sub/sub_died.dart';
+import 'package:Covid19_PH/widgets/summary_widget/sub/sub_recovered.dart';
+import 'package:Covid19_PH/widgets/summary_widget/main/main_total_cases.dart';
 import 'package:flutter/material.dart';
 import 'package:Covid19_PH/services/database.dart';
 
