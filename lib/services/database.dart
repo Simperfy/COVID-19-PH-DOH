@@ -1,7 +1,7 @@
-
 import 'package:Covid19_PH/model/case_timeline.dart';
-import 'package:Covid19_PH/model/recordList.dart';
-import 'package:Covid19_PH/model/regionList.dart';
+import 'package:Covid19_PH/model/hospital_list.dart';
+import 'package:Covid19_PH/model/record_list.dart';
+import 'package:Covid19_PH/model/region_list.dart';
 import 'package:Covid19_PH/model/summary.dart';
 import 'package:meta/meta.dart';
 
@@ -18,7 +18,7 @@ class Database {
     return Summary.fromJson(await networkHelper.getData());
   }
 
-  Future<dynamic> getRegionSummary({@required String region}) async {
+  Future<Summary> getRegionSummary({@required String region}) async {
     NetworkHelper networkHelper =
         NetworkHelper('${APIPath.getRegionSummary(region)}');
 
@@ -75,5 +75,12 @@ class Database {
         NetworkHelper('${APIPath.fetchRecordByRegion(region)}');
 
     return RecordList.fromJson(await networkHelper.getData());
+  }
+
+  Future<HospitalList> fetchHospitalRecords() async {
+    NetworkHelper networkHelper =
+        NetworkHelper('${APIPath.fetchHospitalRecords()}');
+
+    return HospitalList.fromJson(await networkHelper.getData());
   }
 }

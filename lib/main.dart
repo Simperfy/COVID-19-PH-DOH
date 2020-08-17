@@ -80,6 +80,9 @@ Future<void> testDb() async {
 
     var fetchRecordByMonth = await database.fetchRecordByMonth(monthNumber: 5);
     print('fetchRecordByMonth : $fetchRecordByMonth');
+
+    print('\n\n\n');
+
     print(
         'fetchRecordByMonth record #1: ${fetchRecordByMonth.recordList.first}');
 
@@ -89,6 +92,11 @@ Future<void> testDb() async {
     print('fetchRecordByMonth : $fetchRecordByRegion');
     print(
         'fetchRecordByMonth record #1: ${fetchRecordByRegion.recordList.first}');
+
+    var fetchHospitalRecords = await database.fetchHospitalRecords();
+    print('fetchHospitalRecords : $fetchHospitalRecords');
+    print(
+        'fetchHospitalRecords record #1: ${fetchHospitalRecords.hospitalList.first}');
   } catch (e) {
     print(e);
     print('missing data in api');

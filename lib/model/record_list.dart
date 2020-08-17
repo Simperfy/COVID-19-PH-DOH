@@ -6,6 +6,7 @@ import 'package:Covid19_PH/model/record.dart';
 class RecordList {
   List<Record> recordList;
   String lastUpdate;
+  
   RecordList({
     this.recordList,
     this.lastUpdate,
