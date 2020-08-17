@@ -8,6 +8,7 @@ import 'package:Covid19_PH/services/database.dart';
 
 /// Widget that displays summary
 class SummaryWidget extends StatefulWidget {
+  @override
   _SummaryWidgetState createState() => _SummaryWidgetState();
 }
 
@@ -17,6 +18,7 @@ class _SummaryWidgetState extends State<SummaryWidget> {
   var recovered;
   var died;
 
+  // @TODO @DOGGO remove logic out of this view
   /// Gets Summary from the api
   /// @returns void
   Future _getSummary() async {

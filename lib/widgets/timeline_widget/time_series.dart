@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 class   TimeSeries {
   final DateTime time;
-  final int sales;
+  final int cases;
 
-  TimeSeries({@required this.time, @required this.sales});
+  TimeSeries({@required this.time, @required this.cases});
 }

@@ -1,14 +1,44 @@
+import 'package:Covid19_PH/model/case.dart';
+import 'package:Covid19_PH/model/case_timeline.dart';
+import 'package:Covid19_PH/services/database.dart';
 import 'package:Covid19_PH/util/constants.dart';
 
 /// Timeseries chart example
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
-import 'package:Covid19_PH/widgets/simple_chart_widget/time_series.dart';
+import 'package:Covid19_PH/widgets/timeline_widget/time_series.dart';
 
-class SimpleTimeSeriesChart extends StatelessWidget {
-  final List<TimeSeries> data;
+class SimpleTimeSeriesChart extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _SimpleTimeSeriesChartState();
+}
 
-  SimpleTimeSeriesChart({@required this.data});
+class _SimpleTimeSeriesChartState extends State<SimpleTimeSeriesChart> {
+  List<TimeSeries> data;
+
+  @override
+  void initState() {
+    super.initState();
+    this._getTimeline();
+  }
+
+  // @TODO @DOGGO Remove this logic out of this view(2)
+  Future _getTimeline() async {
+    print('getting summary');
+    final Database database = Database();
+    final CaseTimeLine caseTimeLine = await database.getCasesTimeline();
+
+    if (caseTimeLine != null) {
+      setState(() {
+        List<Case> caseList = caseTimeLine.caseList;
+        caseList.forEach((c) {
+          List<int> dateList = c.date.split('-').map((s) => int.parse(s)).toList();
+          this.data.add(new TimeSeries(time: new DateTime(dateList[0], dateList[1], dateList[2]), cases: c.cases));
+        });
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     List<charts.Series<TimeSeries, DateTime>> seriesList = [
@@ -16,7 +46,7 @@ class SimpleTimeSeriesChart extends StatelessWidget {
         id: 'time series',
         data: data,
         domainFn: (TimeSeries series, _) => series.time,
-        measureFn: (TimeSeries series, _) => series.sales,
+        measureFn: (TimeSeries series, _) => series.cases,
       ),
     ];
 
