@@ -8,7 +8,7 @@ import 'package:Covid19_PH/widgets/simple_chart_widget/time_series.dart';
 class SimpleTimeSeriesChart extends StatelessWidget {
   final List<TimeSeries> data;
 
-  SimpleTimeSeriesChart(this.data);
+  SimpleTimeSeriesChart({@required this.data});
   @override
   Widget build(BuildContext context) {
     List<charts.Series<TimeSeries, DateTime>> seriesList = [
@@ -40,7 +40,7 @@ class SimpleTimeSeriesChart extends StatelessWidget {
                 renderSpec: new charts.GridlineRendererSpec(
                   labelStyle: new charts.TextStyleSpec(
                     fontSize: 14, // size in Pts.
-                    fontWeight: 'GOOGLE PLEASE FIX THIS',
+                    fontWeight: 'GOOGLE PLEASE FIX THIS', // @FIXME will cause error once updated  
                     color: charts.MaterialPalette.black,
                   ),
                   labelAnchor: charts.TickLabelAnchor.after,
@@ -52,7 +52,7 @@ class SimpleTimeSeriesChart extends StatelessWidget {
                 renderSpec: new charts.SmallTickRendererSpec(
                   labelStyle: new charts.TextStyleSpec(
                     fontSize: 15, // size in Pts.
-                    fontWeight: 'NOT WORKING ATM, GOOGLE',
+                    fontWeight: 'NOT WORKING ATM, GOOGLE', // @FIXME will cause error once updated
                     color: charts.MaterialPalette.black,
                   ),
                   minimumPaddingBetweenLabelsPx: 5,

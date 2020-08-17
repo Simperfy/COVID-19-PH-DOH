@@ -1,10 +1,11 @@
+import 'package:Covid19_PH/widgets/summary_widget/base/summary_base.dart';
+import 'package:Covid19_PH/widgets/summary_widget/main/main_text_label.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:Covid19_PH/util/constants.dart';
 import 'package:Covid19_PH/widgets/summary_widget/main/main_text_count.dart';
 
-class TotalCases extends StatelessWidget {
-  final _count;
-  TotalCases(count) : this._count = count;
+class TotalCases extends SummaryBase {
+  TotalCases({@required count}) : super(count: count);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,11 +17,8 @@ class TotalCases extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text('Total Cases',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w300)),
-          // SizedBox(height: 22.0),
-          TextCountWidget(_count, summaryMainFontSize)
-          
+          MainTextLabel(label: 'Total Cases', fontSize: 16),
+          TextCountWidget(count: count, fontSize: summaryMainFontSize)
         ],
       ),
     );

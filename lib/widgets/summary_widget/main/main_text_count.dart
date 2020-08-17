@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 
 class TextCountWidget extends StatelessWidget {
-  final _count;
-  final double _fontSize;
-  TextCountWidget(this._count, this._fontSize);
+  final int count;
+  final double fontSize;
+  TextCountWidget({@required this.count, @required this.fontSize});
 
   @override
   Widget build(BuildContext context) {
-    return Text((_count != null ? _count.toString() : "..."),
-              style: TextStyle(fontSize: _fontSize, fontWeight: FontWeight.bold));
+    return Text((count != null ? count.toString() : "..."),
+              style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.bold));
   }
 }
