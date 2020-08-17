@@ -1,12 +1,14 @@
-import 'package:Covid19_PH/widgets/summary_widget/sub_active_cases.dart';
-import 'package:Covid19_PH/widgets/summary_widget/sub_died.dart';
-import 'package:Covid19_PH/widgets/summary_widget/sub_recovered.dart';
-import 'package:Covid19_PH/widgets/summary_widget/main_total_cases.dart';
+import 'package:Covid19_PH/model/summary.dart';
+import 'package:Covid19_PH/widgets/summary_widget/sub/sub_active_cases.dart';
+import 'package:Covid19_PH/widgets/summary_widget/sub/sub_died.dart';
+import 'package:Covid19_PH/widgets/summary_widget/sub/sub_recovered.dart';
+import 'package:Covid19_PH/widgets/summary_widget/main/main_total_cases.dart';
 import 'package:flutter/material.dart';
 import 'package:Covid19_PH/services/database.dart';
 
 /// Widget that displays summary
 class SummaryWidget extends StatefulWidget {
+  @override
   _SummaryWidgetState createState() => _SummaryWidgetState();
 }
 
@@ -16,22 +18,23 @@ class _SummaryWidgetState extends State<SummaryWidget> {
   var recovered;
   var died;
 
+  // @TODO @DOGGO remove logic out of this view
   /// Gets Summary from the api
   /// @returns void
   Future _getSummary() async {
     print('getting summary');
     final Database database = Database();
-    // final Map<String, dynamic> summary = await database.getSummary();
+    final Summary summary = await database.getSummary();
 
-    // if (summary != null) {
-    //   setState(() {
-    //     print('summary response: $summary ');
-    //     totalCase = summary['data']['total'];
-    //     activeCases = summary['data']['active_cases'];
-    //     recovered = summary['data']['recoveries'];
-    //     died = summary['data']['deaths'];
-    //   });
-    // }
+    if (summary != null) {
+      setState(() {
+        print('summary response: $summary ');
+        totalCase = summary.total;
+        activeCases = summary.activeCases;
+        recovered = summary.recoveries;
+        died = summary.deaths;
+      });
+    }
   }
 
   @override
@@ -43,11 +46,11 @@ class _SummaryWidgetState extends State<SummaryWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      TotalCases(totalCase),
+      TotalCases(count: totalCase),
       Row(children: <Widget>[
-        ActiveCases(activeCases),
-        Recovered(recovered),
-        Died(died)
+        ActiveCases(count: activeCases),
+        Recovered(count: recovered),
+        Died(count: died)
       ]),
     ]);
   }
