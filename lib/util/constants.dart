@@ -14,3 +14,7 @@ final Color diedBgColor = Color(0xffBDBDBD).withOpacity(0.80);
 final double summarySubFontSize = 20;
 final double summaryMainFontSize = 52;
 // ./Summary
+
+// Timeline
+final Color dailyCasesBgColor = Color(0xffBECFB8).withOpacity(0.27);
+// ./Timeline
