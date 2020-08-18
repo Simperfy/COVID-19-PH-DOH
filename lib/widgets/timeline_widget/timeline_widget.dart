@@ -22,7 +22,7 @@ class _SimpleTimeSeriesChartState extends State<SimpleTimeSeriesChart> {
     this._getTimeline();
   }
 
-  // @TODO @DOGGO Remove this logic out of this view(2)
+  // TODO @DOGGO Remove this logic out of this view(2)
   Future _getTimeline() async {
     print('getting summary');
     final Database database = Database();
@@ -50,7 +50,7 @@ class _SimpleTimeSeriesChartState extends State<SimpleTimeSeriesChart> {
       ),
     ];
 
-    // @TODO @DOGGO change fontSizes to dynamic value
+    // TODO @DOGGO change fontSizes to dynamic value
     // https://google.github.io/charts/flutter/example/axes/custom_font_size_and_color.html
     return Container(
       height: mainHeight * 3,

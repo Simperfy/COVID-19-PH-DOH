@@ -12,11 +12,11 @@ class SearchBarWidget extends StatelessWidget implements PreferredSizeWidget {
 
   SearchBarWidget()
       : preferredSize = Size.fromHeight(mainHeight),
-      this.svg = SvgPicture.asset(
-      'assets/icons/search.svg',
-      color: searchBarBgColor,
-      placeholderBuilder: (context) => Icon(Icons.error),
-    );
+        this.svg = SvgPicture.asset(
+          'assets/icons/search.svg',
+          color: searchBarBgColor,
+          placeholderBuilder: (context) => Icon(Icons.error),
+        );
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,10 @@ class SearchBarWidget extends StatelessWidget implements PreferredSizeWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            SearchField(searchBGColor: searchBarBgColor, searchTxtColor: searchBarPrimaryColor, searchTxt: 'Searchs'),
+            SearchField(
+                searchBGColor: searchBarBgColor,
+                searchTxtColor: searchBarPrimaryColor,
+                searchTxt: 'Searchs'),
             SizedBox(child: svg, width: 42, height: 42),
           ],
         ),

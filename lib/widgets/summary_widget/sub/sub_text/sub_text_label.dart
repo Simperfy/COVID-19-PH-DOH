@@ -9,7 +9,7 @@ class TextLabelWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Text(label,
-                style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.w300)),
+          style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.w300)),
     );
   }
 }
