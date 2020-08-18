@@ -1,4 +1,4 @@
-import 'package:Covid19_PH/widgets/summary_widget/base/abstract/abstract_summary.dart';
+import 'package:Covid19_PH/widgets/summary_widget/base/abstracts/abstract_summary.dart';
 import 'package:Covid19_PH/widgets/summary_widget/sub/sub_text/sub_text_label.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:Covid19_PH/util/constants.dart';
