@@ -7,7 +7,9 @@ class TextLabelWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(label,
-              style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.w300));
+    return Expanded(
+      child: Text(label,
+                style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.w300)),
+    );
   }
 }
