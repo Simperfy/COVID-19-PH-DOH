@@ -18,3 +18,8 @@ final double summaryMainFontSize = 52;
 // Timeline
 final Color dailyCasesBgColor = Color(0xffBECFB8).withOpacity(0.27);
 // ./Timeline
+
+// BottomNavbar
+final Color bottomNavBarActiveColor = Color(0xff2D9CDB);
+final Color bottomNavBarIdleColor = Color(0xff8C8C8C);
+// ./BottomNavbar

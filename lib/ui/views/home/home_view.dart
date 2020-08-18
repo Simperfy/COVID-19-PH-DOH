@@ -17,7 +17,8 @@ class Home extends StatelessWidget {
           SizedBox(height: 30.0),
           TimelineWidget(),
           SizedBox(height: 30.0),
-          TopRegionsWidget()
+          TopRegionsWidget(),
+          SizedBox(height: 30.0),
         ],
       ),
     );
