@@ -7,9 +7,9 @@ class TextCountWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Expanded(
+    return Expanded(
       child: Text((count != null ? count.toString() : "..."),
-            style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.bold)),
+          style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.bold)),
     );
   }
 }

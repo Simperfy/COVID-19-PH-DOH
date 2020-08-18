@@ -18,7 +18,7 @@ class _SummaryWidgetState extends State<SummaryWidget> {
   var recovered;
   var died;
 
-  // @TODO @DOGGO remove logic out of this view
+  // TODO @DOGGO remove logic out of this view
   /// Gets Summary from the api
   /// @returns void
   Future _getSummary() async {

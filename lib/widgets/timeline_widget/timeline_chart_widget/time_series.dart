@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-class   TimeSeries {
+class TimeSeries {
   final DateTime time;
   final int cases;
 
