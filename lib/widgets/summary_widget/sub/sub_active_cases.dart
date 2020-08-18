@@ -1,10 +1,10 @@
-import 'package:Covid19_PH/widgets/summary_widget/base/summary_base.dart';
+import 'package:Covid19_PH/widgets/summary_widget/base/abstract/abstract_summary.dart';
 import 'package:Covid19_PH/widgets/summary_widget/sub/sub_text/sub_text_label.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:Covid19_PH/util/constants.dart';
 import 'package:Covid19_PH/widgets/summary_widget/sub/sub_text/sub_text_count.dart';
 
-class ActiveCases extends SummaryBase {
+class ActiveCases extends AbstractSummary {
   ActiveCases({@required count}) : super(count: count);
   @override
   Widget build(BuildContext context) {
