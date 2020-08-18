@@ -1,10 +1,8 @@
 import 'package:Covid19_PH/ui/views/home/home_view.dart';
-import 'package:Covid19_PH/util/constants.dart';
+import 'package:Covid19_PH/widgets/bottom_navbar_widget/bottom_navbar_widget.dart';
 import 'package:Covid19_PH/widgets/search_bar_widget/search_bar_widget.dart';
 import 'package:flutter/material.dart';
-
 import 'package:Covid19_PH/services/database.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,37 +16,15 @@ class MyApp extends StatelessWidget {
 }
 
 class Master extends StatelessWidget {
-  SvgPicture _buildSvg({@required String filename, @required BuildContext bContext, Color color = Colors.grey}) {
-    return SvgPicture.asset(
-      'assets/icons/$filename.svg',
-      color: color,
-      placeholderBuilder: (context) => Icon(Icons.error),
-      width: 42,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
-    final Widget svgHome = _buildSvg(filename: 'home', bContext: context, color: bottomNavBarActiveColor);
-    final Widget svgHosp = _buildSvg(filename: 'hospital', bContext: context, color: bottomNavBarIdleColor);
-    final Widget svgMap = _buildSvg(filename: 'map', bContext: context, color: bottomNavBarIdleColor);
-    final Widget svgSettings = _buildSvg(filename: 'settings', bContext: context, color: bottomNavBarIdleColor);
-
     // testDb();
     return Scaffold(
       appBar: SearchBarWidget(),
       body: Container(
         child: Home(),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: svgHome, title: Text('Home')),
-          BottomNavigationBarItem(icon: svgHosp, title: Text('Hospitals')),
-          BottomNavigationBarItem(icon: svgMap, title: Text('Map')),
-          BottomNavigationBarItem(icon: svgSettings, title: Text('Settings')),
-        ],
-      ),
+      bottomNavigationBar: BottomNavBarWidget(context: context),
     );
   }
 }
