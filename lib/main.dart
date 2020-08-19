@@ -1,6 +1,4 @@
-import 'package:Covid19_PH/ui/views/home/home_view.dart';
-import 'package:Covid19_PH/widgets/bottom_navbar_widget/bottom_navbar_widget.dart';
-import 'package:Covid19_PH/widgets/search_bar_widget/search_bar_widget.dart';
+import 'package:Covid19_PH/ui/view_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:Covid19_PH/services/database.dart';
 
@@ -10,21 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Master(),
-    );
-  }
-}
-
-class Master extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // testDb();
-    return Scaffold(
-      appBar: SearchBarWidget(),
-      body: Container(
-        child: Home(),
-      ),
-      bottomNavigationBar: BottomNavBarWidget(context: context),
+      home: ViewManager(),
     );
   }
 }

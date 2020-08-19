@@ -14,7 +14,7 @@ class TimelineWidget extends StatefulWidget {
   State<StatefulWidget> createState() => _TimelineWidgetState();
 }
 
-class _TimelineWidgetState extends State<TimelineWidget> {
+class _TimelineWidgetState extends State<TimelineWidget> with AutomaticKeepAliveClientMixin<TimelineWidget>{
   List<TimeSeries> data = [];
 
   @override
@@ -45,9 +45,13 @@ class _TimelineWidgetState extends State<TimelineWidget> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return TimelineCard(
       bgColor: dailyCasesBgColor,
       timelineChartWidget: TimelineChartWidget(data: data),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
