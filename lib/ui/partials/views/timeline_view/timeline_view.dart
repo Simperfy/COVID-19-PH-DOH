@@ -7,7 +7,6 @@ import 'package:stacked/stacked.dart';
 
 /// Main Widget class for timeline
 class TimelineView extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<TimelineViewModel>.reactive(

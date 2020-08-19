@@ -1,8 +1,8 @@
 import 'package:Covid19_PH/ui/pages/views/facilities_view/facilities_view.dart';
 import 'package:Covid19_PH/ui/pages/views/home_view/home_view.dart';
 import 'package:Covid19_PH/ui/view_manager_model.dart';
+import 'package:Covid19_PH/ui/widgets/search_bar_widget/search_bar_widget.dart';
 import 'package:Covid19_PH/util/constants.dart';
-import 'package:Covid19_PH/widgets/search_bar_widget/search_bar_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
