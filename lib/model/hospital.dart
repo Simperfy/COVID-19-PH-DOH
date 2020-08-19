@@ -1,5 +1,6 @@
+import 'base/jsonBase.dart';
 
-class Hospital {
+class Hospital implements JsonBase {
   String hfHudCode;
   String cfName;
   String updatedDate;
@@ -100,9 +101,10 @@ class Hospital {
     this.eastCoord,
   });
 
-  factory Hospital.fromJson(Map<String, dynamic> map) {
+  @override
+  JsonBase fromJson(Map<String, dynamic> map) {
     if (map == null) return null;
-  
+
     return Hospital(
       hfHudCode: map['hfhudcode'],
       cfName: map['cf_name'],
@@ -156,6 +158,11 @@ class Hospital {
   }
 
   @override
+  getData() {
+    return this;
+  }
+
+  @override
   String toString() {
     return 'Hospital(hfHudCode: $hfHudCode, cfName: $cfName, updatedDate: $updatedDate, addedDate: $addedDate, reportDate: $reportDate, icuV: $icuV, icuO: $icuO, isolbedV: $isolbedV, isolbedO: $isolbedO, bedsWardV: $bedsWardV, bedsWardO: $bedsWardO, mechventV: $mechventV, mechventO: $mechventO, icuVNc: $icuVNc, icuONc: $icuONc, nonIcuVNc: $nonIcuVNc, nonIcuONc: $nonIcuONc, mechventVNc: $mechventVNc, mechventONc: $mechventONc, qNurse: $qNurse, qDoctor: $qDoctor, qOther: $qOther, nurseAdm: $nurseAdm, doctorAdm: $doctorAdm, otherAdm: $otherAdm, suspAsym: $suspAsym, suspMild: $suspMild, suspSevere: $suspSevere, suspCrit: $suspCrit, suspDied: $suspDied, probAsym: $probAsym, probMild: $probMild, probSevere: $probSevere, probCrit: $probCrit, probDied: $probDied, tPatientAdm: $tPatientAdm, tPatientEr: $tPatientEr, tPatientIcu: $tPatientIcu, transTtmf: $transTtmf, discharged: $discharged, region: $region, regionPsgc: $regionPsgc, province: $province, provincePsgc: $provincePsgc, cityMun: $cityMun, citiyMunPsgc: $citiyMunPsgc, northCoord: $northCoord, eastCoord: $eastCoord)';
   }
@@ -163,107 +170,107 @@ class Hospital {
   @override
   bool operator ==(Object o) {
     if (identical(this, o)) return true;
-  
+
     return o is Hospital &&
-      o.hfHudCode == hfHudCode &&
-      o.cfName == cfName &&
-      o.updatedDate == updatedDate &&
-      o.addedDate == addedDate &&
-      o.reportDate == reportDate &&
-      o.icuV == icuV &&
-      o.icuO == icuO &&
-      o.isolbedV == isolbedV &&
-      o.isolbedO == isolbedO &&
-      o.bedsWardV == bedsWardV &&
-      o.bedsWardO == bedsWardO &&
-      o.mechventV == mechventV &&
-      o.mechventO == mechventO &&
-      o.icuVNc == icuVNc &&
-      o.icuONc == icuONc &&
-      o.nonIcuVNc == nonIcuVNc &&
-      o.nonIcuONc == nonIcuONc &&
-      o.mechventVNc == mechventVNc &&
-      o.mechventONc == mechventONc &&
-      o.qNurse == qNurse &&
-      o.qDoctor == qDoctor &&
-      o.qOther == qOther &&
-      o.nurseAdm == nurseAdm &&
-      o.doctorAdm == doctorAdm &&
-      o.otherAdm == otherAdm &&
-      o.suspAsym == suspAsym &&
-      o.suspMild == suspMild &&
-      o.suspSevere == suspSevere &&
-      o.suspCrit == suspCrit &&
-      o.suspDied == suspDied &&
-      o.probAsym == probAsym &&
-      o.probMild == probMild &&
-      o.probSevere == probSevere &&
-      o.probCrit == probCrit &&
-      o.probDied == probDied &&
-      o.tPatientAdm == tPatientAdm &&
-      o.tPatientEr == tPatientEr &&
-      o.tPatientIcu == tPatientIcu &&
-      o.transTtmf == transTtmf &&
-      o.discharged == discharged &&
-      o.region == region &&
-      o.regionPsgc == regionPsgc &&
-      o.province == province &&
-      o.provincePsgc == provincePsgc &&
-      o.cityMun == cityMun &&
-      o.citiyMunPsgc == citiyMunPsgc &&
-      o.northCoord == northCoord &&
-      o.eastCoord == eastCoord;
+        o.hfHudCode == hfHudCode &&
+        o.cfName == cfName &&
+        o.updatedDate == updatedDate &&
+        o.addedDate == addedDate &&
+        o.reportDate == reportDate &&
+        o.icuV == icuV &&
+        o.icuO == icuO &&
+        o.isolbedV == isolbedV &&
+        o.isolbedO == isolbedO &&
+        o.bedsWardV == bedsWardV &&
+        o.bedsWardO == bedsWardO &&
+        o.mechventV == mechventV &&
+        o.mechventO == mechventO &&
+        o.icuVNc == icuVNc &&
+        o.icuONc == icuONc &&
+        o.nonIcuVNc == nonIcuVNc &&
+        o.nonIcuONc == nonIcuONc &&
+        o.mechventVNc == mechventVNc &&
+        o.mechventONc == mechventONc &&
+        o.qNurse == qNurse &&
+        o.qDoctor == qDoctor &&
+        o.qOther == qOther &&
+        o.nurseAdm == nurseAdm &&
+        o.doctorAdm == doctorAdm &&
+        o.otherAdm == otherAdm &&
+        o.suspAsym == suspAsym &&
+        o.suspMild == suspMild &&
+        o.suspSevere == suspSevere &&
+        o.suspCrit == suspCrit &&
+        o.suspDied == suspDied &&
+        o.probAsym == probAsym &&
+        o.probMild == probMild &&
+        o.probSevere == probSevere &&
+        o.probCrit == probCrit &&
+        o.probDied == probDied &&
+        o.tPatientAdm == tPatientAdm &&
+        o.tPatientEr == tPatientEr &&
+        o.tPatientIcu == tPatientIcu &&
+        o.transTtmf == transTtmf &&
+        o.discharged == discharged &&
+        o.region == region &&
+        o.regionPsgc == regionPsgc &&
+        o.province == province &&
+        o.provincePsgc == provincePsgc &&
+        o.cityMun == cityMun &&
+        o.citiyMunPsgc == citiyMunPsgc &&
+        o.northCoord == northCoord &&
+        o.eastCoord == eastCoord;
   }
 
   @override
   int get hashCode {
     return hfHudCode.hashCode ^
-      cfName.hashCode ^
-      updatedDate.hashCode ^
-      addedDate.hashCode ^
-      reportDate.hashCode ^
-      icuV.hashCode ^
-      icuO.hashCode ^
-      isolbedV.hashCode ^
-      isolbedO.hashCode ^
-      bedsWardV.hashCode ^
-      bedsWardO.hashCode ^
-      mechventV.hashCode ^
-      mechventO.hashCode ^
-      icuVNc.hashCode ^
-      icuONc.hashCode ^
-      nonIcuVNc.hashCode ^
-      nonIcuONc.hashCode ^
-      mechventVNc.hashCode ^
-      mechventONc.hashCode ^
-      qNurse.hashCode ^
-      qDoctor.hashCode ^
-      qOther.hashCode ^
-      nurseAdm.hashCode ^
-      doctorAdm.hashCode ^
-      otherAdm.hashCode ^
-      suspAsym.hashCode ^
-      suspMild.hashCode ^
-      suspSevere.hashCode ^
-      suspCrit.hashCode ^
-      suspDied.hashCode ^
-      probAsym.hashCode ^
-      probMild.hashCode ^
-      probSevere.hashCode ^
-      probCrit.hashCode ^
-      probDied.hashCode ^
-      tPatientAdm.hashCode ^
-      tPatientEr.hashCode ^
-      tPatientIcu.hashCode ^
-      transTtmf.hashCode ^
-      discharged.hashCode ^
-      region.hashCode ^
-      regionPsgc.hashCode ^
-      province.hashCode ^
-      provincePsgc.hashCode ^
-      cityMun.hashCode ^
-      citiyMunPsgc.hashCode ^
-      northCoord.hashCode ^
-      eastCoord.hashCode;
+        cfName.hashCode ^
+        updatedDate.hashCode ^
+        addedDate.hashCode ^
+        reportDate.hashCode ^
+        icuV.hashCode ^
+        icuO.hashCode ^
+        isolbedV.hashCode ^
+        isolbedO.hashCode ^
+        bedsWardV.hashCode ^
+        bedsWardO.hashCode ^
+        mechventV.hashCode ^
+        mechventO.hashCode ^
+        icuVNc.hashCode ^
+        icuONc.hashCode ^
+        nonIcuVNc.hashCode ^
+        nonIcuONc.hashCode ^
+        mechventVNc.hashCode ^
+        mechventONc.hashCode ^
+        qNurse.hashCode ^
+        qDoctor.hashCode ^
+        qOther.hashCode ^
+        nurseAdm.hashCode ^
+        doctorAdm.hashCode ^
+        otherAdm.hashCode ^
+        suspAsym.hashCode ^
+        suspMild.hashCode ^
+        suspSevere.hashCode ^
+        suspCrit.hashCode ^
+        suspDied.hashCode ^
+        probAsym.hashCode ^
+        probMild.hashCode ^
+        probSevere.hashCode ^
+        probCrit.hashCode ^
+        probDied.hashCode ^
+        tPatientAdm.hashCode ^
+        tPatientEr.hashCode ^
+        tPatientIcu.hashCode ^
+        transTtmf.hashCode ^
+        discharged.hashCode ^
+        region.hashCode ^
+        regionPsgc.hashCode ^
+        province.hashCode ^
+        provincePsgc.hashCode ^
+        cityMun.hashCode ^
+        citiyMunPsgc.hashCode ^
+        northCoord.hashCode ^
+        eastCoord.hashCode;
   }
 }

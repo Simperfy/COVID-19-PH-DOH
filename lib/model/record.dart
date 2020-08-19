@@ -1,5 +1,6 @@
+import 'base/jsonBase.dart';
 
-class Record {
+class Record implements JsonBase {
   String casesCode;
   int age;
   String ageGroup;
@@ -42,7 +43,8 @@ class Record {
     this.pregnantTab,
   });
 
-  factory Record.fromJson(Map<String, dynamic> map) {
+  @override
+  JsonBase fromJson(Map<String, dynamic> map) {
     if (map == null) return null;
 
     return Record(
@@ -66,6 +68,11 @@ class Record {
       dateOnset: map['date_onset'],
       pregnantTab: map['pregnant_tab'],
     );
+  }
+
+  @override
+  getData() {
+    return this;
   }
 
   @override

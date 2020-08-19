@@ -1,5 +1,6 @@
+import 'package:Covid19_PH/model/base/jsonBase.dart';
 
-class Region {
+class Region implements JsonBase {
   String region;
   int cases;
   Region({
@@ -17,7 +18,8 @@ class Region {
     );
   }
 
-  factory Region.fromJson(Map<String, dynamic> map) {
+  @override
+  JsonBase fromJson(Map<String, dynamic> map) {
     if (map == null) return null;
 
     return Region(
@@ -25,6 +27,12 @@ class Region {
       cases: map['cases'],
     );
   }
+  
+  @override
+  getData() {
+    return this;
+  }
+
 
   @override
   String toString() => 'Region(region: $region, cases: $cases)';
