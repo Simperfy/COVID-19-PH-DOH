@@ -1,4 +1,4 @@
-import 'package:Covid19_PH/widgets/base/abstracts/abstract_home_view_card.dart';
+import 'package:Covid19_PH/ui/partials/base/abstracts/abstract_home_view_card.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/cupertino.dart';
 
