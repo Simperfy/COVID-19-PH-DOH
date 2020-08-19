@@ -1,4 +1,9 @@
+import 'package:Covid19_PH/model/case_timeline.dart';
+import 'package:Covid19_PH/model/hospital_list.dart';
+import 'package:Covid19_PH/model/record_list.dart';
 import 'package:Covid19_PH/model/region.dart';
+import 'package:Covid19_PH/model/region_list.dart';
+import 'package:Covid19_PH/model/summary.dart';
 import 'package:Covid19_PH/services/database.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -17,8 +22,15 @@ class TopRegionsViewModel extends FutureViewModel<List<Widget>> {
   }
 
   Future<List<Widget>> _getTopRegions() async {
-    Database database = Database();
-    List<Region> data = (await database.getTopRegions()).regionList;
+    final Database database = Database(
+      summary: Summary(),
+      caseTimeline: CaseTimeLine(),
+      hospitalList: HospitalList(),
+      recordList: RecordList(),
+      regionList: RegionList(),
+    );
+
+    List<Region> data = (await database.getTopRegions()).getData().regionList;
     List<Widget> widgetList = [];
     int index = 0;
 
