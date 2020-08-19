@@ -1,8 +1,9 @@
+import 'package:Covid19_PH/model/base/jsonBase.dart';
 import 'package:flutter/foundation.dart';
 
 import 'package:Covid19_PH/model/Hospital.dart';
 
-class HospitalList {
+class HospitalList implements JsonBase{
   List<Hospital> hospitalList;
   String lastUpdate;
   
@@ -11,15 +12,23 @@ class HospitalList {
     this.lastUpdate,
   });
 
-  factory HospitalList.fromJson(Map<String, dynamic> map) {
+  @override
+  JsonBase fromJson(Map<String, dynamic> map) {
     if (map == null) return null;
 
     return HospitalList(
       hospitalList:
-          List<Hospital>.from(map['data']?.map((x) => Hospital.fromJson(x))),
+          List<Hospital>.from(map['data']?.map((x) => Hospital().fromJson(x))),
       lastUpdate: map['last_update'],
     );
   }
+
+  
+  @override
+  getData() {
+    return this;
+  }
+
 
   @override
   String toString() =>

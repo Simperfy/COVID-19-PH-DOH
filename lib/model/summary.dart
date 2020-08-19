@@ -1,5 +1,6 @@
+import 'base/jsonBase.dart';
 
-class Summary {
+class Summary implements JsonBase {
   int total;
   int recoveries;
   int deaths;
@@ -17,7 +18,8 @@ class Summary {
     this.lastUpdate,
   });
 
-  factory Summary.fromJson(Map<String, dynamic> map) {
+  @override
+  JsonBase fromJson(Map<String, dynamic> map) {
     if (map == null) return null;
 
     return Summary(
@@ -29,6 +31,11 @@ class Summary {
       recoveryRate: map['data']['recovery_rate'],
       lastUpdate: map['last_update'],
     );
+  }
+
+  @override
+  getData() {
+    return this;
   }
 
   @override

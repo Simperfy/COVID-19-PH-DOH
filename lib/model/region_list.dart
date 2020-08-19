@@ -1,9 +1,10 @@
-
 import 'package:flutter/foundation.dart';
 
 import 'package:Covid19_PH/model/region.dart';
 
-class RegionList {
+import 'base/jsonBase.dart';
+
+class RegionList implements JsonBase {
   List<Region> regionList;
   String lastUpdate;
   RegionList({
@@ -11,14 +12,19 @@ class RegionList {
     this.lastUpdate,
   });
 
-  factory RegionList.fromJson(Map<String, dynamic> map) {
+  JsonBase fromJson(Map<String, dynamic> map) {
     if (map == null) return null;
 
     return RegionList(
       regionList:
-          List<Region>.from(map['data']?.map((x) => Region.fromJson(x))),
+          List<Region>.from(map['data']?.map((x) => Region().fromJson(x))),
       lastUpdate: map['last_update'],
     );
+  }
+
+  @override
+  getData() {
+    return this;
   }
 
   @override

@@ -1,5 +1,6 @@
+import 'base/jsonBase.dart';
 
-class Case {
+class Case implements JsonBase {
   int cases;
   String date;
   Case({
@@ -7,13 +8,19 @@ class Case {
     this.date,
   });
 
-  factory Case.fromJson(Map<String, dynamic> map) {
+  @override
+  JsonBase fromJson(Map<String, dynamic> map) {
     if (map == null) return null;
 
     return Case(
       cases: map['cases'],
       date: map['date'],
     );
+  }
+
+  @override
+  getData() {
+    return this;
   }
 
   @override
