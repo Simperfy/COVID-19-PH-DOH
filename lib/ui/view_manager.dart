@@ -5,19 +5,9 @@ import 'package:Covid19_PH/ui/widgets/search_bar_widget/search_bar_widget.dart';
 import 'package:Covid19_PH/util/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
 
 class ViewManager extends StatelessWidget {
-  static final Widget svgHome =
-      _buildSvg(filename: 'home', color: bottomNavBarActiveColor);
-  static final Widget svgHosp =
-      _buildSvg(filename: 'hospital', color: bottomNavBarIdleColor);
-  static final Widget svgMap =
-      _buildSvg(filename: 'map', color: bottomNavBarIdleColor);
-  static final Widget svgSettings =
-      _buildSvg(filename: 'settings', color: bottomNavBarIdleColor);
-
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ViewManagerModel>.reactive(
@@ -32,28 +22,29 @@ class ViewManager extends StatelessWidget {
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             items: <BottomNavigationBarItem>[
-              BottomNavigationBarItem(icon: svgHome, title: Text('Home')),
-              BottomNavigationBarItem(icon: svgHosp, title: Text('Hospitals')),
-              BottomNavigationBarItem(icon: svgMap, title: Text('Map')),
               BottomNavigationBarItem(
-                  icon: svgSettings, title: Text('Settings')),
+                  icon: model.getIcon(filename: 'home', index: 0),
+                  title: Text('Home')),
+              BottomNavigationBarItem(
+                  icon: model.getIcon(filename: 'hospital', index: 1),
+                  title: Text('Hospitals')),
+              BottomNavigationBarItem(
+                  icon: model.getIcon(filename: 'map', index: 2),
+                  title: Text('Map')),
+              BottomNavigationBarItem(
+                  icon: model.getIcon(filename: 'settings', index: 3),
+                  title: Text('Settings')),
             ],
-            selectedItemColor: Colors.red,
-            currentIndex:model.currentIndex,
+            showUnselectedLabels: false,
+            selectedItemColor: bottomNavBarActiveColor,
+            selectedIconTheme: IconThemeData(color: bottomNavBarActiveColor),
+            unselectedItemColor: bottomNavBarIdleColor,
+            unselectedIconTheme: IconThemeData(color: bottomNavBarIdleColor),
+            currentIndex: model.currentIndex,
             onTap: model.setIndex,
           ),
         );
       },
-    );
-  }
-
-  static SvgPicture _buildSvg(
-      {@required String filename, Color color = Colors.grey}) {
-    return SvgPicture.asset(
-      'assets/icons/$filename.svg',
-      // color: color,
-      placeholderBuilder: (context) => Icon(Icons.error),
-      width: 42,
     );
   }
 

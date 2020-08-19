@@ -1,4 +1,3 @@
-import 'package:Covid19_PH/ui/partials/views/timeline_view/concretes/timeline_card.dart';
 import 'package:Covid19_PH/ui/partials/views/top_regions_view/concretes/top_regions_card.dart';
 import 'package:Covid19_PH/ui/partials/views/top_regions_view/top_regions_view_model.dart';
 import 'package:Covid19_PH/util/constants.dart';
