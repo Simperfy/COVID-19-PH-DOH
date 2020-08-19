@@ -1,4 +1,4 @@
-import 'package:Covid19_PH/widgets/timeline_widget/timeline_chart_widget/time_series.dart';
+import 'package:Covid19_PH/ui/widgets/timeline_chart_widget/time_series.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/cupertino.dart';
 
@@ -11,7 +11,7 @@ class TimelineChartWidget extends charts.TimeSeriesChart {
           [
             charts.Series<TimeSeries, DateTime>(
               id: 'time series',
-              data: data,
+              data: data ?? [],
               domainFn: (TimeSeries series, _) => series.time,
               measureFn: (TimeSeries series, _) => series.cases,
             ),

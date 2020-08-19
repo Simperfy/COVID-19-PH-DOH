@@ -1,8 +1,8 @@
-import 'package:Covid19_PH/widgets/summary_widget/base/abstracts/abstract_summary.dart';
-import 'package:Covid19_PH/widgets/summary_widget/main/main_text/main_text_label.dart';
+import 'package:Covid19_PH/ui/partials/views/summary_view/base/abstracts/abstract_summary.dart';
+import 'package:Covid19_PH/ui/partials/views/summary_view/main/main_text/main_text_label.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:Covid19_PH/util/constants.dart';
-import 'package:Covid19_PH/widgets/summary_widget/main/main_text/main_text_count.dart';
+import 'package:Covid19_PH/ui/partials/views/summary_view/main/main_text/main_text_count.dart';
 
 class TotalCases extends AbstractSummary {
   TotalCases({@required count}) : super(count: count);
