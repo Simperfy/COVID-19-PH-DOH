@@ -9,7 +9,7 @@ import 'network_helper.dart';
 class TimelineDatabase {
   CaseTimeline caseTimeline;
   TimelineDatabase._({@required this.caseTimeline});
-  static final instance = TimelineDatabase._(caseTimeline: CaseTimeLine());
+  static final instance = TimelineDatabase._(caseTimeline: CaseTimeline());
 
   Future<JsonBase> getCasesTimeline() async {
     NetworkHelper networkHelper =

@@ -24,12 +24,12 @@ class TimelineViewModel extends FutureViewModel<List<TimeSeries>> {
     final List<TimeSeries> data = [];
     final Database database = Database(
       summary: Summary(),
-      caseTimeline: CaseTimeLine(),
+      caseTimeline: CaseTimeline(),
       hospitalList: HospitalList(),
       recordList: RecordList(),
       regionList: RegionList(),
     );
-    final CaseTimeLine caseTimeLine = (await database.getCasesTimeline()).getData();
+    final CaseTimeline caseTimeLine = (await database.getCasesTimeline()).getData();
 
     if (caseTimeLine != null) {
       List<Case> caseList = caseTimeLine.caseList;

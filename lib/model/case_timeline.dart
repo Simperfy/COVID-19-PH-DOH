@@ -3,10 +3,10 @@ import 'package:flutter/foundation.dart';
 
 import 'case.dart';
 
-class CaseTimeLine implements JsonBase {
+class CaseTimeline implements JsonBase {
   List<Case> caseList;
   String lastUpdate;
-  CaseTimeLine({
+  CaseTimeline({
     this.caseList,
     this.lastUpdate,
   });
@@ -15,7 +15,7 @@ class CaseTimeLine implements JsonBase {
   JsonBase fromJson(Map<String, dynamic> map) {
     if (map == null) return null;
 
-    return CaseTimeLine(
+    return CaseTimeline(
       caseList: List<Case>.from(map['data']?.map((x) => Case().fromJson(x))),
       lastUpdate: map['last_update'],
     );
@@ -34,7 +34,7 @@ class CaseTimeLine implements JsonBase {
   bool operator ==(Object o) {
     if (identical(this, o)) return true;
 
-    return o is CaseTimeLine &&
+    return o is CaseTimeline &&
         listEquals(o.caseList, caseList) &&
         o.lastUpdate == lastUpdate;
   }
