@@ -2,11 +2,16 @@ import 'package:Covid19_PH/ui/pages/views/home_view/home_view.dart';
 import 'package:flutter/material.dart';
 
 class SearchBarDelegate extends SearchDelegate<String> {
-  SearchBarDelegate()
-      : super(
-            // searchFieldLabel: 'Search',
-            // searchFieldStyle: TextStyle(fontSize: 30),
-            );
+  static final SearchBarDelegate _singleton = SearchBarDelegate._internal();
+  factory SearchBarDelegate() => _singleton;
+  SearchBarDelegate._internal();
+
+  // SearchBarDelegate()
+  // : super(
+  // searchFieldLabel: 'Search',
+  // searchFieldStyle: TextStyle(fontSize: 30),
+  // );
+
   final data = [
     'BARMM',
     'CAR',
@@ -15,9 +20,17 @@ class SearchBarDelegate extends SearchDelegate<String> {
     'Region I: Ilocos Region',
     'Region II: Cagayan Valley',
     'Region III: Central Luzon',
-    'Region 4',
-    'Region 5',
-    'Region 6'
+    'Region IV-A: CALABARZON',
+    'Region IV-B: MIMAROPA',
+    'Region IX: Zamboanga Peninsula',
+    'Region V: Bicol Region',
+    'Region VI: Western Visayas',
+    'Region VII: Central Visayas',
+    'Region VIII: Eastern Visayas',
+    'Region X: Northern Mindanao',
+    'Region XI: Davao Region',
+    'Region XII: SOCCSKSARGEN',
+    'REPATRIATE',
   ];
   var recentQueries = [];
 
@@ -56,7 +69,11 @@ class SearchBarDelegate extends SearchDelegate<String> {
       itemBuilder: (context, index) => ListTile(
         onTap: () {
           query = suggestionList[index];
-          recentQueries.add(suggestionList[index]);
+          if (recentQueries.contains(suggestionList[index]))
+            recentQueries.remove(suggestionList[index]);
+
+          recentQueries.insert(0, suggestionList[index]);
+
           print(recentQueries);
           showResults(context);
         },
