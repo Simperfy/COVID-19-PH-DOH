@@ -1,4 +1,5 @@
 import 'package:Covid19_PH/util/constants.dart';
+import 'package:Covid19_PH/util/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
@@ -19,11 +20,11 @@ class ViewManagerModel extends IndexTrackingViewModel {
   static SvgPicture _buildSvg({
     @required String filename,
     @required Color color,
-  }) =>
-      SvgPicture.asset(
-        'assets/icons/$filename.svg',
-        color: color,
-        placeholderBuilder: (context) => Icon(Icons.error),
-        width: 42,
-      );
+  }) => Helper.buildSvg(svgFileName: filename, color: color);
+      // SvgPicture.asset(
+      //   'assets/icons/$filename.svg',
+      //   color: color,
+      //   placeholderBuilder: (context) => Icon(Icons.error),
+      //   width: 42,
+      // );
 }

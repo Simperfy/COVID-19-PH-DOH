@@ -7,10 +7,10 @@ import 'package:Covid19_PH/services/database.dart';
 import 'package:stacked/stacked.dart';
 
 /// A singleton View Model
-class SummaryViewModel extends FutureViewModel<Summary> {
-  static final SummaryViewModel _singleton = SummaryViewModel._internal();
-  factory SummaryViewModel() => _singleton;
-  SummaryViewModel._internal();
+class FutureSummaryViewModel extends FutureViewModel<Summary> {
+  static final FutureSummaryViewModel _singleton = FutureSummaryViewModel._internal();
+  factory FutureSummaryViewModel() => _singleton;
+  FutureSummaryViewModel._internal();
 
   @override
   Future<Summary> futureToRun() {
