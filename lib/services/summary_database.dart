@@ -7,7 +7,7 @@ import 'package:Covid19_PH/services/api_path.dart';
 import 'network_helper.dart';
 
 class SummaryDatabase {
-  JsonBase summary;
+  Summary summary;
   SummaryDatabase._({@required this.summary});
   static final instance = SummaryDatabase._(summary: Summary());
 

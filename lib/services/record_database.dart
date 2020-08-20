@@ -7,7 +7,7 @@ import 'package:Covid19_PH/services/api_path.dart';
 import 'network_helper.dart';
 
 class RecordDatabase {
-  JsonBase recordList;
+  RecordList recordList;
   RecordDatabase._({@required this.recordList});
   static final instance = RecordDatabase._(recordList: RecordList());
 

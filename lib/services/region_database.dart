@@ -7,7 +7,7 @@ import 'package:Covid19_PH/services/api_path.dart';
 import 'network_helper.dart';
 
 class RegionDatabase {
-  JsonBase regionList;
+  RegionList regionList;
   RegionDatabase._({@required this.regionList});
   static final instance = RegionDatabase._(regionList: RegionList());
 
