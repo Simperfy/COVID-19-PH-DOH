@@ -21,7 +21,7 @@ class FutureSummaryViewModel extends FutureViewModel<Summary> {
   Future<Summary> _getSummary() async {
     final Database database = Database(
       summary: Summary(),
-      caseTimeline: CaseTimeLine(),
+      caseTimeline: CaseTimeline(),
       hospitalList: HospitalList(),
       recordList: RecordList(),
       regionList: RegionList(),

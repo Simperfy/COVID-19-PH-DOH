@@ -24,7 +24,7 @@ class TopRegionsViewModel extends FutureViewModel<List<Widget>> {
   Future<List<Widget>> _getTopRegions() async {
     final Database database = Database(
       summary: Summary(),
-      caseTimeline: CaseTimeLine(),
+      caseTimeline: CaseTimeline(),
       hospitalList: HospitalList(),
       recordList: RecordList(),
       regionList: RegionList(),

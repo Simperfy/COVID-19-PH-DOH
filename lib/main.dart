@@ -1,10 +1,14 @@
 import 'package:Covid19_PH/model/case_timeline.dart';
 import 'package:Covid19_PH/model/hospital_list.dart';
 import 'package:Covid19_PH/model/record_list.dart';
+import 'package:Covid19_PH/services/hospital_database.dart';
+import 'package:Covid19_PH/services/record_database.dart';
+import 'package:Covid19_PH/services/region_database.dart';
+import 'package:Covid19_PH/services/summary_database.dart';
+import 'package:Covid19_PH/services/timeline_database.dart';
 import 'package:Covid19_PH/ui/view_manager.dart';
 
 import 'package:flutter/material.dart';
-import 'package:Covid19_PH/services/database.dart';
 
 import 'model/region_list.dart';
 import 'model/summary.dart';
@@ -22,46 +26,44 @@ class MyApp extends StatelessWidget {
 
 //Sample use of database
 Future<void> testDb() async {
-  Database database = Database(
-    summary: Summary(),
-    caseTimeline: CaseTimeLine(),
-    hospitalList: HospitalList(),
-    recordList: RecordList(),
-    regionList: RegionList(),
-  );
+  SummaryDatabase summaryDatabase = SummaryDatabase.instance;
+  HospitalDatabase hospitalDatabase = HospitalDatabase.instance;
+  RegionDatabase regionDatabase = RegionDatabase.instance;
+  RecordDatabase recordDatabase = RecordDatabase.instance;
+  TimelineDatabase timelineDatabase = TimelineDatabase.instance;
 
   try {
-    var summary = await database.getSummary();
+    var summary = await summaryDatabase.getSummary();
     print('summary : $summary \n');
     print('summary data: ${summary.getData()}');
 
     print('\n\n\n');
 
-    var regionSummary = await database.getRegionSummary(region: 'ncr');
+    var regionSummary = await summaryDatabase.getRegionSummary(region: 'ncr');
     print('regionSummary : $regionSummary \n');
     print('regionSummary data : ${regionSummary.getData()}');
 
     print('\n\n\n');
 
-    var topRegions = await database.getTopRegions();
+    var topRegions = await regionDatabase.getTopRegions();
     print('topRegions : $topRegions \n');
     print('topRegions region #1 : ${topRegions.getData().regionList.first}');
 
     print('\n\n\n');
 
-    var caseTimeline = await database.getCasesTimeline();
+    var caseTimeline = await timelineDatabase.getCasesTimeline();
     print('caseTimeline : $caseTimeline\n');
     print('caseTimeline case #1 : ${caseTimeline.getData().caseList.first}');
 
     print('\n\n\n');
 
-    var fetchRecord = await database.fetchRecord(pageNumber: 1, limit: 5);
+    var fetchRecord = await recordDatabase.fetchRecord(pageNumber: 1, limit: 5);
     print('fetchRecord : $fetchRecord\n');
     print('fetchRecord record #1 : ${fetchRecord.getData().recordList.first}');
 
     print('\n\n\n');
 
-    var fetchRecordByAge = await database.fetchRecordByAge(age: 30);
+    var fetchRecordByAge = await recordDatabase.fetchRecordByAge(age: 30);
     print('fetchRecordByAge : $fetchRecordByAge\n');
     if (fetchRecordByAge.getData().recordList.isNotEmpty) {
       print(
@@ -71,7 +73,7 @@ Future<void> testDb() async {
     print('\n\n\n');
 
     var fetchRecordByAgeGroup =
-        await database.fetchRecordByAgeGroup(minAge: 20, maxAge: 24);
+        await recordDatabase.fetchRecordByAgeGroup(minAge: 20, maxAge: 24);
     print('fetchRecordByAgeGroup : $fetchRecordByAgeGroup\n');
 
     if (fetchRecordByAgeGroup.getData().recordList.isNotEmpty) {
@@ -81,7 +83,8 @@ Future<void> testDb() async {
 
     print('\n\n\n');
 
-    var fetchRecordByMonth = await database.fetchRecordByMonth(monthNumber: 5);
+    var fetchRecordByMonth =
+        await recordDatabase.fetchRecordByMonth(monthNumber: 5);
     print('fetchRecordByMonth : $fetchRecordByMonth\n');
     if (fetchRecordByMonth.getData().recordList.isNotEmpty) {
       print(
@@ -89,7 +92,8 @@ Future<void> testDb() async {
     }
     print('\n\n\n');
 
-    var fetchRecordByRegion = await database.fetchRecordByRegion(region: 'ncr');
+    var fetchRecordByRegion =
+        await recordDatabase.fetchRecordByRegion(region: 'ncr');
     print('fetchRecordByRegion : $fetchRecordByRegion\n');
     if (fetchRecordByRegion.getData().recordList.isNotEmpty) {
       print(
@@ -98,7 +102,7 @@ Future<void> testDb() async {
 
     print('\n\n\n');
 
-    var fetchHospitalRecords = await database.fetchHospitalRecords();
+    var fetchHospitalRecords = await hospitalDatabase.fetchHospitalRecords();
     print('fetchHospitalRecords : $fetchHospitalRecords \n');
     if (fetchHospitalRecords.getData().hospitalList.isNotEmpty) {
       print(
