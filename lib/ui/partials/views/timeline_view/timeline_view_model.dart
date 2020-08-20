@@ -1,10 +1,6 @@
 import 'package:Covid19_PH/model/case.dart';
 import 'package:Covid19_PH/model/case_timeline.dart';
-import 'package:Covid19_PH/model/hospital_list.dart';
-import 'package:Covid19_PH/model/record_list.dart';
-import 'package:Covid19_PH/model/region_list.dart';
-import 'package:Covid19_PH/model/summary.dart';
-import 'package:Covid19_PH/services/database.dart';
+import 'package:Covid19_PH/services/timeline_database.dart';
 import 'package:Covid19_PH/ui/widgets/timeline_chart_widget/time_series.dart';
 import 'package:stacked/stacked.dart';
 
@@ -22,13 +18,7 @@ class TimelineViewModel extends FutureViewModel<List<TimeSeries>> {
   /// Gets Summary from the api
   Future<List<TimeSeries>> _getSummary() async {
     final List<TimeSeries> data = [];
-    final Database database = Database(
-      summary: Summary(),
-      caseTimeline: CaseTimeline(),
-      hospitalList: HospitalList(),
-      recordList: RecordList(),
-      regionList: RegionList(),
-    );
+    final TimelineDatabase database = TimelineDatabase.instance;
     final CaseTimeline caseTimeLine = (await database.getCasesTimeline()).getData();
 
     if (caseTimeLine != null) {
