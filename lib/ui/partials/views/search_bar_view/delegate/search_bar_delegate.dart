@@ -2,6 +2,11 @@ import 'package:Covid19_PH/ui/pages/views/home_view/home_view.dart';
 import 'package:flutter/material.dart';
 
 class SearchBarDelegate extends SearchDelegate<String> {
+  SearchBarDelegate()
+      : super(
+            // searchFieldLabel: 'Search',
+            // searchFieldStyle: TextStyle(fontSize: 30),
+            );
   final data = [
     'BARMM',
     'CAR',
@@ -35,14 +40,16 @@ class SearchBarDelegate extends SearchDelegate<String> {
 
   /// Shows results
   @override
-  Widget buildResults(BuildContext context) => HomeView();
+  Widget buildResults(BuildContext context) => HomeView(regionQuery: query);
 
   /// Shows suggestion as you type or the previous results
   @override
   Widget buildSuggestions(BuildContext context) {
     final suggestionList = query.isEmpty
         ? recentQueries
-        : data.where((p) => p.toLowerCase().startsWith(query.toLowerCase())).toList();
+        : data
+            .where((p) => p.toLowerCase().startsWith(query.toLowerCase()))
+            .toList();
 
     return ListView.separated(
       itemCount: suggestionList.length,

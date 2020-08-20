@@ -8,7 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 class ViewManager extends StatelessWidget {
-  final _scaffoldKey = GlobalKey<ScaffoldState>(); // TODO: Remove once snackbar is no longer needed
+  final _scaffoldKey = GlobalKey<
+      ScaffoldState>(); // TODO: Remove once snackbar is no longer needed
 
   @override
   Widget build(BuildContext context) {
@@ -45,12 +46,14 @@ class ViewManager extends StatelessWidget {
             unselectedIconTheme: IconThemeData(color: bottomNavBarIdleColor),
             currentIndex: model.currentIndex,
             // onTap: model.setIndex, // TODO: Uncomment to enable page navigation
-            onTap: (num) => _scaffoldKey.currentState.showSnackBar(
-              SnackBar(
-                content: Text("Coming Soon..."),
-                duration: Duration(seconds: 2),
-              ),
-            ),
+            onTap: (num) => num != 0
+                ? _scaffoldKey.currentState.showSnackBar(
+                    SnackBar(
+                      content: Text("Coming Soon..."),
+                      duration: Duration(seconds: 1),
+                    ),
+                  )
+                : null,
           ),
         );
       },
