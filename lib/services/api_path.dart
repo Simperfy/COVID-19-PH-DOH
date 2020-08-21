@@ -39,4 +39,8 @@ class APIPath {
       '${baseUrl()}/api/filter/region_res/$region';
 
   static fetchHospitalRecords() => '${baseUrl()}/api/facilities';
+
+  static fetchHospitalRecordsSummary({String region}) =>
+      '${baseUrl()}/api/facilities/summary' +
+      ((region != null) ? '?region=$region' : '');
 }

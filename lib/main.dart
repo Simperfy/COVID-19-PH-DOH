@@ -1,17 +1,10 @@
-import 'package:Covid19_PH/model/case_timeline.dart';
-import 'package:Covid19_PH/model/hospital_list.dart';
-import 'package:Covid19_PH/model/record_list.dart';
 import 'package:Covid19_PH/services/hospital_database.dart';
 import 'package:Covid19_PH/services/record_database.dart';
 import 'package:Covid19_PH/services/region_database.dart';
 import 'package:Covid19_PH/services/summary_database.dart';
 import 'package:Covid19_PH/services/timeline_database.dart';
 import 'package:Covid19_PH/ui/view_manager.dart';
-
 import 'package:flutter/material.dart';
-
-import 'model/region_list.dart';
-import 'model/summary.dart';
 
 void main() => runApp(MyApp());
 
@@ -108,6 +101,16 @@ Future<void> testDb() async {
       print(
           'fetchHospitalRecords record #1: ${fetchHospitalRecords.getData().hospitalList.first}');
     }
+
+    // TODO: @DOGGO model updates forgot to (add timelineRegion[cause it's in the other branch])
+    print('\n\n\n');
+    var fetchHospitalRecordsSummary = await hospitalDatabase.fetchHospitalRecordsSummary();
+    print('fetchHospitalRecordsSummary : $fetchHospitalRecordsSummary \n');
+    if (fetchHospitalRecordsSummary.getData()) {
+      print(
+          'fetchHospitalRecordsSummary record #1: ${fetchHospitalRecordsSummary.getData().hospitalList.first}');
+    }
+
   } catch (e) {
     print(e);
     print('missing data in api');
