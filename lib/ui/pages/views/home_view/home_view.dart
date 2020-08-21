@@ -7,6 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 class HomeView extends StatelessWidget {
+  final String regionQuery;
+
+  HomeView({this.regionQuery});
+
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<HomeViewModel>.reactive(
@@ -21,11 +25,11 @@ class HomeView extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: 30.0),
-                SummaryView(),
+                SummaryView(regionQuery: this.regionQuery),
                 SizedBox(height: 30.0),
-                TimelineView(),
+                TimelineView(regionQuery: this.regionQuery),
                 SizedBox(height: 30.0),
-                TopRegionsView(),
+                ((this.regionQuery == null) ? TopRegionsView() : Container()),
                 SizedBox(height: 30.0),
               ],
             ),

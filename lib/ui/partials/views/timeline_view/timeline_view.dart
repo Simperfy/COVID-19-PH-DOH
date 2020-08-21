@@ -7,12 +7,16 @@ import 'package:stacked/stacked.dart';
 
 /// Main Widget class for timeline
 class TimelineView extends StatelessWidget {
+  final String regionQuery;
+
+  TimelineView({this.regionQuery});
+
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<TimelineViewModel>.reactive(
       disposeViewModel: false,
-      initialiseSpecialViewModelsOnce: true,
-      viewModelBuilder: () => TimelineViewModel(),
+      // initialiseSpecialViewModelsOnce: true,
+      viewModelBuilder: () => TimelineViewModel(query: regionQuery),
       builder: (context, model, child) {
         return TimelineCard(
           bgColor: dailyCasesBgColor,

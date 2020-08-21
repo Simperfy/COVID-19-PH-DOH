@@ -6,10 +6,12 @@ import 'package:stacked/stacked.dart';
 
 /// A singleton View Model
 class TimelineViewModel extends FutureViewModel<List<TimeSeries>> {
-  static final TimelineViewModel _singleton = TimelineViewModel._internal();
-  factory TimelineViewModel() => _singleton;
-  TimelineViewModel._internal();
+  String query;
+  // static final TimelineViewModel _singleton = TimelineViewModel._internal();
+  // factory TimelineViewModel() => _singleton;
+  // TimelineViewModel._internal();
 
+  TimelineViewModel({this.query});
   @override
   Future<List<TimeSeries>> futureToRun() {
     return _getSummary();
@@ -19,7 +21,9 @@ class TimelineViewModel extends FutureViewModel<List<TimeSeries>> {
   Future<List<TimeSeries>> _getSummary() async {
     final List<TimeSeries> data = [];
     final TimelineDatabase database = TimelineDatabase.instance;
-    final CaseTimeline caseTimeLine = (await database.getCasesTimeline()).getData();
+    final CaseTimeline caseTimeLine = query == null
+        ? (await database.getCasesTimeline()).getData()
+        : (await database.getCasesTimeline()).getData();
 
     if (caseTimeLine != null) {
       List<Case> caseList = caseTimeLine.caseList;

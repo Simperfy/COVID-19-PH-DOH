@@ -8,21 +8,26 @@ import 'package:stacked/stacked.dart';
 
 /// Widget that displays summary
 class SummaryView extends StatelessWidget {
+  final String regionQuery;
+
+  SummaryView({this.regionQuery});
+
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<SummaryViewModel>.reactive(
+    return ViewModelBuilder<FutureSummaryViewModel>.reactive(
       disposeViewModel: false,
-      initialiseSpecialViewModelsOnce: true,
-      viewModelBuilder: () => SummaryViewModel(),
+      // initialiseSpecialViewModelsOnce: true,
+      viewModelBuilder: () => FutureSummaryViewModel(query: regionQuery),
       builder: (context, model, child) {
         return Column(
           children: [
-            TotalCases(count: model.data?.total),
+            TotalCases(count: (model.fetchingSummary ? null : model.fetchedSummary?.total)),
             Row(
               children: <Widget>[
-                ActiveCases(count: model.data?.activeCases),
-                Recovered(count: model.data?.recoveries),
-                Died(count: model.data?.deaths)
+                ActiveCases(
+                    count: (model.fetchingSummary ? null : model.fetchedSummary?.activeCases)),
+                Recovered(count: (model.fetchingSummary ? null : model.fetchedSummary?.recoveries)),
+                Died(count: (model.fetchingSummary ? null : model.fetchedSummary?.deaths))
               ],
             ),
           ],
