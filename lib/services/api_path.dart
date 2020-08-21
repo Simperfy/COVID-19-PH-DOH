@@ -9,7 +9,12 @@ class APIPath {
 
   static getTopRegions() => '${baseUrl()}/api/top-regions';
 
-  static getCasesTimeline() => '${baseUrl()}/api/timeline';
+  static getCasesTimeline({String region}) => region == null
+      ? '${baseUrl()}/api/timeline'
+      : '${baseUrl()}/api/timeline?region=$region';
+
+  static getCasesTimelineRegion(String region) =>
+      '${baseUrl()}/api/timeline?region=$region';
 
   static fetchRecord(int pageNumber, int limit) =>
       '${baseUrl()}/api/get?page=$pageNumber&limit=$limit';

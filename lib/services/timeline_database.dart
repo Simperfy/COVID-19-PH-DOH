@@ -11,9 +11,9 @@ class TimelineDatabase {
   TimelineDatabase._({@required this.caseTimeline});
   static final instance = TimelineDatabase._(caseTimeline: CaseTimeline());
 
-  Future<JsonBase> getCasesTimeline() async {
+  Future<JsonBase> getCasesTimeline({String region}) async {
     NetworkHelper networkHelper =
-        NetworkHelper('${APIPath.getCasesTimeline()}');
+        NetworkHelper('${APIPath.getCasesTimeline(region: region)}');
 
     return caseTimeline.fromJson(await networkHelper.getData());
   }
