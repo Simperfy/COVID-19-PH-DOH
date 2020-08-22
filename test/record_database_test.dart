@@ -1,15 +1,9 @@
 import 'dart:convert';
 
 import 'package:Covid19_PH/model/base/jsonBase.dart';
-import 'package:Covid19_PH/model/case.dart';
-import 'package:Covid19_PH/model/case_timeline.dart';
 import 'package:Covid19_PH/model/record.dart';
 import 'package:Covid19_PH/model/record_list.dart';
-import 'package:Covid19_PH/model/region.dart';
-import 'package:Covid19_PH/model/region_list.dart';
 import 'package:Covid19_PH/services/record_database.dart';
-import 'package:Covid19_PH/services/region_database.dart';
-import 'package:Covid19_PH/services/timeline_database.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
