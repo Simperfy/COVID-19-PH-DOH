@@ -20,7 +20,7 @@ class TimelineView extends StatelessWidget {
       builder: (context, model, child) {
         return TimelineCard(
           bgColor: dailyCasesBgColor,
-          timelineChartWidget: TimelineChartWidget(data: model.data),
+          timelineChartWidget: TimelineChartWidget(data: model?.data),
         );
       },
     );
