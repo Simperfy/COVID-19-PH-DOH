@@ -53,7 +53,10 @@ class SearchBarDelegate extends SearchDelegate<String> {
 
   /// Shows results
   @override
-  Widget buildResults(BuildContext context) => HomeView(regionQuery: query);
+  Widget buildResults(BuildContext context) {
+    if (data.contains(query)) return HomeView(regionQuery: query);
+    return Container();
+  }
 
   /// Shows suggestion as you type or the previous results
   @override
@@ -67,14 +70,13 @@ class SearchBarDelegate extends SearchDelegate<String> {
     return ListView.separated(
       itemCount: suggestionList.length,
       itemBuilder: (context, index) => ListTile(
+        key: Key(suggestionList[index]),
         onTap: () {
           query = suggestionList[index];
-          if (recentQueries.contains(suggestionList[index]))
-            recentQueries.remove(suggestionList[index]);
 
-          recentQueries.insert(0, suggestionList[index]);
+          if (recentQueries.contains(query)) recentQueries.remove(query);
 
-          print(recentQueries);
+          recentQueries.insert(0, query);
           showResults(context);
         },
         // leading: Icon(Icons.location_on),

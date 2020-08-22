@@ -2,7 +2,6 @@ import 'package:Covid19_PH/ui/partials/views/search_bar_view/delegate/search_bar
 import 'package:Covid19_PH/ui/partials/views/search_bar_view/search_bar_view_model.dart';
 import 'package:Covid19_PH/util/constants.dart';
 import 'package:Covid19_PH/util/helper.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
