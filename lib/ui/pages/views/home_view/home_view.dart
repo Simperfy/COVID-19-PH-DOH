@@ -26,14 +26,10 @@ class HomeView extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: 30),
-                SummaryView(regionQuery: this.regionQuery),
-                SizedBox(height: 30),
-                TimelineView(regionQuery: this.regionQuery),
-                SizedBox(height: 30),
-                ((this.regionQuery == null) ? TopRegionsView() : Container()),
-                SizedBox(height: 30),
-                FacilitiesSummaryView(),
-                SizedBox(height: 30),
+                ..._addCard(SummaryView(regionQuery: this.regionQuery)),
+                ..._addCard(TimelineView(regionQuery: this.regionQuery)),
+                ...((this.regionQuery == null) ? _addCard(TopRegionsView()) : [Container()]),
+                ..._addCard(FacilitiesSummaryView()),
               ],
             ),
           ),
@@ -42,3 +38,5 @@ class HomeView extends StatelessWidget {
     );
   }
 }
+
+List<Widget> _addCard(Widget card) => [card, SizedBox(height:30)]; // Add SizedBox to every card
