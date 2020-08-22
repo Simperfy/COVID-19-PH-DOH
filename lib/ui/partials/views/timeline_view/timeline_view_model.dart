@@ -23,7 +23,7 @@ class TimelineViewModel extends FutureViewModel<List<TimeSeries>> {
     final TimelineDatabase database = TimelineDatabase.instance;
     final CaseTimeline caseTimeLine = query == null
         ? (await database.getCasesTimeline()).getData()
-        : (await database.getCasesTimeline()).getData();
+        : (await database.getCasesTimeline(region: query)).getData();
 
     if (caseTimeLine != null) {
       List<Case> caseList = caseTimeLine.caseList;
