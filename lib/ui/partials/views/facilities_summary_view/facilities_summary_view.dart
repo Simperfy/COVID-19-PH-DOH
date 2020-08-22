@@ -5,10 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 class FacilitiesSummaryView extends StatelessWidget {
+  final String regionQuery;
+
+  FacilitiesSummaryView({this.regionQuery});
+
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<FacilitiesSummaryViewModel>.reactive(
-      viewModelBuilder: () => FacilitiesSummaryViewModel(),
+      viewModelBuilder: () => FacilitiesSummaryViewModel(query: regionQuery),
       disposeViewModel: false,
       builder: (context, model, child) => FacilitiesCard(
         bgColor: dailyCasesBgColor,

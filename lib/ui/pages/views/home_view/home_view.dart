@@ -29,7 +29,7 @@ class HomeView extends StatelessWidget {
                 ..._addCard(SummaryView(regionQuery: this.regionQuery)),
                 ..._addCard(TimelineView(regionQuery: this.regionQuery)),
                 ...((this.regionQuery == null) ? _addCard(TopRegionsView()) : [Container()]),
-                ..._addCard(FacilitiesSummaryView()),
+                ..._addCard(FacilitiesSummaryView(regionQuery: this.regionQuery)),
               ],
             ),
           ),
