@@ -4,12 +4,6 @@
 
 <br>
 
-<div>
-<img src="docs/gifs/page1.gif" alt="demo" height="500" width="300" >
-</div>
-
-<br>
-
 Features:
 - [x] View summary (total, active, recovered, died cases)
 - [x] View timeline curve
