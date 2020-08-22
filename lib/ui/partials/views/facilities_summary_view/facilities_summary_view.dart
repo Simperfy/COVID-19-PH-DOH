@@ -1,5 +1,5 @@
-import 'package:Covid19_PH/ui/pages/views/facilities_view/facilities_view_model.dart';
 import 'package:Covid19_PH/ui/partials/views/facilities_summary_view/concretes/faciltites_card.dart';
+import 'package:Covid19_PH/ui/partials/views/facilities_summary_view/facilities_summary_view_model.dart';
 import 'package:Covid19_PH/util/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -7,8 +7,8 @@ import 'package:stacked/stacked.dart';
 class FacilitiesSummaryView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<FacilitiesViewModel>.reactive(
-      viewModelBuilder: () => FacilitiesViewModel(),
+    return ViewModelBuilder<FacilitiesSummaryViewModel>.reactive(
+      viewModelBuilder: () => FacilitiesSummaryViewModel(),
       disposeViewModel: false,
       builder: (context, model, child) => FacilitiesCard(
         bgColor: dailyCasesBgColor,
@@ -19,25 +19,47 @@ class FacilitiesSummaryView extends StatelessWidget {
               Text('Facilities Data',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300)),
               SizedBox(height: 10),
-
               ..._buildTitle(
                   title: 'Availability of Beds', enableLegends: true),
-              ..._buildDetailsRow(title: 'ICU Beds', occupanyRate: 0.4),
               ..._buildDetailsRow(
-                  title: 'Isolation Beds', occupanyRate: 0.3),
-              ..._buildDetailsRow(title: 'Ward Beds', occupanyRate: 0.25),
-
+                title: 'ICU Beds',
+                occupanyRate: model.isBusy
+                    ? null
+                    : (model.data.icuOccupied /
+                        (model.data.icuOccupied + model.data.icuVacant)),
+              ),
+              ..._buildDetailsRow(
+                title: 'Isolation Beds',
+                occupanyRate: model.isBusy
+                    ? null
+                    : (model.data.isolbedOccupied /
+                        (model.data.isolbedOccupied +
+                            model.data.isolbedVacant)),
+              ),
+              ..._buildDetailsRow(
+                title: 'Ward Beds',
+                occupanyRate: model.isBusy
+                    ? null
+                    : (model.data.bedwardOccupied /
+                        (model.data.bedwardOccupied +
+                            model.data.bedwardVacant)),
+              ),
               ..._buildTitle(
                   title: 'Availability of Equipments', enableLegends: false),
               ..._buildDetailsRow(
-                  title: 'Mechanical Ventilators', occupanyRate: 0.15)
+                title: 'Mechanical Ventilators',
+                occupanyRate: model.isBusy
+                    ? null
+                    : (model.data.mechventOccupied /
+                        (model.data.mechventOccupied +
+                            model.data.mechventVacant)),
+              )
             ],
           ),
         ),
       ),
     );
   }
-
 
   List<Widget> _buildTitle(
       {@required String title, @required bool enableLegends}) {
@@ -73,18 +95,23 @@ class FacilitiesSummaryView extends StatelessWidget {
   }
 
   Container _buildMeter({@required double occupanyRate}) {
-    return Container(
-      height: 10,
-      width: facilitiesSummaryGradientBarLength,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          stops: [occupanyRate, occupanyRate],
-          begin: Alignment.topLeft,
-          end: Alignment.topRight,
-          colors: <Color>[const Color(0xffEB5757), const Color(0xff27AE60)],
-        ),
-      ),
-    );
+    return (occupanyRate == null
+        ? Container(child: Text('loading...'))
+        : Container(
+            height: 10,
+            width: facilitiesSummaryGradientBarLength,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                stops: [occupanyRate, occupanyRate],
+                begin: Alignment.topLeft,
+                end: Alignment.topRight,
+                colors: <Color>[
+                  const Color(0xffEB5757),
+                  const Color(0xff27AE60)
+                ],
+              ),
+            ),
+          ));
   }
 
   Row _buildLegends() {
