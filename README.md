@@ -3,6 +3,10 @@
 ### An App focused on delivering rich information about covid-19 related data in Philippines. It includes overview/breakdown of total cases, facilities data, hospital finder, geography of covid cases.
 
 <br>
+s
+![ScreenShot](docs/gifs/page1.gif)
+
+<br>
 
 ## 📷 Initial Prototype Screenshots
 
