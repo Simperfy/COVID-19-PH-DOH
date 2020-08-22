@@ -4,7 +4,9 @@
 
 <br>
 
-![ScreenShot](docs/gifs/page1.gif)
+<div>
+<img src="docs/gifs/page1.gif" alt="demo" height="500" width="300" >
+</div>
 
 <br>
 
