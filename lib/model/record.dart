@@ -48,7 +48,7 @@ class Record implements JsonBase {
     if (map == null) return null;
 
     return Record(
-      casesCode: map['cases_code'],
+      casesCode: map['case_code'],
       age: map['age'],
       ageGroup: map['age_group'],
       sex: map['sex'],
@@ -64,7 +64,7 @@ class Record implements JsonBase {
       cityMunRes: map['city_mun_res'],
       cityMuniPsgc: map['city_muni_psgc'],
       healthStatus: map['health_status'],
-      quaruantined: map['quaruantined'],
+      quaruantined: map['quarantined'],
       dateOnset: map['date_onset'],
       pregnantTab: map['pregnant_tab'],
     );
