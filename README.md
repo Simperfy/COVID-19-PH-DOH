@@ -4,7 +4,13 @@
 
 <br>
 
-## 📹 Demo
+## 🌐 Website App Demo
+
+[Link to the website](https://simperfy.github.io/COVID-19-PH-DOH/)
+
+<br>
+
+## 📹 Mobile App Demo
 
 <div>
 <img src="docs/gifs/page1.gif" alt="demo" height="500" width="300" >
