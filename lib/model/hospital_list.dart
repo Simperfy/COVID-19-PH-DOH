@@ -1,7 +1,7 @@
 import 'package:Covid19_PH/model/base/jsonBase.dart';
+import 'package:Covid19_PH/model/hospital.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:Covid19_PH/model/Hospital.dart';
 
 class HospitalList implements JsonBase{
   List<Hospital> hospitalList;
