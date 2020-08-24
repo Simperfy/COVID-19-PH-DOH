@@ -16,11 +16,14 @@ class FacilitiesView extends StatelessWidget {
         initialiseSpecialViewModelsOnce: true,
         viewModelBuilder: () => FacilitiesViewModel(),
         builder: (context, model, child) {
-          return Column(
-            children: [
-              _HospitalHeaderCard(),
-              _HospitalFacilitiesView(regionQuery: this.regionQuery),
-            ],
+          return Theme(
+            data: ThemeData(fontFamily: 'Roboto'),
+            child: Column(
+              children: [
+                _HospitalHeaderCard(),
+                _HospitalFacilitiesView(regionQuery: this.regionQuery),
+              ],
+            ),
           );
         });
   }
@@ -34,30 +37,30 @@ class _HospitalHeaderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 155,
+      height: 156,
       width: double.maxFinite,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(10.0),
           bottomRight: Radius.circular(10.0),
         ),
-        color: Colors.blue[800],
+        color: Color(0xff0074B6),
       ),
       child: Center(
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 25, horizontal: 30),
+          padding: EdgeInsets.symmetric(vertical: 30, horizontal: 25),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 'ST. FRANCES CABINI MEDICAL CENTER, INC.',
-                style: whiteTextStyle.copyWith(fontSize: 17),
+                style: whiteTextStyle.copyWith(fontSize: 20),
               ),
-              SizedBox(height: 25),
+              SizedBox(height: 33),
               RichText(
                 text: TextSpan(
-                    style: whiteTextStyle.copyWith(fontSize: 26),
+                    style: whiteTextStyle.copyWith(fontSize: 30),
                     children: [
                       TextSpan(text: 'Overall:'),
                       TextSpan(
@@ -82,41 +85,41 @@ class _HospitalFacilitiesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(20),
+      padding: EdgeInsets.all(25),
       child: Expanded(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            SizedBox(height: 10),
+            SizedBox(height: 5),
             _BuildTitle(title: 'Facilities(covid):', enableLegends: true),
             _BuildDetailsRow(
-              title: 'ICU Beds:',
+              title: 'icu beds:',
               occupanyRate: .5,
             ),
             _BuildDetailsRow(
-              title: 'Isolation Beds:',
+              title: 'isolation beds:',
               occupanyRate: .5,
             ),
             _BuildDetailsRow(
-              title: 'Bed Wards:',
+              title: 'bed wards:',
               occupanyRate: .5,
             ),
             _BuildDetailsRow(
-              title: 'Mech Vent:',
+              title: 'mech vent:',
               occupanyRate: .5,
             ),
-            SizedBox(height: 25),
+            SizedBox(height: 30),
             _BuildTitle(title: 'Facilities(non-covid):', enableLegends: true),
             _BuildDetailsRow(
-              title: 'ICU Beds:',
+              title: 'icu beds:',
               occupanyRate: .5,
             ),
             _BuildDetailsRow(
-              title: 'Non-ICU Beds:',
+              title: 'non-icu beds:',
               occupanyRate: .5,
             ),
             _BuildDetailsRow(
-              title: 'Mech Vent:',
+              title: 'mech vent:',
               occupanyRate: .5,
             ),
           ],
@@ -136,12 +139,12 @@ class _BuildTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 4.0),
+      padding: EdgeInsets.only(bottom: 13.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Text(title,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
           (enableLegends ? _BuildLegends() : Container())
         ],
       ),
@@ -159,12 +162,12 @@ class _BuildDetailsRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 2.0),
+      padding: const EdgeInsets.only(bottom: 15.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Text(title,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.w300)),
           _BuilderMeter(occupanyRate: occupanyRate),
         ],
       ),
@@ -180,35 +183,38 @@ class _BuilderMeter extends StatelessWidget {
   Widget build(BuildContext context) {
     return (occupanyRate == null
         ? Container(child: Text('loading...'))
-        : Row(
-            children: [
-              Text(
-                '100',
-                style: TextStyle(fontSize: 18, color: Colors.red),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 3.0),
-                child: Container(
-                  height: 15,
-                  width: specificFacilitiesSummaryGradientBarLength,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      stops: [occupanyRate, occupanyRate],
-                      begin: Alignment.topLeft,
-                      end: Alignment.topRight,
-                      colors: <Color>[
-                        const Color(0xffEB5757),
-                        const Color(0xff27AE60)
-                      ],
+        : Theme(
+            data: ThemeData(fontFamily: 'Roboto-Light'),
+            child: Row(
+              children: [
+                Text(
+                  '1000',
+                  style: TextStyle(fontSize: 22, color: Colors.red),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                  child: Container(
+                    height: 15,
+                    width: specificFacilitiesSummaryGradientBarLength,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        stops: [occupanyRate, occupanyRate],
+                        begin: Alignment.topLeft,
+                        end: Alignment.topRight,
+                        colors: <Color>[
+                          const Color(0xffEB5757),
+                          const Color(0xff27AE60)
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Text(
-                '100',
-                style: TextStyle(fontSize: 18, color: Colors.green),
-              ),
-            ],
+                Text(
+                  '1000',
+                  style: TextStyle(fontSize: 22, color: Colors.green),
+                ),
+              ],
+            ),
           ));
   }
 }
@@ -216,26 +222,27 @@ class _BuilderMeter extends StatelessWidget {
 class _BuildLegends extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        Container(
-          width: 8,
-          height: 8,
-          color: Color(0xffEB5757),
-          margin: EdgeInsets.only(right: 3),
-        ),
-        Text('Occupied',
-            style: TextStyle(fontSize: 13, fontWeight: FontWeight.w300)),
-        SizedBox(width: 10),
-        Container(
-          width: 8,
-          height: 8,
-          color: Color(0xff27AE60),
-          margin: EdgeInsets.only(right: 3),
-        ),
-        Text('Vacant',
-            style: TextStyle(fontSize: 13, fontWeight: FontWeight.w300)),
-      ],
+    return Theme(
+      data: ThemeData(fontFamily: 'Roboto-Light'),
+      child: Row(
+        children: <Widget>[
+          Container(
+            width: 10,
+            height: 10,
+            color: Color(0xffEB5757),
+            margin: EdgeInsets.only(right: 3),
+          ),
+          Text('Occupied', style: TextStyle(fontSize: 16)),
+          SizedBox(width: 10),
+          Container(
+            width: 10,
+            height: 10,
+            color: Color(0xff27AE60),
+            margin: EdgeInsets.only(right: 3),
+          ),
+          Text('Vacant', style: TextStyle(fontSize: 16)),
+        ],
+      ),
     );
   }
 }
