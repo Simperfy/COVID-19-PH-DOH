@@ -16,11 +16,13 @@ class FacilitiesView extends StatelessWidget {
         initialiseSpecialViewModelsOnce: true,
         viewModelBuilder: () => FacilitiesViewModel(),
         builder: (context, model, child) {
-          return Column(
-            children: [
-              _HospitalHeaderCard(),
-              _HospitalFacilitiesView(regionQuery: this.regionQuery),
-            ],
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                _HospitalHeaderCard(),
+                _HospitalFacilitiesView(regionQuery: this.regionQuery),
+              ],
+            ),
           );
         });
   }
@@ -34,7 +36,7 @@ class _HospitalHeaderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 156,
+      height: MediaQuery.of(context).size.width * 0.33,
       width: double.maxFinite,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
@@ -45,19 +47,19 @@ class _HospitalHeaderCard extends StatelessWidget {
       ),
       child: Center(
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 30, horizontal: 25),
+          padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.width * 0.04, horizontal: MediaQuery.of(context).size.width * 0.075),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 'ST. FRANCES CABINI MEDICAL CENTER, INC.',
-                style: whiteTextStyle.copyWith(fontSize: 20),
+                style: whiteTextStyle.copyWith(fontSize: MediaQuery.of(context).size.width * 0.05),
               ),
-              SizedBox(height: 33),
+              SizedBox(height: MediaQuery.of(context).size.width * 0.03),
               RichText(
                 text: TextSpan(
-                    style: whiteTextStyle.copyWith(fontSize: 30),
+                    style: whiteTextStyle.copyWith(fontSize: MediaQuery.of(context).size.width * 0.075),
                     children: [
                       TextSpan(text: 'Overall:'),
                       TextSpan(
@@ -141,7 +143,9 @@ class _BuildTitle extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Text(title,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              style: TextStyle(
+                  fontSize: MediaQuery.of(context).size.width * 0.05,
+                  fontWeight: FontWeight.bold)),
           (enableLegends ? _BuildLegends() : Container())
         ],
       ),
@@ -164,7 +168,9 @@ class _BuildDetailsRow extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Text(title,
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.w300)),
+              style: TextStyle(
+                  fontSize: MediaQuery.of(context).size.width * 0.05,
+                  fontWeight: FontWeight.w300)),
           _BuilderMeter(occupanyRate: occupanyRate),
         ],
       ),
@@ -185,7 +191,7 @@ class _BuilderMeter extends StatelessWidget {
               Text(
                 '1000',
                 style: TextStyle(
-                    fontSize: 22,
+                    fontSize: MediaQuery.of(context).size.width * 0.05,
                     color: Colors.red,
                     fontWeight: FontWeight.w300),
               ),
@@ -193,7 +199,7 @@ class _BuilderMeter extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 4.0),
                 child: Container(
                   height: 15,
-                  width: specificFacilitiesSummaryGradientBarLength,
+                  width: MediaQuery.of(context).size.width * 0.25,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       stops: [occupanyRate, occupanyRate],
@@ -210,7 +216,7 @@ class _BuilderMeter extends StatelessWidget {
               Text(
                 '1000',
                 style: TextStyle(
-                    fontSize: 22,
+                    fontSize: MediaQuery.of(context).size.width * 0.05,
                     color: Colors.green,
                     fontWeight: FontWeight.w300),
               ),
@@ -232,7 +238,9 @@ class _BuildLegends extends StatelessWidget {
         ),
         Text(
           'Occupied',
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w300),
+          style: TextStyle(
+              fontSize: MediaQuery.of(context).size.width * 0.025,
+              fontWeight: FontWeight.w300),
         ),
         SizedBox(width: 10),
         Container(
@@ -243,7 +251,9 @@ class _BuildLegends extends StatelessWidget {
         ),
         Text(
           'Vacant',
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w300),
+          style: TextStyle(
+              fontSize: MediaQuery.of(context).size.width * 0.025,
+              fontWeight: FontWeight.w300),
         ),
       ],
     );
