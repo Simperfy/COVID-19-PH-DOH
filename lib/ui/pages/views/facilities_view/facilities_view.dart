@@ -16,14 +16,11 @@ class FacilitiesView extends StatelessWidget {
         initialiseSpecialViewModelsOnce: true,
         viewModelBuilder: () => FacilitiesViewModel(),
         builder: (context, model, child) {
-          return Theme(
-            data: ThemeData(fontFamily: 'Roboto'),
-            child: Column(
-              children: [
-                _HospitalHeaderCard(),
-                _HospitalFacilitiesView(regionQuery: this.regionQuery),
-              ],
-            ),
+          return Column(
+            children: [
+              _HospitalHeaderCard(),
+              _HospitalFacilitiesView(regionQuery: this.regionQuery),
+            ],
           );
         });
   }
@@ -183,38 +180,41 @@ class _BuilderMeter extends StatelessWidget {
   Widget build(BuildContext context) {
     return (occupanyRate == null
         ? Container(child: Text('loading...'))
-        : Theme(
-            data: ThemeData(fontFamily: 'Roboto-Light'),
-            child: Row(
-              children: [
-                Text(
-                  '1000',
-                  style: TextStyle(fontSize: 22, color: Colors.red),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                  child: Container(
-                    height: 15,
-                    width: specificFacilitiesSummaryGradientBarLength,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        stops: [occupanyRate, occupanyRate],
-                        begin: Alignment.topLeft,
-                        end: Alignment.topRight,
-                        colors: <Color>[
-                          const Color(0xffEB5757),
-                          const Color(0xff27AE60)
-                        ],
-                      ),
+        : Row(
+            children: [
+              Text(
+                '1000',
+                style: TextStyle(
+                    fontSize: 22,
+                    color: Colors.red,
+                    fontWeight: FontWeight.w300),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                child: Container(
+                  height: 15,
+                  width: specificFacilitiesSummaryGradientBarLength,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      stops: [occupanyRate, occupanyRate],
+                      begin: Alignment.topLeft,
+                      end: Alignment.topRight,
+                      colors: <Color>[
+                        const Color(0xffEB5757),
+                        const Color(0xff27AE60)
+                      ],
                     ),
                   ),
                 ),
-                Text(
-                  '1000',
-                  style: TextStyle(fontSize: 22, color: Colors.green),
-                ),
-              ],
-            ),
+              ),
+              Text(
+                '1000',
+                style: TextStyle(
+                    fontSize: 22,
+                    color: Colors.green,
+                    fontWeight: FontWeight.w300),
+              ),
+            ],
           ));
   }
 }
@@ -222,27 +222,30 @@ class _BuilderMeter extends StatelessWidget {
 class _BuildLegends extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Theme(
-      data: ThemeData(fontFamily: 'Roboto-Light'),
-      child: Row(
-        children: <Widget>[
-          Container(
-            width: 10,
-            height: 10,
-            color: Color(0xffEB5757),
-            margin: EdgeInsets.only(right: 3),
-          ),
-          Text('Occupied', style: TextStyle(fontSize: 16)),
-          SizedBox(width: 10),
-          Container(
-            width: 10,
-            height: 10,
-            color: Color(0xff27AE60),
-            margin: EdgeInsets.only(right: 3),
-          ),
-          Text('Vacant', style: TextStyle(fontSize: 16)),
-        ],
-      ),
+    return Row(
+      children: <Widget>[
+        Container(
+          width: 10,
+          height: 10,
+          color: Color(0xffEB5757),
+          margin: EdgeInsets.only(right: 3),
+        ),
+        Text(
+          'Occupied',
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w300),
+        ),
+        SizedBox(width: 10),
+        Container(
+          width: 10,
+          height: 10,
+          color: Color(0xff27AE60),
+          margin: EdgeInsets.only(right: 3),
+        ),
+        Text(
+          'Vacant',
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w300),
+        ),
+      ],
     );
   }
 }
