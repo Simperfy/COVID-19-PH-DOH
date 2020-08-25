@@ -6,10 +6,10 @@ const String _SummaryFutureName = 'delayedSummary';
 
 /// A singleton View Model
 class FutureSummaryViewModel extends MultipleFutureViewModel {
-  String query;
-  static final FutureSummaryViewModel Function(String) _singleton = (query) => FutureSummaryViewModel._internal(query: query);
-  factory FutureSummaryViewModel({query}) => _singleton(query);
-  FutureSummaryViewModel._internal({this.query});
+  static String regionQuery;
+  static final FutureSummaryViewModel _singleton = FutureSummaryViewModel._internal();
+  factory FutureSummaryViewModel() => _singleton;
+  FutureSummaryViewModel._internal();
 
   Summary get fetchedSummary => dataMap[_SummaryFutureName];
   bool get fetchingSummary => busy(_SummaryFutureName);
@@ -17,11 +17,10 @@ class FutureSummaryViewModel extends MultipleFutureViewModel {
   /// Gets Summary from the api
   Future<Summary> _getSummary() async {
     final SummaryDatabase database = SummaryDatabase.instance;
-    print('Query: $query');
 
-    var result = (query == null)
+    var result = (regionQuery == null)
         ? (await database.getSummary())
-        : (await database.getRegionSummary(region: query.toLowerCase()));
+        : (await database.getRegionSummary(region: regionQuery.toLowerCase()));
 
     return result.getData();
   }
