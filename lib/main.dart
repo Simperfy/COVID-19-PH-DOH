@@ -4,6 +4,7 @@ import 'package:Covid19_PH/services/region_database.dart';
 import 'package:Covid19_PH/services/summary_database.dart';
 import 'package:Covid19_PH/services/timeline_database.dart';
 import 'package:Covid19_PH/ui/view_manager.dart';
+import 'package:Covid19_PH/util/size_config.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -11,12 +12,15 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      builder: (context, child) => MediaQuery(
-        data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-        child: ViewManager(),
-      ),
-    );
+    return LayoutBuilder(builder: (context, constraints) {
+      SizeConfig.init(constraints);
+      return MaterialApp(
+        builder: (context, child) => MediaQuery(
+          data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+          child: ViewManager(),
+        ),
+      );
+    });
   }
 }
 

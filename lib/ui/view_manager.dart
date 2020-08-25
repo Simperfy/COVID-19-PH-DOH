@@ -3,6 +3,7 @@ import 'package:Covid19_PH/ui/pages/views/home_view/home_view.dart';
 import 'package:Covid19_PH/ui/partials/views/search_bar_view/search_bar_view.dart';
 import 'package:Covid19_PH/ui/view_manager_model.dart';
 import 'package:Covid19_PH/util/constants.dart';
+import 'package:Covid19_PH/util/size_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -23,37 +24,41 @@ class ViewManager extends StatelessWidget {
           appBar: SearchBarView(),
           key: _scaffoldKey, // TODO: Remove once snackbar is no longer needed
           body: _getViewForIndex(index: model.currentIndex),
-          bottomNavigationBar: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            items: <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                  icon: model.getIcon(filename: 'home', index: 0),
-                  title: Text('Home')),
-              BottomNavigationBarItem(
-                  icon: model.getIcon(filename: 'hospital', index: 1),
-                  title: Text('Hospitals')),
-              BottomNavigationBarItem(
-                  icon: model.getIcon(filename: 'map', index: 2),
-                  title: Text('Map')),
-              BottomNavigationBarItem(
-                  icon: model.getIcon(filename: 'settings', index: 3),
-                  title: Text('Settings')),
-            ],
-            showUnselectedLabels: false,
-            selectedItemColor: bottomNavBarActiveColor,
-            selectedIconTheme: IconThemeData(color: bottomNavBarActiveColor),
-            unselectedItemColor: bottomNavBarIdleColor,
-            unselectedIconTheme: IconThemeData(color: bottomNavBarIdleColor),
-            currentIndex: model.currentIndex,
-            onTap: model.setIndex, // TODO: Uncomment to enable page navigation
-            // onTap: (num) => num != 0
-            //     ? _scaffoldKey.currentState.showSnackBar(
-            //         SnackBar(
-            //           content: Text("Coming Soon..."),
-            //           duration: Duration(seconds: 1),
-            //         ),
-            //       )
-            //     : null,
+          bottomNavigationBar: SizedBox(
+            height: SizeConfig.getBotNavbarHeight,
+            child: BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
+              items: <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                    icon: model.getIcon(filename: 'home', index: 0),
+                    title: Text('Home')),
+                BottomNavigationBarItem(
+                    icon: model.getIcon(filename: 'hospital', index: 1),
+                    title: Text('Hospitals')),
+                BottomNavigationBarItem(
+                    icon: model.getIcon(filename: 'map', index: 2),
+                    title: Text('Map')),
+                BottomNavigationBarItem(
+                    icon: model.getIcon(filename: 'settings', index: 3),
+                    title: Text('Settings')),
+              ],
+              showUnselectedLabels: false,
+              selectedItemColor: bottomNavBarActiveColor,
+              selectedIconTheme: IconThemeData(color: bottomNavBarActiveColor),
+              unselectedItemColor: bottomNavBarIdleColor,
+              unselectedIconTheme: IconThemeData(color: bottomNavBarIdleColor),
+              currentIndex: model.currentIndex,
+              onTap:
+                  model.setIndex, // TODO: Uncomment to enable page navigation
+              // onTap: (num) => num != 0
+              //     ? _scaffoldKey.currentState.showSnackBar(
+              //         SnackBar(
+              //           content: Text("Coming Soon..."),
+              //           duration: Duration(seconds: 1),
+              //         ),
+              //       )
+              //     : null,
+            ),
           ),
         );
       },
