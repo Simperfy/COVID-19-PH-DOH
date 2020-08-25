@@ -16,7 +16,7 @@ class SummaryView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<FutureSummaryViewModel>.reactive(
       disposeViewModel: false,
-      // initialiseSpecialViewModelsOnce: true,
+      initialiseSpecialViewModelsOnce: true,
       viewModelBuilder: () => FutureSummaryViewModel(query: regionQuery),
       builder: (context, model, child) {
         return Column(

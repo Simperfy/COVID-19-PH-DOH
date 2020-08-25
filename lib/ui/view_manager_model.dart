@@ -6,6 +6,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stacked/stacked.dart';
 
 class ViewManagerModel extends IndexTrackingViewModel {
+  static final ViewManagerModel _singleton = ViewManagerModel._internal();
+  factory ViewManagerModel() => _singleton;
+  ViewManagerModel._internal();
+
   initialise() {
     print('Home View Model Initialized');
     notifyListeners();

@@ -9,10 +9,9 @@ class TopRegionsViewModel extends FutureViewModel<List<Widget>> {
   factory TopRegionsViewModel() => _singleton;
   TopRegionsViewModel._internal();
 
-  List<Widget> topRegionsList = [];
-
   @override
   Future<List<Widget>> futureToRun() {
+    print('FIRING TOP REGIONS VIEW MODEL');
     return _getTopRegions();
   }
 
