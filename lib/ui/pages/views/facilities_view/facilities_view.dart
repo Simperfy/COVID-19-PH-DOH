@@ -36,7 +36,7 @@ class _HospitalHeaderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.20,
+      height: 163,
       width: double.maxFinite,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
@@ -45,35 +45,31 @@ class _HospitalHeaderCard extends StatelessWidget {
         ),
         color: Color(0xff0074B6),
       ),
-      child: Center(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-              vertical: MediaQuery.of(context).size.width * 0.10,
-              horizontal: MediaQuery.of(context).size.width * 0.075),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'ST. FRANCES CABINI MEDICAL CENTER, INC.',
-                style: whiteTextStyle.copyWith(
-                    fontSize: MediaQuery.of(context).size.width * 0.05),
-              ),
-              SizedBox(height: MediaQuery.of(context).size.width * 0.03),
-              RichText(
-                text: TextSpan(
-                    style: whiteTextStyle.copyWith(
-                        fontSize: MediaQuery.of(context).size.width * 0.065),
-                    children: [
-                      TextSpan(text: 'Overall:'),
-                      TextSpan(
-                        text: ' GOOD',
-                        style: TextStyle(color: Colors.green),
-                      ),
-                    ]),
-              ),
-            ],
-          ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+            vertical: 30,
+            horizontal: MediaQuery.of(context).size.width * 0.075),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              'ST. FRANCES CABINI MEDICAL CENTER, INC.',
+              style: whiteTextStyle.copyWith(fontSize: 20),
+            ),
+            SizedBox(height: 25),
+            RichText(
+              text: TextSpan(
+                  style: whiteTextStyle.copyWith(fontSize: 25),
+                  children: [
+                    TextSpan(text: 'Overall:'),
+                    TextSpan(
+                      text: ' GOOD',
+                      style: TextStyle(color: Colors.green),
+                    ),
+                  ]),
+            ),
+          ],
         ),
       ),
     );
