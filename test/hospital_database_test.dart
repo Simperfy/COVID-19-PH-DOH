@@ -88,21 +88,27 @@ void main() {
       final model = HospitalSummary();
       mockDatabase = MockDatabase();
       expectedOutput = HospitalSummary(
-          totalFacilities: 1913,
-          occupanyRate: 0.48,
-          totalVacant: 9974,
-          totalOccupied: 9240,
-          icuVacant: 881,
-          icuOccupied: 843,
-          isolbedVacant: 6563,
-          isolbedOccupied: 5861,
-          bedwardVacant: 2530,
-          bedwardOccupied: 2536,
-          mechventVacant: 1532,
-          mechventOccupied: 629);
+          totalFacilities: 1912,
+          occupanyRate: 0.49,
+          totalVacant: 10039,
+          totalOccupied: 9661,
+          icuVacant: 851,
+          icuOccupied: 846,
+          isolbedVacant: 6669,
+          isolbedOccupied: 6146,
+          bedwardVacant: 2519,
+          bedwardOccupied: 2669,
+          mechventVacant: 1605,
+          mechventOccupied: 594,
+          icuVacantNc: 3171,
+          icuOccupiedNc: 3071,
+          nonIcuVacantNc: 41114,
+          nonIcuOccupiedNc: 41524,
+          mechventVacantNc: 2353,
+          mechventOccupiedNc: 2353);
 
       final decodedJson = json.decode(
-          '{"data":{"total_facilities":1913,"occupancy_rate":0.48,"beds":{"total_vacant":9974,"total_occupied":9240,"icu_v":881,"icu_o":843,"isolbed_v":6563,"isolbed_o":5861,"beds_ward_v":2530,"beds_ward_o":2536},"equipments":{"mechvent_v":1532,"mechvent_o":629}},"last_update":"8/23/2020, 8:37:51 PM"}');
+          '{"data":{"total_facilities":1912,"occupancy_rate":0.49,"beds":{"total_vacant":10039,"total_occupied":9661,"covid":{"icu_v":851,"icu_o":846,"isolbed_v":6669,"isolbed_o":6146,"beds_ward_v":2519,"beds_ward_o":2669},"non_covid":{"icu_v_nc":3171,"icu_o_nc":3071,"nonicu_v_nc":41114,"nonicu_o_nc":41524}},"equipments":{"mechvent_v":1605,"mechvent_o":594,"mechvent_v_nc":2353,"mechvent_o_nc":2353}},"last_update":"8/25/2020, 10:40:23 PM"}');
 
       when(mockDatabase.fetchHospitalRecordsSummary())
           .thenAnswer((_) async => model.fromJson(decodedJson));
