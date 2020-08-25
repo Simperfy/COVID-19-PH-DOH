@@ -4,7 +4,7 @@ import 'package:stacked/stacked.dart';
 
 class FacilitiesSummaryViewModel extends FutureViewModel<HospitalSummary> {
   static String regionQuery;
-  static final FacilitiesSummaryViewModel _singleton = FacilitiesSummaryViewModel._internal();
+  static FacilitiesSummaryViewModel _singleton = FacilitiesSummaryViewModel._internal();
   factory FacilitiesSummaryViewModel() => _singleton;
   FacilitiesSummaryViewModel._internal();
 
@@ -18,5 +18,10 @@ class FacilitiesSummaryViewModel extends FutureViewModel<HospitalSummary> {
     final HospitalDatabase database = HospitalDatabase.instance;
     print('the query: $regionQuery');
     return (await database.fetchHospitalRecordsSummary(region: regionQuery)).getData();
+  }
+
+  static setRegionQuery(String rq) {
+    if (regionQuery != rq) _singleton = FacilitiesSummaryViewModel._internal();
+    regionQuery = rq;
   }
 }

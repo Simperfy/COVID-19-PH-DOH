@@ -7,13 +7,18 @@ import 'package:stacked/stacked.dart';
 /// A singleton View Model
 class TimelineViewModel extends FutureViewModel<List<TimeSeries>> {
   static String regionQuery;
-  static final TimelineViewModel _singleton = TimelineViewModel._internal();
+  static TimelineViewModel _singleton = TimelineViewModel._internal();
   factory TimelineViewModel() => _singleton;
   TimelineViewModel._internal();
 
   @override
   Future<List<TimeSeries>> futureToRun() {
     return _getSummary();
+  }
+
+  static setRegionQuery(String rq) {
+    if (regionQuery != rq) _singleton = TimelineViewModel._internal();
+    regionQuery = rq;
   }
 
   /// Gets Summary from the api

@@ -15,7 +15,7 @@ class FacilitiesSummaryView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<FacilitiesSummaryViewModel>.reactive(
       viewModelBuilder: () {
-        FacilitiesSummaryViewModel.regionQuery = this.regionQuery;
+        FacilitiesSummaryViewModel.setRegionQuery(regionQuery);
         return FacilitiesSummaryViewModel();
       },
       disposeViewModel: false,

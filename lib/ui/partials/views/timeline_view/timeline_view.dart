@@ -15,7 +15,7 @@ class TimelineView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<TimelineViewModel>.reactive(
       viewModelBuilder: () {
-        TimelineViewModel.regionQuery = this.regionQuery;
+        TimelineViewModel.setRegionQuery(regionQuery);
         return TimelineViewModel();
       },
       disposeViewModel: false,
