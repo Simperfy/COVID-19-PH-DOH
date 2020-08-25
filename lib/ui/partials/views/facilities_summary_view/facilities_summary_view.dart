@@ -14,63 +14,70 @@ class FacilitiesSummaryView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<FacilitiesSummaryViewModel>.reactive(
-      viewModelBuilder: () => FacilitiesSummaryViewModel(query: regionQuery),
+      viewModelBuilder: () {
+        FacilitiesSummaryViewModel.setRegionQuery(regionQuery);
+        return FacilitiesSummaryViewModel();
+      },
       disposeViewModel: false,
-      builder: (context, model, child) => FacilitiesCard(
-        bgColor: dailyCasesBgColor,
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text('Facilities Data',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300)),
-              SizedBox(height: 10),
-              _BuildTitle(title: 'Availability of Beds', enableLegends: true),
-              _BuildDetailsRow(
-                title: 'ICU Beds',
-                occupanyRate: model.isBusy
-                    ? null
-                    : (model.data.icuOccupied /
-                        (model.data.icuOccupied + model.data.icuVacant)),
-                occupied: model.isBusy ? null : model.data.icuOccupied,
-                vacant: model.isBusy ? null : model.data.icuVacant,
-              ),
-              _BuildDetailsRow(
-                title: 'Isolation Beds',
-                occupanyRate: model.isBusy
-                    ? null
-                    : (model.data.isolbedOccupied /
-                        (model.data.isolbedOccupied +
-                            model.data.isolbedVacant)),
-                occupied: model.isBusy ? null : model.data.isolbedOccupied,
-                vacant: model.isBusy ? null : model.data.isolbedVacant,
-              ),
-              _BuildDetailsRow(
-                title: 'Ward Beds',
-                occupanyRate: model.isBusy
-                    ? null
-                    : (model.data.bedwardOccupied /
-                        (model.data.bedwardOccupied +
-                            model.data.bedwardVacant)),
-                occupied: model.isBusy ? null : model.data.bedwardOccupied,
-                vacant: model.isBusy ? null : model.data.bedwardVacant,
-              ),
-              _BuildTitle(
-                  title: 'Availability of Equipments', enableLegends: false),
-              _BuildDetailsRow(
-                title: 'Mechanical Ventilation',
-                occupanyRate: model.isBusy
-                    ? null
-                    : (model.data.mechventOccupied /
-                        (model.data.mechventOccupied +
-                            model.data.mechventVacant)),
-                occupied: model.isBusy ? null : model.data.mechventOccupied,
-                vacant: model.isBusy ? null : model.data.mechventVacant,
-              )
-            ],
+      initialiseSpecialViewModelsOnce: true,
+      builder: (context, model, child) {
+        return FacilitiesCard(
+          bgColor: dailyCasesBgColor,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text('Facilities Data',
+                    style:
+                        TextStyle(fontSize: 18, fontWeight: FontWeight.w300)),
+                SizedBox(height: 10),
+                _BuildTitle(title: 'Availability of Beds', enableLegends: true),
+                _BuildDetailsRow(
+                  title: 'ICU Beds',
+                  occupanyRate: model.isBusy
+                      ? null
+                      : (model.data.icuOccupied /
+                          (model.data.icuOccupied + model.data.icuVacant)),
+                  occupied: model.isBusy ? null : model.data.icuOccupied,
+                  vacant: model.isBusy ? null : model.data.icuVacant,
+                ),
+                _BuildDetailsRow(
+                  title: 'Isolation Beds',
+                  occupanyRate: model.isBusy
+                      ? null
+                      : (model.data.isolbedOccupied /
+                          (model.data.isolbedOccupied +
+                              model.data.isolbedVacant)),
+                  occupied: model.isBusy ? null : model.data.isolbedOccupied,
+                  vacant: model.isBusy ? null : model.data.isolbedVacant,
+                ),
+                _BuildDetailsRow(
+                  title: 'Ward Beds',
+                  occupanyRate: model.isBusy
+                      ? null
+                      : (model.data.bedwardOccupied /
+                          (model.data.bedwardOccupied +
+                              model.data.bedwardVacant)),
+                  occupied: model.isBusy ? null : model.data.bedwardOccupied,
+                  vacant: model.isBusy ? null : model.data.bedwardVacant,
+                ),
+                _BuildTitle(
+                    title: 'Availability of Equipments', enableLegends: false),
+                _BuildDetailsRow(
+                  title: 'Mechanical Ventilation',
+                  occupanyRate: model.isBusy
+                      ? null
+                      : (model.data.mechventOccupied /
+                          (model.data.mechventOccupied +
+                              model.data.mechventVacant)),
+                  occupied: model.isBusy ? null : model.data.mechventOccupied,
+                  vacant: model.isBusy ? null : model.data.mechventVacant,
+                )
+              ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

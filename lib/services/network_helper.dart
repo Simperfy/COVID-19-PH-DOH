@@ -12,7 +12,6 @@ class NetworkHelper {
     final response = await client.get(url);
 
     if (response.statusCode == 200) {
-      print('body ${response.body}');
       return json.decode(response.body);
     } else {
       throw Exception('Failed to load api.');

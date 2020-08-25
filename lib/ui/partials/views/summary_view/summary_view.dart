@@ -15,19 +15,33 @@ class SummaryView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<FutureSummaryViewModel>.reactive(
+      viewModelBuilder: () {
+        FutureSummaryViewModel.setRegionQuery(regionQuery);
+        return FutureSummaryViewModel();
+      },
       disposeViewModel: false,
-      // initialiseSpecialViewModelsOnce: true,
-      viewModelBuilder: () => FutureSummaryViewModel(query: regionQuery),
+      initialiseSpecialViewModelsOnce: true,
       builder: (context, model, child) {
         return Column(
           children: [
-            TotalCases(count: (model.fetchingSummary ? null : model.fetchedSummary?.total)),
+            TotalCases(
+                count: (model.fetchingSummary
+                    ? null
+                    : model.fetchedSummary?.total)),
             Row(
               children: <Widget>[
                 ActiveCases(
-                    count: (model.fetchingSummary ? null : model.fetchedSummary?.activeCases)),
-                Recovered(count: (model.fetchingSummary ? null : model.fetchedSummary?.recoveries)),
-                Died(count: (model.fetchingSummary ? null : model.fetchedSummary?.deaths))
+                    count: (model.fetchingSummary
+                        ? null
+                        : model.fetchedSummary?.activeCases)),
+                Recovered(
+                    count: (model.fetchingSummary
+                        ? null
+                        : model.fetchedSummary?.recoveries)),
+                Died(
+                    count: (model.fetchingSummary
+                        ? null
+                        : model.fetchedSummary?.deaths))
               ],
             ),
           ],

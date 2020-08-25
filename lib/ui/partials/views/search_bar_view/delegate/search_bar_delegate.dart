@@ -54,7 +54,12 @@ class SearchBarDelegate extends SearchDelegate<String> {
   /// Shows results
   @override
   Widget buildResults(BuildContext context) {
-    if (data.contains(query)) return HomeView(regionQuery: query);
+    if (data.contains(query)) {
+      return MediaQuery(
+        data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+        child: HomeView(regionQuery: 'ncr'),
+      );
+    }
     return Container();
   }
 

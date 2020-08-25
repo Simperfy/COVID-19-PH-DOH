@@ -20,7 +20,10 @@ class FacilitiesView extends StatelessWidget {
             child: Column(
               children: [
                 _HospitalHeaderCard(),
-                _HospitalFacilitiesView(regionQuery: this.regionQuery),
+                Padding(
+                  padding: const EdgeInsets.all(25.0),
+                  child: _HospitalFacilitiesView(regionQuery: this.regionQuery),
+                ),
               ],
             ),
           );
@@ -83,47 +86,42 @@ class _HospitalFacilitiesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(25),
-      child: Expanded(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            SizedBox(height: 5),
-            _BuildTitle(title: 'Facilities(covid):', enableLegends: true),
-            _BuildDetailsRow(
-              title: 'icu beds:',
-              occupanyRate: .5,
-            ),
-            _BuildDetailsRow(
-              title: 'isolation beds:',
-              occupanyRate: .5,
-            ),
-            _BuildDetailsRow(
-              title: 'bed wards:',
-              occupanyRate: .5,
-            ),
-            _BuildDetailsRow(
-              title: 'mech vent:',
-              occupanyRate: .5,
-            ),
-            SizedBox(height: 30),
-            _BuildTitle(title: 'Facilities(non-covid):', enableLegends: false),
-            _BuildDetailsRow(
-              title: 'icu beds:',
-              occupanyRate: .5,
-            ),
-            _BuildDetailsRow(
-              title: 'non-icu beds:',
-              occupanyRate: .5,
-            ),
-            _BuildDetailsRow(
-              title: 'mech vent:',
-              occupanyRate: .5,
-            ),
-          ],
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        SizedBox(height: 5),
+        _BuildTitle(title: 'Facilities(covid):', enableLegends: true),
+        _BuildDetailsRow(
+          title: 'icu beds:',
+          occupanyRate: .5,
         ),
-      ),
+        _BuildDetailsRow(
+          title: 'isolation beds:',
+          occupanyRate: .5,
+        ),
+        _BuildDetailsRow(
+          title: 'bed wards:',
+          occupanyRate: .5,
+        ),
+        _BuildDetailsRow(
+          title: 'mech vent:',
+          occupanyRate: .5,
+        ),
+        SizedBox(height: 30),
+        _BuildTitle(title: 'Facilities(non-covid):', enableLegends: false),
+        _BuildDetailsRow(
+          title: 'icu beds:',
+          occupanyRate: .5,
+        ),
+        _BuildDetailsRow(
+          title: 'non-icu beds:',
+          occupanyRate: .5,
+        ),
+        _BuildDetailsRow(
+          title: 'mech vent:',
+          occupanyRate: .5,
+        ),
+      ],
     );
   }
 }

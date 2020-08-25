@@ -14,9 +14,12 @@ class TimelineView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<TimelineViewModel>.reactive(
+      viewModelBuilder: () {
+        TimelineViewModel.setRegionQuery(regionQuery);
+        return TimelineViewModel();
+      },
       disposeViewModel: false,
-      // initialiseSpecialViewModelsOnce: true,
-      viewModelBuilder: () => TimelineViewModel(query: regionQuery),
+      initialiseSpecialViewModelsOnce: true,
       builder: (context, model, child) {
         return TimelineCard(
           bgColor: dailyCasesBgColor,
