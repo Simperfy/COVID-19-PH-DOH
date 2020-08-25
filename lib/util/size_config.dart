@@ -6,6 +6,10 @@ class SizeConfig {
   static double _maxAppbarHeight = 62;
   static double _multiplierAppbarHeight = 0.069;
 
+  static double _minAppbarTextSize = 24;
+  static double _maxAppbarTextSize = 30;
+  static double _multiplierAppbarTextSize = 0.033;
+
   static double _maxAppbarIconSize = 36;
   static double _minAppbarIconSize = 24;
   static double _multiplierAppbarIconSize = 0.044;
@@ -53,6 +57,9 @@ class SizeConfig {
   // APPBAR
   static double get getAppbarHeight => _calculateSize(
       _minAppbarHeight, _maxAppbarHeight, _multiplierAppbarHeight);
+
+  static double get getAppbarTextSize => _calculateSize(
+      _minAppbarTextSize, _maxAppbarTextSize, _multiplierAppbarTextSize);
 
   static double get getAppbarIconSize => _calculateSize(
       _minAppbarIconSize, _maxAppbarIconSize, _multiplierAppbarIconSize);

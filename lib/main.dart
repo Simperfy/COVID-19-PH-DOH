@@ -12,12 +12,12 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      SizeConfig.init(constraints);
-      return MaterialApp(
-        home: ViewManager(),
-      );
-    });
+    return MaterialApp(
+      home: LayoutBuilder(builder: (context, constraints) {
+        SizeConfig.init(constraints);
+        return ViewManager();
+      }),
+    );
   }
 }
 

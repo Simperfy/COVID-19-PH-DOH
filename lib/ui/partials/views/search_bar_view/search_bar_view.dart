@@ -31,17 +31,14 @@ class SearchBarView extends StatelessWidget implements PreferredSizeWidget {
         ),
         child: Container(
           width: MediaQuery.of(context).size.width / 1.5,
-          height: 42.0,
+          height: SizeConfig.getAppbarHeight * 0.677,
           padding: EdgeInsets.only(left: 15.0),
           decoration: BoxDecoration(color: searchBarBgColor),
-          child: Container(
-            height: 42.0,
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Search',
-                style: TextStyle(fontSize: 30.0, color: searchBarPrimaryColor),
-              ),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Search',
+              style: TextStyle(fontSize: SizeConfig.getAppbarTextSize, color: searchBarPrimaryColor),
             ),
           ),
         ),

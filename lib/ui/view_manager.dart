@@ -33,16 +33,16 @@ class ViewManager extends StatelessWidget {
                 items: <BottomNavigationBarItem>[
                   BottomNavigationBarItem(
                       icon: model.getIcon(filename: 'home', index: 0),
-                      title: Text('Home')),
+                      title: Text('Home', style: TextStyle(fontSize: 10))),
                   BottomNavigationBarItem(
                       icon: model.getIcon(filename: 'hospital', index: 1),
-                      title: Text('Hospitals')),
+                      title: Text('Hospitals', style: TextStyle(fontSize: 10))),
                   BottomNavigationBarItem(
                       icon: model.getIcon(filename: 'map', index: 2),
-                      title: Text('Map')),
+                      title: Text('Map', style: TextStyle(fontSize: 10))),
                   BottomNavigationBarItem(
                       icon: model.getIcon(filename: 'settings', index: 3),
-                      title: Text('Settings')),
+                      title: Text('Settings', style: TextStyle(fontSize: 10))),
                 ],
                 showUnselectedLabels: false,
                 selectedItemColor: bottomNavBarActiveColor,
