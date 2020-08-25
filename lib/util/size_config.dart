@@ -12,7 +12,7 @@ class SizeConfig {
 
   static double _maxAppbarIconSize = 36;
   static double _minAppbarIconSize = 20;
-  static double _multiplierAppbarIconSize = 0.044;
+  static double _multiplierAppbarIconSize = getAppbarHeight * 0.677;
   // ./APPBAR
 
   // BOTNAVBAR
@@ -22,7 +22,7 @@ class SizeConfig {
 
   static double _maxBotNavbarIconSize = _maxAppbarIconSize;
   static double _minBotNavbarIconSize = _minAppbarIconSize;
-  static double _multiplierBotNavbarIconSize = _multiplierAppbarIconSize;
+  static double _multiplierBotNavbarIconSize = 0.044;
   // ./BOTNAVBAR
 
   static double _blockWidth = 0;

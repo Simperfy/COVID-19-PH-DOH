@@ -49,7 +49,7 @@ class SearchBarView extends StatelessWidget implements PreferredSizeWidget {
           padding: const EdgeInsets.only(right: 30),
           child: IconButton(
             icon: Helper.buildSvg(
-                svgFileName: 'search', color: searchBarPrimaryColor),
+                svgFileName: 'search', color: searchBarPrimaryColor, width: SizeConfig.getAppbarIconSize),
             onPressed: () => showSearch(
               context: context,
               delegate: SearchBarDelegate(),
