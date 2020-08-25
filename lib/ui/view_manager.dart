@@ -45,15 +45,15 @@ class ViewManager extends StatelessWidget {
             unselectedItemColor: bottomNavBarIdleColor,
             unselectedIconTheme: IconThemeData(color: bottomNavBarIdleColor),
             currentIndex: model.currentIndex,
-            // onTap: model.setIndex, // TODO: Uncomment to enable page navigation
-            onTap: (num) => num != 0
-                ? _scaffoldKey.currentState.showSnackBar(
-                    SnackBar(
-                      content: Text("Coming Soon..."),
-                      duration: Duration(seconds: 1),
-                    ),
-                  )
-                : null,
+            onTap: model.setIndex, // TODO: Uncomment to enable page navigation
+            // onTap: (num) => num != 0
+            //     ? _scaffoldKey.currentState.showSnackBar(
+            //         SnackBar(
+            //           content: Text("Coming Soon..."),
+            //           duration: Duration(seconds: 1),
+            //         ),
+            //       )
+            //     : null,
           ),
         );
       },

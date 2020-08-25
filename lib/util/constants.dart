@@ -20,10 +20,16 @@ final Color dailyCasesBgColor = Color(0xffBECFB8).withOpacity(0.27);
 // ./Timeline
 
 // Facilities
-final double facilitiesSummaryGradientBarLength = 24*8.0; // 192
+final double facilitiesSummaryGradientBarLength = 24 * 8.0; // 192
 // ./Facilities
+
+final double specificFacilitiesSummaryGradientBarLength = 88.0;
 
 // BottomNavbar
 final Color bottomNavBarActiveColor = Color(0xff2D9CDB);
 final Color bottomNavBarIdleColor = Color(0xff8C8C8C);
 // ./BottomNavbar
+
+// Common TextStyles
+final TextStyle whiteTextStyle = TextStyle(color: Colors.white);
+final TextStyle blackTextStyle = TextStyle(color: Colors.black);
