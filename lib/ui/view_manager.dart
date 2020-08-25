@@ -34,16 +34,20 @@ class ViewManager extends StatelessWidget {
                 items: <BottomNavigationBarItem>[
                   BottomNavigationBarItem(
                       icon: model.getIcon(filename: 'home', index: 0),
-                      title: AutoSizeText('Home', minFontSize: 10, maxFontSize: 16)),
+                      title: AutoSizeText('Home',
+                          minFontSize: 10, maxFontSize: 16)),
                   BottomNavigationBarItem(
                       icon: model.getIcon(filename: 'hospital', index: 1),
-                      title: AutoSizeText('Hospitals', minFontSize: 10, maxFontSize: 16)),
+                      title: AutoSizeText('Hospitals',
+                          minFontSize: 10, maxFontSize: 16)),
                   BottomNavigationBarItem(
                       icon: model.getIcon(filename: 'map', index: 2),
-                      title: AutoSizeText('Maps', minFontSize: 10, maxFontSize: 16)),
+                      title: AutoSizeText('Maps',
+                          minFontSize: 10, maxFontSize: 16)),
                   BottomNavigationBarItem(
                       icon: model.getIcon(filename: 'settings', index: 3),
-                      title: AutoSizeText('Settings', minFontSize: 10, maxFontSize: 16)),
+                      title: AutoSizeText('Settings',
+                          minFontSize: 10, maxFontSize: 16)),
                 ],
                 showUnselectedLabels: false,
                 selectedItemColor: bottomNavBarActiveColor,
