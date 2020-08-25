@@ -36,7 +36,7 @@ class _HospitalHeaderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.width * 0.33,
+      height: MediaQuery.of(context).size.height * 0.20,
       width: double.maxFinite,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
@@ -47,19 +47,23 @@ class _HospitalHeaderCard extends StatelessWidget {
       ),
       child: Center(
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.width * 0.04, horizontal: MediaQuery.of(context).size.width * 0.075),
+          padding: EdgeInsets.symmetric(
+              vertical: MediaQuery.of(context).size.width * 0.10,
+              horizontal: MediaQuery.of(context).size.width * 0.075),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 'ST. FRANCES CABINI MEDICAL CENTER, INC.',
-                style: whiteTextStyle.copyWith(fontSize: MediaQuery.of(context).size.width * 0.05),
+                style: whiteTextStyle.copyWith(
+                    fontSize: MediaQuery.of(context).size.width * 0.05),
               ),
               SizedBox(height: MediaQuery.of(context).size.width * 0.03),
               RichText(
                 text: TextSpan(
-                    style: whiteTextStyle.copyWith(fontSize: MediaQuery.of(context).size.width * 0.075),
+                    style: whiteTextStyle.copyWith(
+                        fontSize: MediaQuery.of(context).size.width * 0.065),
                     children: [
                       TextSpan(text: 'Overall:'),
                       TextSpan(
@@ -108,7 +112,7 @@ class _HospitalFacilitiesView extends StatelessWidget {
               occupanyRate: .5,
             ),
             SizedBox(height: 30),
-            _BuildTitle(title: 'Facilities(non-covid):', enableLegends: true),
+            _BuildTitle(title: 'Facilities(non-covid):', enableLegends: false),
             _BuildDetailsRow(
               title: 'icu beds:',
               occupanyRate: .5,
@@ -239,7 +243,7 @@ class _BuildLegends extends StatelessWidget {
         Text(
           'Occupied',
           style: TextStyle(
-              fontSize: MediaQuery.of(context).size.width * 0.025,
+              fontSize: MediaQuery.of(context).size.width * 0.03,
               fontWeight: FontWeight.w300),
         ),
         SizedBox(width: 10),
@@ -252,7 +256,7 @@ class _BuildLegends extends StatelessWidget {
         Text(
           'Vacant',
           style: TextStyle(
-              fontSize: MediaQuery.of(context).size.width * 0.025,
+              fontSize: MediaQuery.of(context).size.width * 0.03,
               fontWeight: FontWeight.w300),
         ),
       ],
