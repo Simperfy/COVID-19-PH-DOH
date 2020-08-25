@@ -2,6 +2,7 @@ import 'package:Covid19_PH/ui/partials/views/search_bar_view/delegate/search_bar
 import 'package:Covid19_PH/ui/partials/views/search_bar_view/search_bar_view_model.dart';
 import 'package:Covid19_PH/util/constants.dart';
 import 'package:Covid19_PH/util/helper.dart';
+import 'package:Covid19_PH/util/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -21,7 +22,7 @@ class SearchBarView extends StatelessWidget implements PreferredSizeWidget {
       );
 
   @override
-  Size get preferredSize => Size.fromHeight(mainHeight);
+  Size get preferredSize => Size.fromHeight(SizeConfig.getAppbarHeight);
 
   Widget _buildTitle(BuildContext context) => GestureDetector(
         onTap: () => showSearch(
@@ -30,17 +31,14 @@ class SearchBarView extends StatelessWidget implements PreferredSizeWidget {
         ),
         child: Container(
           width: MediaQuery.of(context).size.width / 1.5,
-          height: 42.0,
+          height: SizeConfig.getAppbarHeight * 0.677,
           padding: EdgeInsets.only(left: 15.0),
           decoration: BoxDecoration(color: searchBarBgColor),
-          child: Container(
-            height: 42.0,
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Search',
-                style: TextStyle(fontSize: 30.0, color: searchBarPrimaryColor),
-              ),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Search',
+              style: TextStyle(fontSize: SizeConfig.getAppbarTextSize, color: searchBarPrimaryColor),
             ),
           ),
         ),
@@ -51,7 +49,7 @@ class SearchBarView extends StatelessWidget implements PreferredSizeWidget {
           padding: const EdgeInsets.only(right: 30),
           child: IconButton(
             icon: Helper.buildSvg(
-                svgFileName: 'search', color: searchBarPrimaryColor),
+                svgFileName: 'search', color: searchBarPrimaryColor, width: SizeConfig.getAppbarIconSize),
             onPressed: () => showSearch(
               context: context,
               delegate: SearchBarDelegate(),
