@@ -4,6 +4,7 @@ import 'package:Covid19_PH/ui/partials/views/search_bar_view/search_bar_view.dar
 import 'package:Covid19_PH/ui/view_manager_model.dart';
 import 'package:Covid19_PH/util/constants.dart';
 import 'package:Covid19_PH/util/size_config.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -33,16 +34,16 @@ class ViewManager extends StatelessWidget {
                 items: <BottomNavigationBarItem>[
                   BottomNavigationBarItem(
                       icon: model.getIcon(filename: 'home', index: 0),
-                      title: Text('Home', style: TextStyle(fontSize: 10))),
+                      title: AutoSizeText('Home', minFontSize: 10, maxFontSize: 16)),
                   BottomNavigationBarItem(
                       icon: model.getIcon(filename: 'hospital', index: 1),
-                      title: Text('Hospitals', style: TextStyle(fontSize: 10))),
+                      title: AutoSizeText('Hospitals', minFontSize: 10, maxFontSize: 16)),
                   BottomNavigationBarItem(
                       icon: model.getIcon(filename: 'map', index: 2),
-                      title: Text('Map', style: TextStyle(fontSize: 10))),
+                      title: AutoSizeText('Maps', minFontSize: 10, maxFontSize: 16)),
                   BottomNavigationBarItem(
                       icon: model.getIcon(filename: 'settings', index: 3),
-                      title: Text('Settings', style: TextStyle(fontSize: 10))),
+                      title: AutoSizeText('Settings', minFontSize: 10, maxFontSize: 16)),
                 ],
                 showUnselectedLabels: false,
                 selectedItemColor: bottomNavBarActiveColor,
