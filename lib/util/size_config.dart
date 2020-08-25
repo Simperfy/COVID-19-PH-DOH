@@ -11,7 +11,7 @@ class SizeConfig {
   static double _multiplierAppbarTextSize = 0.033;
 
   static double _maxAppbarIconSize = 36;
-  static double _minAppbarIconSize = 24;
+  static double _minAppbarIconSize = 20;
   static double _multiplierAppbarIconSize = 0.044;
   // ./APPBAR
 
