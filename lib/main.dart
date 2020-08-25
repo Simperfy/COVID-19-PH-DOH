@@ -15,10 +15,7 @@ class MyApp extends StatelessWidget {
     return LayoutBuilder(builder: (context, constraints) {
       SizeConfig.init(constraints);
       return MaterialApp(
-        builder: (context, child) => MediaQuery(
-          data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-          child: ViewManager(),
-        ),
+        home: ViewManager(),
       );
     });
   }
