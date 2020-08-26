@@ -1,4 +1,3 @@
-import 'package:Covid19_PH/ui/partials/views/summary_view/summary_view.dart';
 import 'package:Covid19_PH/ui/partials/views/timeline_view/timeline_view.dart';
 import 'package:Covid19_PH/ui/widgets/timeline_chart_widget/timeline_chart_widget.dart';
 import 'package:flutter/material.dart';
