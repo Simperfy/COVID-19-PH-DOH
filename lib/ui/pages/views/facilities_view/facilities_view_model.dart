@@ -19,12 +19,12 @@ class FacilitiesViewModel extends FutureViewModel<HospitalSummary> {
       await runBusyFuture(fetchFacilitiesData());
 
   String checkFacilitiesCondition() {
-    if (hospitalSummary.occupanyRate > 50) {
+    if (hospitalSummary.occupanyRate < .20) {
       return ' Great';
-    } else if (hospitalSummary.occupanyRate > 30) {
+    } else if (hospitalSummary.occupanyRate < .50) {
       return ' Good';
-    } else if (hospitalSummary.occupanyRate < 10) {
-      return ' Averege';
+    } else if (hospitalSummary.occupanyRate < .80) {
+      return ' Average';
     } else {
       return ' Bad';
     }
