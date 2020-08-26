@@ -10,6 +10,7 @@ env:
   flutter_version: "1.20.2"
   java_version: "12.x"
 
+jobs:
   test:
       runs-on: ubuntu-latest
       timeout-minutes: 5
