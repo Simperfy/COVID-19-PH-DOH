@@ -35,9 +35,10 @@ dependencies:
   charts_flutter: ^0.9.0
   stacked: ^1.7.6
   mockito: ^4.1.1
+  modal_progress_hud: ^0.1.3
 
 dev_dependencies:
-  test:
+  test: null
   flutter_test:
     sdk: flutter
 

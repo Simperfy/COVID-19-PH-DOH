@@ -1,7 +1,10 @@
 import 'package:Covid19_PH/ui/pages/views/facilities_view/facilities_view_model.dart';
 import 'package:Covid19_PH/util/constants.dart';
+import 'package:Covid19_PH/util/size_config.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:stacked/stacked.dart';
 
 class FacilitiesView extends StatelessWidget {
@@ -16,28 +19,34 @@ class FacilitiesView extends StatelessWidget {
         initialiseSpecialViewModelsOnce: true,
         viewModelBuilder: () => FacilitiesViewModel(),
         builder: (context, model, child) {
-          return SingleChildScrollView(
-            child: Column(
-              children: [
-                _HospitalHeaderCard(),
-                Padding(
-                  padding: const EdgeInsets.all(25.0),
-                  child: _HospitalFacilitiesView(regionQuery: this.regionQuery),
-                ),
-              ],
-            ),
+          return ModalProgressHUD(
+            inAsyncCall: model.isBusy,
+            child: model.isBusy
+                ? Container()
+                : SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        _HospitalHeaderCard(),
+                        Padding(
+                          padding: const EdgeInsets.all(25.0),
+                          child: _HospitalFacilitiesView(
+                              regionQuery: this.regionQuery),
+                        ),
+                      ],
+                    ),
+                  ),
           );
         });
   }
 }
 
-class _HospitalHeaderCard extends StatelessWidget {
+class _HospitalHeaderCard extends ViewModelWidget<FacilitiesViewModel> {
   const _HospitalHeaderCard({
     Key key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, FacilitiesViewModel model) {
     return Container(
       height: 163,
       width: double.maxFinite,
@@ -57,7 +66,7 @@ class _HospitalHeaderCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              'ST. FRANCES CABINI MEDICAL CENTER, INC.',
+              '${model.headerTitle}',
               style: whiteTextStyle.copyWith(fontSize: 20),
             ),
             SizedBox(height: 25),
@@ -67,7 +76,7 @@ class _HospitalHeaderCard extends StatelessWidget {
                   children: [
                     TextSpan(text: 'Overall:'),
                     TextSpan(
-                      text: ' GOOD',
+                      text: model.checkFacilitiesCondition(),
                       style: TextStyle(color: Colors.green),
                     ),
                   ]),
@@ -79,13 +88,13 @@ class _HospitalHeaderCard extends StatelessWidget {
   }
 }
 
-class _HospitalFacilitiesView extends StatelessWidget {
+class _HospitalFacilitiesView extends ViewModelWidget<FacilitiesViewModel> {
   final String regionQuery;
 
   _HospitalFacilitiesView({this.regionQuery});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, FacilitiesViewModel model) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -93,33 +102,40 @@ class _HospitalFacilitiesView extends StatelessWidget {
         _BuildTitle(title: 'Facilities(covid):', enableLegends: true),
         _BuildDetailsRow(
           title: 'icu beds:',
-          occupanyRate: .5,
+          occupied: model.hospitalSummary.icuOccupied,
+          vacant: model.hospitalSummary.icuVacant,
         ),
         _BuildDetailsRow(
           title: 'isolation beds:',
-          occupanyRate: .5,
+          occupied: model.hospitalSummary.isolbedOccupied,
+          vacant: model.hospitalSummary.isolbedVacant,
         ),
         _BuildDetailsRow(
           title: 'bed wards:',
-          occupanyRate: .5,
+          occupied: model.hospitalSummary.bedwardOccupied,
+          vacant: model.hospitalSummary.bedwardVacant,
         ),
         _BuildDetailsRow(
           title: 'mech vent:',
-          occupanyRate: .5,
+          occupied: model.hospitalSummary.mechventOccupied,
+          vacant: model.hospitalSummary.mechventVacant,
         ),
         SizedBox(height: 30),
         _BuildTitle(title: 'Facilities(non-covid):', enableLegends: false),
         _BuildDetailsRow(
           title: 'icu beds:',
-          occupanyRate: .5,
+          occupied: model.hospitalSummary.icuOccupiedNc,
+          vacant: model.hospitalSummary.icuVacantNc,
         ),
         _BuildDetailsRow(
           title: 'non-icu beds:',
-          occupanyRate: .5,
+          occupied: model.hospitalSummary.nonIcuOccupiedNc,
+          vacant: model.hospitalSummary.nonIcuVacantNc,
         ),
         _BuildDetailsRow(
           title: 'mech vent:',
-          occupanyRate: .5,
+          occupied: model.hospitalSummary.mechventOccupiedNc,
+          vacant: model.hospitalSummary.mechventVacantNc,
         ),
       ],
     );
@@ -152,74 +168,91 @@ class _BuildTitle extends StatelessWidget {
 }
 
 class _BuildDetailsRow extends StatelessWidget {
-  final double occupanyRate;
   final String title;
+  final int occupied, vacant;
 
-  const _BuildDetailsRow({Key key, this.occupanyRate, this.title})
+  const _BuildDetailsRow(
+      {Key key,
+      @required this.title,
+      @required this.occupied,
+      @required this.vacant})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 15.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Text(title,
-              style: TextStyle(
-                  fontSize: MediaQuery.of(context).size.width * 0.05,
-                  fontWeight: FontWeight.w300)),
-          _BuilderMeter(occupanyRate: occupanyRate),
-        ],
+      child: Container(
+        height: SizeConfig.screenHeight * 0.025,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Container(
+              width: SizeConfig.screenWidth / 3,
+              child: AutoSizeText(title,
+                  maxLines: 1,
+                  style: TextStyle(
+                      fontSize: MediaQuery.of(context).size.width * 0.05,
+                      fontWeight: FontWeight.w300)),
+            ),
+            _BuilderMeter(occupied: occupied, vacant: vacant),
+          ],
+        ),
       ),
     );
   }
 }
 
-class _BuilderMeter extends StatelessWidget {
-  final double occupanyRate;
+class _BuilderMeter extends ViewModelWidget<FacilitiesViewModel> {
+  final int occupied, vacant;
 
-  const _BuilderMeter({Key key, this.occupanyRate}) : super(key: key);
+  const _BuilderMeter({Key key, @required this.occupied, @required this.vacant})
+      : super(key: key);
   @override
-  Widget build(BuildContext context) {
-    return (occupanyRate == null
-        ? Container(child: Text('loading...'))
-        : Row(
-            children: [
-              Text(
-                '1000',
-                style: TextStyle(
-                    fontSize: MediaQuery.of(context).size.width * 0.05,
-                    color: Colors.red,
-                    fontWeight: FontWeight.w300),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                child: Container(
-                  height: 15,
-                  width: MediaQuery.of(context).size.width * 0.25,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      stops: [occupanyRate, occupanyRate],
-                      begin: Alignment.topLeft,
-                      end: Alignment.topRight,
-                      colors: <Color>[
-                        const Color(0xffEB5757),
-                        const Color(0xff27AE60)
-                      ],
-                    ),
-                  ),
+  Widget build(BuildContext context, FacilitiesViewModel model) {
+    return LayoutBuilder(
+      builder: (context, constaints) => Row(
+        children: [
+          AutoSizeText(
+            occupied?.toString() ?? '...',
+            maxLines: 1,
+            style: TextStyle(
+                fontSize: MediaQuery.of(context).size.width * 0.05,
+                color: Colors.red,
+                fontWeight: FontWeight.w300),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4.0),
+            child: Container(
+              height: constaints.maxHeight,
+              width: MediaQuery.of(context).size.width * 0.25,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  stops: [
+                    model.calculateOccupancyRate(occupied, vacant),
+                    model.calculateOccupancyRate(occupied, vacant)
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.topRight,
+                  colors: <Color>[
+                    const Color(0xffEB5757),
+                    const Color(0xff27AE60)
+                  ],
                 ),
               ),
-              Text(
-                '1000',
-                style: TextStyle(
-                    fontSize: MediaQuery.of(context).size.width * 0.05,
-                    color: Colors.green,
-                    fontWeight: FontWeight.w300),
-              ),
-            ],
-          ));
+            ),
+          ),
+          AutoSizeText(
+            vacant?.toString() ?? '...',
+            maxLines: 1,
+            style: TextStyle(
+                fontSize: MediaQuery.of(context).size.width * 0.05,
+                color: Colors.green,
+                fontWeight: FontWeight.w300),
+          ),
+        ],
+      ),
+    );
   }
 }
 
