@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:Covid19_PH/model/base/jsonBase.dart';
 
 class HospitalSummary implements JsonBase {
