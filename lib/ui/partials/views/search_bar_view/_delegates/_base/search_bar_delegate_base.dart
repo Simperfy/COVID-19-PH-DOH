@@ -1,38 +1,18 @@
-import 'package:Covid19_PH/ui/pages/views/home_view/home_view.dart';
+import 'package:Covid19_PH/util/size_config.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
-class SearchBarDelegate extends SearchDelegate<String> {
-  static final SearchBarDelegate _singleton = SearchBarDelegate._internal();
-  factory SearchBarDelegate() => _singleton;
-  SearchBarDelegate._internal();
+abstract class SearchBarDelegateBase extends SearchDelegate<String> {
+  SearchBarDelegateBase()
+      : super(
+          searchFieldLabel: 'Search',
+          searchFieldStyle: TextStyle(fontSize: SizeConfig.getAppbarTextSize),
+          keyboardType: TextInputType.text,
+        );
 
-  // SearchBarDelegate()
-  // : super(
-  // searchFieldLabel: 'Search',
-  // searchFieldStyle: TextStyle(fontSize: 30),
-  // );
-
-  final data = [
-    'BARMM',
-    'CAR',
-    'CARAGA',
-    'NCR',
-    'Region I: Ilocos Region',
-    'Region II: Cagayan Valley',
-    'Region III: Central Luzon',
-    'Region IV-A: CALABARZON',
-    'Region IV-B: MIMAROPA',
-    'Region IX: Zamboanga Peninsula',
-    'Region V: Bicol Region',
-    'Region VI: Western Visayas',
-    'Region VII: Central Visayas',
-    'Region VIII: Eastern Visayas',
-    'Region X: Northern Mindanao',
-    'Region XI: Davao Region',
-    'Region XII: SOCCSKSARGEN',
-    'REPATRIATE',
-  ];
-  var recentQueries = [];
+  // List<String> data = ['Overide this in subclass'];
+  List<String> data = [];
+  List<String> recentQueries = [];
 
   @override
   List<Widget> buildActions(BuildContext context) => [
@@ -53,15 +33,7 @@ class SearchBarDelegate extends SearchDelegate<String> {
 
   /// Shows results
   @override
-  Widget buildResults(BuildContext context) {
-    if (data.contains(query)) {
-      return MediaQuery(
-        data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-        child: HomeView(regionQuery: 'ncr'),
-      );
-    }
-    return Container();
-  }
+  Widget buildResults(BuildContext context);
 
   /// Shows suggestion as you type or the previous results
   @override
@@ -87,7 +59,12 @@ class SearchBarDelegate extends SearchDelegate<String> {
         // leading: Icon(Icons.location_on),
         title: Padding(
           padding: const EdgeInsets.only(left: 30),
-          child: Text(suggestionList[index], style: TextStyle(fontSize: 30)),
+          child: AutoSizeText(
+            suggestionList[index],
+            maxLines: 1,
+            maxFontSize: 24,
+            minFontSize: 16,
+          ),
         ),
       ),
       separatorBuilder: (context, index) => const Divider(

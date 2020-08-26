@@ -1,5 +1,7 @@
 import 'package:Covid19_PH/ui/pages/views/facilities_view/facilities_view.dart';
 import 'package:Covid19_PH/ui/pages/views/home_view/home_view.dart';
+import 'package:Covid19_PH/ui/partials/views/search_bar_view/_delegates/facilities_search_bar_delegate.dart';
+import 'package:Covid19_PH/ui/partials/views/search_bar_view/_delegates/home_search_bar_delegate.dart';
 import 'package:Covid19_PH/ui/partials/views/search_bar_view/search_bar_view.dart';
 import 'package:Covid19_PH/ui/view_manager_model.dart';
 import 'package:Covid19_PH/util/constants.dart';
@@ -10,6 +12,8 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 class ViewManager extends StatelessWidget {
+  static const String _searchBar = 'search_bar';
+  static const String _view = 'view';
   final _scaffoldKey = GlobalKey<
       ScaffoldState>(); // TODO: Remove once snackbar is no longer needed
 
@@ -24,9 +28,9 @@ class ViewManager extends StatelessWidget {
         return MediaQuery(
           data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
           child: Scaffold(
-            appBar: SearchBarView(),
+            appBar: _getViewForIndex(index: model.currentIndex)[_searchBar],
             key: _scaffoldKey, // TODO: Remove once snackbar is no longer needed
-            body: _getViewForIndex(index: model.currentIndex),
+            body: _getViewForIndex(index: model.currentIndex)[_view],
             bottomNavigationBar: SizedBox(
               height: SizeConfig.getBotNavbarHeight,
               child: BottomNavigationBar(
@@ -75,19 +79,19 @@ class ViewManager extends StatelessWidget {
     );
   }
 
-  Widget _getViewForIndex({@required int index}) {
+  Map<String, Widget> _getViewForIndex({@required int index}) {
     switch (index) {
       case 0:
-        return HomeView();
+        return {_searchBar: SearchBarView(searchDelegate: HomeSearchBarDelegate()), _view: HomeView()};
       case 1:
-        return FacilitiesView();
+        return {_searchBar: SearchBarView(searchDelegate: FacilitiesSearchBarDelegate()), _view: FacilitiesView()};
       case 2:
-        print('Map button pressed');
-        return Text('Map page');
+        // print('Map button pressed');
+        return {_searchBar: SearchBarView(searchDelegate: null,), _view: Text('Map page')};
         break;
       case 3:
-        print('Settings button pressed');
-        return Text('Settings page');
+        // print('Settings button pressed');
+        return {_searchBar: SearchBarView(searchDelegate: null,), _view: Text('Settings page')};
         break;
       default:
         throw ('Cannot find index of Bottom Navigation Bar!');

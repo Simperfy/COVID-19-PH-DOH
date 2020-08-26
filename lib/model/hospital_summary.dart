@@ -3,7 +3,7 @@ import 'package:Covid19_PH/model/base/jsonBase.dart';
 class HospitalSummary implements JsonBase {
   String hospitalName;
   int totalFacilities;
-  double occupanyRate;
+  num occupanyRate;
   int totalVacant;
   int totalOccupied;
 
@@ -52,7 +52,7 @@ class HospitalSummary implements JsonBase {
     return HospitalSummary(
       hospitalName: map['data']['hospital_name'],
       totalFacilities: map['data']['total_facilities'],
-      occupanyRate: map['data']['occupancy_rate'],
+      occupanyRate: (map['data']['occupancy_rate']),
       totalVacant: map['data']['beds']['total_vacant'],
       totalOccupied: map['data']['beds']['total_occupied'],
       icuVacant: map['data']['beds']['covid']['icu_v'],

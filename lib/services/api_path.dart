@@ -40,7 +40,7 @@ class APIPath {
 
   static fetchHospitalRecords() => '${baseUrl()}/api/facilities';
 
-  static fetchHospitalRecordsSummary({String region}) =>
+  static fetchHospitalRecordsSummary({String region, String hospitalName}) =>
       '${baseUrl()}/api/facilities/summary' +
-      ((region != null) ? '?region=$region' : '');
+      ((region != null) ? '?region=$region' : '') + ((hospitalName != null) ? '?hospital_name=$hospitalName' : '');
 }

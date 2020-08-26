@@ -20,10 +20,10 @@ class HospitalDatabase {
     return hospitalList.fromJson(await networkHelper.getData());
   }
 
-  Future<JsonBase> fetchHospitalRecordsSummary({String region}) async {
+  Future<JsonBase> fetchHospitalRecordsSummary({String region, String hospitalName}) async {
     NetworkHelper networkHelper =
-        NetworkHelper('${APIPath.fetchHospitalRecordsSummary(region: region)}');
-
+        NetworkHelper('${APIPath.fetchHospitalRecordsSummary(region: region, hospitalName: hospitalName)}');
+    print('data:' + (await networkHelper.getData()).toString());
     return hospitalSummary.fromJson(await networkHelper.getData());
   }
 }

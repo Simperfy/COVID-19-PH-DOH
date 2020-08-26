@@ -1,10 +1,10 @@
 import 'package:Covid19_PH/ui/pages/views/facilities_view/facilities_view_model.dart';
+import 'package:Covid19_PH/ui/widgets/facilities_widgets/facilities_details_row.dart';
+import 'package:Covid19_PH/ui/widgets/facilities_widgets/facilitites_title.dart';
 import 'package:Covid19_PH/util/constants.dart';
-import 'package:Covid19_PH/util/size_config.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:flutter/rendering.dart';
 import 'package:stacked/stacked.dart';
 
 class FacilitiesView extends StatelessWidget {
@@ -14,39 +14,34 @@ class FacilitiesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<FacilitiesViewModel>.reactive(
-        disposeViewModel: false,
-        initialiseSpecialViewModelsOnce: true,
-        viewModelBuilder: () => FacilitiesViewModel(),
-        builder: (context, model, child) {
-          return ModalProgressHUD(
-            inAsyncCall: model.isBusy,
-            child: model.isBusy
-                ? Container()
-                : SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        _HospitalHeaderCard(),
-                        Padding(
-                          padding: const EdgeInsets.all(25.0),
-                          child: _HospitalFacilitiesView(
-                              regionQuery: this.regionQuery),
-                        ),
-                      ],
-                    ),
-                  ),
-          );
-        });
+    return ViewModelBuilder<FutureFacilitiesViewModel>.nonReactive(
+      disposeViewModel: false,
+      initialiseSpecialViewModelsOnce: true,
+      viewModelBuilder: () {
+        FutureFacilitiesViewModel.setRegionQuery(regionQuery);
+        return FutureFacilitiesViewModel();
+      },
+      builder: (context, model, child) {
+        return _FacilitiesBodyView();
+      },
+      //       : _FacilitiesBodyView(regionQuery: this.regionQuery),
+      // return ModalProgressHUD(
+      //   inAsyncCall: model.isBusy,
+      //   child: model.isBusy
+      //       ? Container()
+      //       : _FacilitiesBodyView(regionQuery: this.regionQuery),
+      // );
+    );
   }
 }
 
-class _HospitalHeaderCard extends ViewModelWidget<FacilitiesViewModel> {
-  const _HospitalHeaderCard({
+class _FacilitiesTitleCard extends ViewModelWidget<FutureFacilitiesViewModel> {
+  const _FacilitiesTitleCard({
     Key key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context, FacilitiesViewModel model) {
+  Widget build(BuildContext context, FutureFacilitiesViewModel model) {
     return Container(
       height: 163,
       width: double.maxFinite,
@@ -66,7 +61,7 @@ class _HospitalHeaderCard extends ViewModelWidget<FacilitiesViewModel> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              '${model.headerTitle}',
+              '${model.hospitalSummary?.hospitalName ?? model.headerTitle}',
               style: whiteTextStyle.copyWith(fontSize: 20),
             ),
             SizedBox(height: 25),
@@ -88,205 +83,75 @@ class _HospitalHeaderCard extends ViewModelWidget<FacilitiesViewModel> {
   }
 }
 
-class _HospitalFacilitiesView extends ViewModelWidget<FacilitiesViewModel> {
-  final String regionQuery;
-
-  _HospitalFacilitiesView({this.regionQuery});
-
+class _FacilitiesBodyView extends ViewModelWidget<FutureFacilitiesViewModel> {
   @override
-  Widget build(BuildContext context, FacilitiesViewModel model) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        SizedBox(height: 5),
-        _BuildTitle(title: 'Facilities(covid):', enableLegends: true),
-        _BuildDetailsRow(
-          title: 'icu beds:',
-          occupied: model.hospitalSummary.icuOccupied,
-          vacant: model.hospitalSummary.icuVacant,
-        ),
-        _BuildDetailsRow(
-          title: 'isolation beds:',
-          occupied: model.hospitalSummary.isolbedOccupied,
-          vacant: model.hospitalSummary.isolbedVacant,
-        ),
-        _BuildDetailsRow(
-          title: 'bed wards:',
-          occupied: model.hospitalSummary.bedwardOccupied,
-          vacant: model.hospitalSummary.bedwardVacant,
-        ),
-        _BuildDetailsRow(
-          title: 'mech vent:',
-          occupied: model.hospitalSummary.mechventOccupied,
-          vacant: model.hospitalSummary.mechventVacant,
-        ),
-        SizedBox(height: 30),
-        _BuildTitle(title: 'Facilities(non-covid):', enableLegends: false),
-        _BuildDetailsRow(
-          title: 'icu beds:',
-          occupied: model.hospitalSummary.icuOccupiedNc,
-          vacant: model.hospitalSummary.icuVacantNc,
-        ),
-        _BuildDetailsRow(
-          title: 'non-icu beds:',
-          occupied: model.hospitalSummary.nonIcuOccupiedNc,
-          vacant: model.hospitalSummary.nonIcuVacantNc,
-        ),
-        _BuildDetailsRow(
-          title: 'mech vent:',
-          occupied: model.hospitalSummary.mechventOccupiedNc,
-          vacant: model.hospitalSummary.mechventVacantNc,
-        ),
-      ],
-    );
-  }
-}
-
-class _BuildTitle extends StatelessWidget {
-  final bool enableLegends;
-  final String title;
-
-  const _BuildTitle({Key key, this.enableLegends, this.title})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: 13.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Text(title,
-              style: TextStyle(
-                  fontSize: MediaQuery.of(context).size.width * 0.05,
-                  fontWeight: FontWeight.bold)),
-          (enableLegends ? _BuildLegends() : Container())
-        ],
-      ),
-    );
-  }
-}
-
-class _BuildDetailsRow extends StatelessWidget {
-  final String title;
-  final int occupied, vacant;
-
-  const _BuildDetailsRow(
-      {Key key,
-      @required this.title,
-      @required this.occupied,
-      @required this.vacant})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 15.0),
-      child: Container(
-        height: SizeConfig.screenHeight * 0.025,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Container(
-              width: SizeConfig.screenWidth / 3,
-              child: AutoSizeText(title,
-                  maxLines: 1,
-                  style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.width * 0.05,
-                      fontWeight: FontWeight.w300)),
-            ),
-            _BuilderMeter(occupied: occupied, vacant: vacant),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _BuilderMeter extends ViewModelWidget<FacilitiesViewModel> {
-  final int occupied, vacant;
-
-  const _BuilderMeter({Key key, @required this.occupied, @required this.vacant})
-      : super(key: key);
-  @override
-  Widget build(BuildContext context, FacilitiesViewModel model) {
-    return LayoutBuilder(
-      builder: (context, constaints) => Row(
-        children: [
-          AutoSizeText(
-            occupied?.toString() ?? '...',
-            maxLines: 1,
-            style: TextStyle(
-                fontSize: MediaQuery.of(context).size.width * 0.05,
-                color: Colors.red,
-                fontWeight: FontWeight.w300),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4.0),
-            child: Container(
-              height: constaints.maxHeight,
-              width: MediaQuery.of(context).size.width * 0.25,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  stops: [
-                    model.calculateOccupancyRate(occupied, vacant),
-                    model.calculateOccupancyRate(occupied, vacant)
-                  ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.topRight,
-                  colors: <Color>[
-                    const Color(0xffEB5757),
-                    const Color(0xff27AE60)
-                  ],
+  Widget build(BuildContext context, FutureFacilitiesViewModel model) {
+    return model.isBusy
+        ? Container()
+        : SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                _FacilitiesTitleCard(),
+                Padding(
+                  padding: const EdgeInsets.all(25.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      SizedBox(height: 5),
+                      // TODO: This can be improved using a loop
+                      FacilitiesTitle(
+                          title: 'Facilities(covid):', enableLegends: true),
+                      FacilitiesDetailsRow(
+                        occupancyRate: model.calculateOccupancyRate(model.hospitalSummary?.icuVacant, model.hospitalSummary?.icuOccupied),
+                        title: 'icu beds:',
+                        occupied: model.hospitalSummary?.icuOccupied,
+                        vacant: model.hospitalSummary?.icuVacant,
+                      ),
+                      FacilitiesDetailsRow(
+                        occupancyRate: model.calculateOccupancyRate(model.hospitalSummary?.isolbedVacant, model.hospitalSummary?.isolbedOccupied),
+                        title: 'isolation beds:',
+                        occupied: model.hospitalSummary?.isolbedOccupied,
+                        vacant: model.hospitalSummary?.isolbedVacant,
+                      ),
+                      FacilitiesDetailsRow(
+                        occupancyRate: model.calculateOccupancyRate(model.hospitalSummary?.bedwardVacant, model.hospitalSummary?.bedwardOccupied),
+                        title: 'bed wards:',
+                        occupied: model.hospitalSummary?.bedwardOccupied,
+                        vacant: model.hospitalSummary?.bedwardVacant,
+                      ),
+                      FacilitiesDetailsRow(
+                        occupancyRate: model.calculateOccupancyRate(model.hospitalSummary?.mechventVacant, model.hospitalSummary?.mechventOccupied),
+                        title: 'mech vent:',
+                        occupied: model.hospitalSummary?.mechventOccupied,
+                        vacant: model.hospitalSummary?.mechventVacant,
+                      ),
+                      SizedBox(height: 30),
+                      FacilitiesTitle(
+                          title: 'Facilities(non-covid):',
+                          enableLegends: false),
+                      FacilitiesDetailsRow(
+                        occupancyRate: model.calculateOccupancyRate(model.hospitalSummary?.icuVacantNc, model.hospitalSummary?.icuOccupiedNc),
+                        title: 'icu beds:',
+                        occupied: model.hospitalSummary?.icuOccupiedNc,
+                        vacant: model.hospitalSummary?.icuVacantNc,
+                      ),
+                      FacilitiesDetailsRow(
+                        occupancyRate: model.calculateOccupancyRate(model.hospitalSummary?.nonIcuVacantNc, model.hospitalSummary?.nonIcuOccupiedNc),
+                        title: 'non-icu beds:',
+                        occupied: model.hospitalSummary?.nonIcuOccupiedNc,
+                        vacant: model.hospitalSummary?.nonIcuVacantNc,
+                      ),
+                      FacilitiesDetailsRow(
+                        occupancyRate: model.calculateOccupancyRate(model.hospitalSummary?.mechventVacantNc, model.hospitalSummary?.mechventOccupiedNc),
+                        title: 'mech vent:',
+                        occupied: model.hospitalSummary?.mechventOccupiedNc,
+                        vacant: model.hospitalSummary?.mechventVacantNc,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
+              ],
             ),
-          ),
-          AutoSizeText(
-            vacant?.toString() ?? '...',
-            maxLines: 1,
-            style: TextStyle(
-                fontSize: MediaQuery.of(context).size.width * 0.05,
-                color: Colors.green,
-                fontWeight: FontWeight.w300),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _BuildLegends extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        Container(
-          width: 10,
-          height: 10,
-          color: Color(0xffEB5757),
-          margin: EdgeInsets.only(right: 3),
-        ),
-        Text(
-          'Occupied',
-          style: TextStyle(
-              fontSize: MediaQuery.of(context).size.width * 0.03,
-              fontWeight: FontWeight.w300),
-        ),
-        SizedBox(width: 10),
-        Container(
-          width: 10,
-          height: 10,
-          color: Color(0xff27AE60),
-          margin: EdgeInsets.only(right: 3),
-        ),
-        Text(
-          'Vacant',
-          style: TextStyle(
-              fontSize: MediaQuery.of(context).size.width * 0.03,
-              fontWeight: FontWeight.w300),
-        ),
-      ],
-    );
+          );
   }
 }
