@@ -31,7 +31,7 @@ class SizeConfig {
     screenWidth = constraints.maxWidth;
     screenHeight = constraints.maxHeight;
 
-    print('screenHeight: $screenHeight');
+    // print('screenHeight: $screenHeight');
   }
 
   // APPBAR

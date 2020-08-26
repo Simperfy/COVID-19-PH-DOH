@@ -10,7 +10,7 @@ class FacilitiesViewModel extends FutureViewModel<HospitalSummary> {
 
   String headerTitle = 'Summary of Philippine Hospital Facilities Number';
   HospitalSummary get hospitalSummary {
-    print('hospital summary: $data');
+    // print('hospital summary: $data');
     return data;
   }
 
