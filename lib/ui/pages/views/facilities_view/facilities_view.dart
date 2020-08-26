@@ -1,5 +1,7 @@
 import 'package:Covid19_PH/ui/pages/views/facilities_view/facilities_view_model.dart';
 import 'package:Covid19_PH/util/constants.dart';
+import 'package:Covid19_PH/util/size_config.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
@@ -166,76 +168,90 @@ class _BuildTitle extends StatelessWidget {
 }
 
 class _BuildDetailsRow extends StatelessWidget {
-  final int occupied;
-  final int vacant;
   final String title;
+  final int occupied, vacant;
 
-  const _BuildDetailsRow({Key key, this.title, this.occupied, this.vacant})
+  const _BuildDetailsRow(
+      {Key key,
+      @required this.title,
+      @required this.occupied,
+      @required this.vacant})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 15.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Text(title,
-              style: TextStyle(
-                  fontSize: MediaQuery.of(context).size.width * 0.05,
-                  fontWeight: FontWeight.w300)),
-          _BuilderMeter(occupied: occupied, vacant: vacant),
-        ],
+      child: Container(
+        height: SizeConfig.screenHeight * 0.025,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Container(
+              width: SizeConfig.screenWidth / 3,
+              child: AutoSizeText(title,
+                  maxLines: 1,
+                  style: TextStyle(
+                      fontSize: MediaQuery.of(context).size.width * 0.05,
+                      fontWeight: FontWeight.w300)),
+            ),
+            _BuilderMeter(occupied: occupied, vacant: vacant),
+          ],
+        ),
       ),
     );
   }
 }
 
 class _BuilderMeter extends ViewModelWidget<FacilitiesViewModel> {
-  final int occupied;
-  final int vacant;
+  final int occupied, vacant;
 
-  const _BuilderMeter({Key key, this.occupied, this.vacant}) : super(key: key);
+  const _BuilderMeter({Key key, @required this.occupied, @required this.vacant})
+      : super(key: key);
   @override
   Widget build(BuildContext context, FacilitiesViewModel model) {
-    return Row(
-      children: [
-        Text(
-          '$occupied',
-          style: TextStyle(
-              fontSize: MediaQuery.of(context).size.width * 0.05,
-              color: Colors.red,
-              fontWeight: FontWeight.w300),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 4.0),
-          child: Container(
-            height: 15,
-            width: MediaQuery.of(context).size.width * 0.25,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                stops: [
-                  model.calculateOccupancyRate(occupied, vacant),
-                  model.calculateOccupancyRate(occupied, vacant)
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.topRight,
-                colors: <Color>[
-                  const Color(0xffEB5757),
-                  const Color(0xff27AE60)
-                ],
+    return LayoutBuilder(
+      builder: (context, constaints) => Row(
+        children: [
+          AutoSizeText(
+            occupied?.toString() ?? '...',
+            maxLines: 1,
+            style: TextStyle(
+                fontSize: MediaQuery.of(context).size.width * 0.05,
+                color: Colors.red,
+                fontWeight: FontWeight.w300),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4.0),
+            child: Container(
+              height: constaints.maxHeight,
+              width: MediaQuery.of(context).size.width * 0.25,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  stops: [
+                    model.calculateOccupancyRate(occupied, vacant),
+                    model.calculateOccupancyRate(occupied, vacant)
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.topRight,
+                  colors: <Color>[
+                    const Color(0xffEB5757),
+                    const Color(0xff27AE60)
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-        Text(
-          '$vacant',
-          style: TextStyle(
-              fontSize: MediaQuery.of(context).size.width * 0.05,
-              color: Colors.green,
-              fontWeight: FontWeight.w300),
-        ),
-      ],
+          AutoSizeText(
+            vacant?.toString() ?? '...',
+            maxLines: 1,
+            style: TextStyle(
+                fontSize: MediaQuery.of(context).size.width * 0.05,
+                color: Colors.green,
+                fontWeight: FontWeight.w300),
+          ),
+        ],
+      ),
     );
   }
 }
