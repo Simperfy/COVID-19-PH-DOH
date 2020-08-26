@@ -1,0 +1,8 @@
+.packages
+.idea/
+.dart_tool/
+android/
+build/
+ios/
+test/
+Ft_Covid19_PH.iml
