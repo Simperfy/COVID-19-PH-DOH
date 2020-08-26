@@ -20,13 +20,13 @@ class FacilitiesViewModel extends FutureViewModel<HospitalSummary> {
 
   String checkFacilitiesCondition() {
     if (hospitalSummary.occupanyRate > 50) {
-      return 'Great';
+      return ' Great';
     } else if (hospitalSummary.occupanyRate > 30) {
-      return 'Good';
+      return ' Good';
     } else if (hospitalSummary.occupanyRate < 10) {
-      return 'Averege';
+      return ' Averege';
     } else {
-      return 'Bad';
+      return ' Bad';
     }
   }
 
