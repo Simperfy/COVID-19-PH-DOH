@@ -1,4 +1,4 @@
-name: Dart CI
+name: Flutter Test & Analyze
 
 on:
   push:
@@ -21,3 +21,4 @@ jobs:
         flutter-version: '1.20.2'
     - run: flutter pub get
     - run: flutter test
+    - run: flutter analyze
