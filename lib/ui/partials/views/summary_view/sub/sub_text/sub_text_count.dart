@@ -1,9 +1,9 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
-class TextCountWidget extends StatelessWidget {
+class SubTextCountWidget extends StatelessWidget {
   final int count;
   final double fontSize;
-  TextCountWidget({@required this.count, @required this.fontSize});
+  SubTextCountWidget({@required this.count, @required this.fontSize});
 
   @override
   Widget build(BuildContext context) {

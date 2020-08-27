@@ -24,6 +24,13 @@ class SizeConfig {
   static double _minBotNavbarIconSize = _minAppbarIconSize;
   static double _multiplierBotNavbarIconSize = 0.030;
   // ./BOTNAVBAR
+
+  // CARDS
+  static double _maxCardsSize = screenHeight / 2.5;
+  static double _minCardsSize = screenHeight / 3;
+  static double _multiplierCardsSize = 0.187;
+  // ./CARDS
+
   static double screenWidth;
   static double screenHeight;
 
@@ -54,6 +61,16 @@ class SizeConfig {
       _maxBotNavbarIconSize,
       _multiplierBotNavbarIconSize);
   // ./BOTNAVBAR
+
+  // CARDS
+  static double get getCardsHeight => _calculateSize(
+      _maxCardsSize,
+      _minCardsSize,
+      _multiplierCardsSize,);
+
+  static double get getSummaryCardMainHeight => getCardsHeight * 0.666;
+  static double get getSummaryCardSubHeight => getCardsHeight * 0.333;
+  // ./CARDS
 
   static double _calculateSize(double min, double max, double multiplier) {
     double res = screenHeight * multiplier;

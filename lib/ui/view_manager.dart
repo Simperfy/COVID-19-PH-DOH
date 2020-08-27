@@ -7,7 +7,6 @@ import 'package:Covid19_PH/ui/view_manager_model.dart';
 import 'package:Covid19_PH/util/constants.dart';
 import 'package:Covid19_PH/util/size_config.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
