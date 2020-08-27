@@ -23,12 +23,13 @@ class TotalCases extends AbstractSummary {
   @override
   Widget build(BuildContext context) {
     final double verticalPadding = super.mainSummaryCardHeight * 0.14;
+    final double horizontalPadding = SizeConfig.getCardsPadding;
     return Container(
       width: SizeConfig.screenWidth,
       height: mainSummaryCardHeight,
       decoration: BoxDecoration(color: totalCasesBgColor),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: verticalPadding),
+        padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: verticalPadding),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

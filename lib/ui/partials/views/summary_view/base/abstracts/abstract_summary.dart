@@ -27,12 +27,12 @@ abstract class AbstractSummary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double subWidth = SizeConfig.screenWidth / 3;
-    // final double leftPadding = subWidth * 0.159;
+    final double leftPadding = SizeConfig.getCardsPadding;
     final double verticalPadding = subWidth * 0.079;
     return Container(
       width: subWidth,
       height: subSummaryCardHeight,
-      padding: EdgeInsets.only(left: 30, top: verticalPadding, bottom: verticalPadding),
+      padding: EdgeInsets.only(left: leftPadding, top: verticalPadding, bottom: verticalPadding),
       decoration: BoxDecoration(color: color),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

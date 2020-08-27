@@ -70,6 +70,7 @@ class SizeConfig {
 
   static double get getSummaryCardMainHeight => getCardsHeight * 0.666;
   static double get getSummaryCardSubHeight => getCardsHeight * 0.333;
+  static double get getCardsPadding => screenWidth * 0.072;
   // ./CARDS
 
   static double _calculateSize(double min, double max, double multiplier) {

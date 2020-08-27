@@ -9,11 +9,12 @@ abstract class AbstractHomeViewCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double horizontalCardPadding = SizeConfig.getCardsPadding;
     return Container(
       height: SizeConfig.getCardsHeight,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(color: bgColor),
-      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+      padding: EdgeInsets.symmetric(horizontal: horizontalCardPadding, vertical: 10),
       child: child,
     );
   }
