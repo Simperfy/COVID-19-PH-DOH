@@ -1,6 +1,7 @@
 import 'package:Covid19_PH/ui/partials/views/top_regions_view/concretes/top_regions_card.dart';
 import 'package:Covid19_PH/ui/partials/views/top_regions_view/top_regions_view_model.dart';
 import 'package:Covid19_PH/util/constants.dart';
+import 'package:Covid19_PH/util/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -21,7 +22,7 @@ class TopRegionsView extends StatelessWidget {
                 Text(
                     (model.data == null ? 'Loading...' : 'Top Regions'),
                     style:
-                        TextStyle(fontSize: 18, fontWeight: FontWeight.w300)),
+                        TextStyle(fontSize: SizeConfig.getFontSize1, fontWeight: FontWeight.w300)),
                 SizedBox(height: 20),
                 ...?model.data
               ],
