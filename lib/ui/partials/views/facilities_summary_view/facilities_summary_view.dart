@@ -30,7 +30,7 @@ class FacilitiesSummaryView extends StatelessWidget {
               children: <Widget>[
                 Text('Facilities Data',
                     style:
-                        TextStyle(fontSize: SizeConfig.getFontSize1, fontWeight: FontWeight.w300)),
+                        TextStyle(fontSize: SizeConfig.getFigmaCardsFontSize18, fontWeight: FontWeight.w300)),
                 SizedBox(height: 10),
                 FacilitiesTitle(
                     title: 'Availability of Beds', enableLegends: true),

@@ -27,7 +27,7 @@ class TopRegionsViewModel extends FutureViewModel<List<Widget>> {
       widgetList.add(
         Text(
           '${++index}. ${region.region} - ${region.cases}',
-          style: TextStyle(fontSize: SizeConfig.getFontSize4, fontWeight: FontWeight.w100),
+          style: TextStyle(fontSize: SizeConfig.getFigmaCardsFontSize14, fontWeight: FontWeight.w100),
         ),
       );
       widgetList.add(SizedBox(height: 15));

@@ -2,6 +2,7 @@ import 'package:Covid19_PH/ui/pages/views/facilities_view/facilities_view_model.
 import 'package:Covid19_PH/ui/widgets/facilities_widgets/facilities_details_row.dart';
 import 'package:Covid19_PH/ui/widgets/facilities_widgets/facilitites_title.dart';
 import 'package:Covid19_PH/util/constants.dart';
+import 'package:Covid19_PH/util/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
@@ -36,7 +37,7 @@ class _FacilitiesTitleCard extends ViewModelWidget<FutureFacilitiesViewModel> {
   @override
   Widget build(BuildContext context, FutureFacilitiesViewModel model) {
     return Container(
-      height: 163,
+      height: SizeConfig.getFacilitiesViewHeaderHeight,
       width: double.maxFinite,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
@@ -47,20 +48,21 @@ class _FacilitiesTitleCard extends ViewModelWidget<FutureFacilitiesViewModel> {
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(
-            vertical: 30,
-            horizontal: MediaQuery.of(context).size.width * 0.075),
+          vertical: SizeConfig.getCardsPadding,
+          horizontal: SizeConfig.getCardsPadding,
+        ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               '${model.hospitalSummary?.hospitalName ?? model.headerTitle}',
-              style: whiteTextStyle.copyWith(fontSize: 20),
+              style: whiteTextStyle.copyWith(fontSize: SizeConfig.getFigmaCardsFontSize20),
             ),
-            SizedBox(height: 25),
             RichText(
+              overflow: TextOverflow.clip,
               text: TextSpan(
-                  style: whiteTextStyle.copyWith(fontSize: 25),
+                  style: whiteTextStyle.copyWith(fontSize: SizeConfig.getFigmaCardsFontSize30),
                   children: [
                     TextSpan(text: 'Overall:'),
                     TextSpan(
@@ -89,7 +91,7 @@ class _FacilitiesBodyView extends ViewModelWidget<FutureFacilitiesViewModel> {
                 children: <Widget>[
                   _FacilitiesTitleCard(),
                   Padding(
-                    padding: const EdgeInsets.all(25.0),
+                    padding: EdgeInsets.all(SizeConfig.getCardsPadding),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[

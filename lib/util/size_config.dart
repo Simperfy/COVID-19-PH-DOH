@@ -68,28 +68,43 @@ class SizeConfig {
       _minCardsSize,
       _multiplierCardsSize,);
 
+  /// height of total cases container
   static double get getSummaryCardMainHeight => getCardsHeight * 0.666;
+  /// height of active cases, recovered and died container
   static double get getSummaryCardSubHeight => getCardsHeight * 0.333;
+  /// horizontal padding of the cards
   static double get getCardsPadding => screenWidth * 0.072;
   // ./CARDS
 
   // FIGMA FONT SIZES
+  /// 30 px in figma
+  static double get getFigmaCardsFontSize30 => getCardsHeight * 0.161;
+  /// 20 px in figma
+  static double get getFigmaCardsFontSize20 => getCardsHeight * 0.107;
   /// 18 px in figma
-  static double get getFontSize1 => getCardsHeight * 0.096;
+  static double get getFigmaCardsFontSize18 => getCardsHeight * 0.096;
   /// 16 px in figma
-  static double get getFontSize2 => getCardsHeight * 0.086;
+  static double get getFigmaCardsFontSize16 => getCardsHeight * 0.086;
   /// 15 px in figma
-  static double get getFontSize3 => getCardsHeight * 0.080;
+  static double get getFigmaCardsFontSize15 => getCardsHeight * 0.080;
   /// 14 px in figma
-  static double get getFontSize4 => getCardsHeight * 0.075;
+  static double get getFigmaCardsFontSize14 => getCardsHeight * 0.075;
   /// 12 px in figma
-  static double get getFontSize5 => getCardsHeight * 0.064;
+  static double get getFigmaCardsFontSize12 => getCardsHeight * 0.064;
   /// 11 px in figma
-  static double get getFontSize6 => getCardsHeight * 0.059;
+  static double get getFigmaCardsFontSize11 => getCardsHeight * 0.059;
   /// 5 px in figma
-  static double get getFontSize7 => getCardsHeight * 0.026;
+  static double get getFigmaCardsFontSize5 => getCardsHeight * 0.026;
   // ./FIGMA FONT SIZES
 
+  /// Height of Facilities View Header
+  static double get getFacilitiesViewHeaderHeight => (screenWidth * 0.174) * 2;
+  // /// Vertical padding of Facilities View Header
+  // static double get getFacilitiesViewHeaderVPadding => getFacilitiesViewHeaderHeight * 0.192;
+  // /// Horizontal padding of Facilities View Header
+  // static double get getFacilitiesViewHeaderHPadding => (screenWidth * 0.174) * 0.160;
+
+  /// calculates the size and returns the passed value if it's within the max and min
   static double _calculateSize(double min, double max, double multiplier) {
     double res = screenHeight * multiplier;
     if (res < min) res = min;

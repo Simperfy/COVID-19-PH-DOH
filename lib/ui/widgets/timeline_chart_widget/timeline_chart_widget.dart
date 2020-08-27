@@ -21,7 +21,7 @@ class TimelineChartWidget extends charts.TimeSeriesChart {
           primaryMeasureAxis: new charts.NumericAxisSpec(
             renderSpec: new charts.GridlineRendererSpec(
               labelStyle: new charts.TextStyleSpec(
-                fontSize: SizeConfig.getFontSize4.toInt(), // size in Pts.
+                fontSize: SizeConfig.getFigmaCardsFontSize14.toInt(), // size in Pts.
                 fontWeight:
                     'GOOGLE PLEASE FIX THIS', // @FIXME will cause error once updated
                 color: charts.MaterialPalette.black,
@@ -33,7 +33,7 @@ class TimelineChartWidget extends charts.TimeSeriesChart {
           domainAxis: new charts.DateTimeAxisSpec(
             renderSpec: new charts.SmallTickRendererSpec(
               labelStyle: new charts.TextStyleSpec(
-                fontSize: SizeConfig.getFontSize3.toInt(), // size in Pts.
+                fontSize: SizeConfig.getFigmaCardsFontSize15.toInt(), // size in Pts.
                 fontWeight:
                     'NOT WORKING ATM, GOOGLE', // @FIXME will cause error once updated
                 color: charts.MaterialPalette.black,

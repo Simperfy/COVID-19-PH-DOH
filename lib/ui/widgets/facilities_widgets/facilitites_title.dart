@@ -17,7 +17,7 @@ class FacilitiesTitle extends StatelessWidget {
         children: <Widget>[
           Text(title,
               style: TextStyle(
-                  fontSize: SizeConfig.getFontSize2,
+                  fontSize: SizeConfig.getFigmaCardsFontSize16,
                   fontWeight: FontWeight.bold)),
           (enableLegends ? _buildLegends(context) : Container())
         ],
@@ -29,28 +29,28 @@ class FacilitiesTitle extends StatelessWidget {
 Widget _buildLegends(BuildContext context) => Row(
       children: <Widget>[
         Container(
-          width: SizeConfig.getFontSize7,
-          height: SizeConfig.getFontSize7,
+          width: SizeConfig.getFigmaCardsFontSize5,
+          height: SizeConfig.getFigmaCardsFontSize5,
           color: Color(0xffEB5757),
           margin: EdgeInsets.only(right: 3),
         ),
         Text(
           'Occupied',
           style: TextStyle(
-              fontSize: SizeConfig.getFontSize5,
+              fontSize: SizeConfig.getFigmaCardsFontSize12,
               fontWeight: FontWeight.w300),
         ),
         SizedBox(width: 10),
         Container(
-          width: SizeConfig.getFontSize7,
-          height: SizeConfig.getFontSize7,
+          width: SizeConfig.getFigmaCardsFontSize5,
+          height: SizeConfig.getFigmaCardsFontSize5,
           color: Color(0xff27AE60),
           margin: EdgeInsets.only(right: 3),
         ),
         Text(
           'Vacant',
           style: TextStyle(
-              fontSize: SizeConfig.getFontSize5,
+              fontSize: SizeConfig.getFigmaCardsFontSize12,
               fontWeight: FontWeight.w300),
         ),
       ],

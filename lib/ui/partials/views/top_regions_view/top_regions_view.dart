@@ -22,7 +22,7 @@ class TopRegionsView extends StatelessWidget {
                 Text(
                     (model.data == null ? 'Loading...' : 'Top Regions'),
                     style:
-                        TextStyle(fontSize: SizeConfig.getFontSize1, fontWeight: FontWeight.w300)),
+                        TextStyle(fontSize: SizeConfig.getFigmaCardsFontSize18, fontWeight: FontWeight.w300)),
                 SizedBox(height: 20),
                 ...?model.data
               ],
