@@ -1,4 +1,5 @@
 import 'package:Covid19_PH/util/size_config.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class FacilitiesTitle extends StatelessWidget {
@@ -15,7 +16,7 @@ class FacilitiesTitle extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Text(title,
+          AutoSizeText(title,
               style: TextStyle(
                   fontSize: SizeConfig.getFigmaCardsFontSize16,
                   fontWeight: FontWeight.bold)),
@@ -34,10 +35,11 @@ Widget _buildLegends(BuildContext context) => Row(
           color: Color(0xffEB5757),
           margin: EdgeInsets.only(right: 3),
         ),
-        Text(
+        AutoSizeText(
           'Occupied',
+          overflow: TextOverflow.ellipsis,
           style: TextStyle(
-              fontSize: SizeConfig.getFigmaCardsFontSize12,
+              fontSize: SizeConfig.getFigmaCardsFontSize5,
               fontWeight: FontWeight.w300),
         ),
         SizedBox(width: 10),
@@ -47,10 +49,11 @@ Widget _buildLegends(BuildContext context) => Row(
           color: Color(0xff27AE60),
           margin: EdgeInsets.only(right: 3),
         ),
-        Text(
+        AutoSizeText(
           'Vacant',
+          overflow: TextOverflow.ellipsis,
           style: TextStyle(
-              fontSize: SizeConfig.getFigmaCardsFontSize12,
+              fontSize: SizeConfig.getFigmaCardsFontSize5,
               fontWeight: FontWeight.w300),
         ),
       ],

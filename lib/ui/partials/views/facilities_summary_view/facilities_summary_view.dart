@@ -4,6 +4,7 @@ import 'package:Covid19_PH/ui/widgets/facilities_widgets/facilities_details_row.
 import 'package:Covid19_PH/ui/widgets/facilities_widgets/facilitites_title.dart';
 import 'package:Covid19_PH/util/constants.dart';
 import 'package:Covid19_PH/util/size_config.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -28,7 +29,7 @@ class FacilitiesSummaryView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text('Facilities Data',
+                AutoSizeText('Facilities Data',
                     style:
                         TextStyle(fontSize: SizeConfig.getFigmaCardsFontSize18, fontWeight: FontWeight.w300)),
                 SizedBox(height: 10),
@@ -94,7 +95,7 @@ Widget build(BuildContext context) {
         color: Color(0xffEB5757),
         margin: EdgeInsets.only(right: 3),
       ),
-      Text(
+      AutoSizeText(
         'Occupied',
         style: TextStyle(
             fontSize: MediaQuery.of(context).size.width * 0.03,
@@ -107,7 +108,7 @@ Widget build(BuildContext context) {
         color: Color(0xff27AE60),
         margin: EdgeInsets.only(right: 3),
       ),
-      Text(
+      AutoSizeText(
         'Vacant',
         style: TextStyle(
             fontSize: MediaQuery.of(context).size.width * 0.03,

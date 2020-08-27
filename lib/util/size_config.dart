@@ -106,7 +106,7 @@ class SizeConfig {
 
   /// calculates the size and returns the passed value if it's within the max and min
   static double _calculateSize(double min, double max, double multiplier) {
-    double res = screenHeight * multiplier;
+    double res = screenHeight  * multiplier;
     if (res < min) res = min;
     if (res > max) res = max;
     return res;

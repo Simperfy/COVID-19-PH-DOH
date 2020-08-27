@@ -3,6 +3,7 @@ import 'package:Covid19_PH/ui/widgets/facilities_widgets/facilities_details_row.
 import 'package:Covid19_PH/ui/widgets/facilities_widgets/facilitites_title.dart';
 import 'package:Covid19_PH/util/constants.dart';
 import 'package:Covid19_PH/util/size_config.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
@@ -55,21 +56,26 @@ class _FacilitiesTitleCard extends ViewModelWidget<FutureFacilitiesViewModel> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              '${model.hospitalSummary?.hospitalName ?? model.headerTitle}',
-              style: whiteTextStyle.copyWith(fontSize: SizeConfig.getFigmaCardsFontSize20),
+            Expanded(
+              child: AutoSizeText(
+                '${model.hospitalSummary?.hospitalName ?? model.headerTitle}',
+                style: whiteTextStyle.copyWith(
+                    fontSize: SizeConfig.getFigmaCardsFontSize20),
+              ),
             ),
-            RichText(
-              overflow: TextOverflow.clip,
-              text: TextSpan(
-                  style: whiteTextStyle.copyWith(fontSize: SizeConfig.getFigmaCardsFontSize30),
-                  children: [
-                    TextSpan(text: 'Overall:'),
-                    TextSpan(
-                      text: model.checkFacilitiesCondition(),
-                      style: TextStyle(color: Colors.green),
-                    ),
-                  ]),
+            Expanded(
+              child: AutoSizeText.rich(
+                TextSpan(
+                    style: whiteTextStyle.copyWith(
+                        fontSize: SizeConfig.getFigmaCardsFontSize30),
+                    children: [
+                      TextSpan(text: 'Overall:'),
+                      TextSpan(
+                        text: model.checkFacilitiesCondition(),
+                        style: TextStyle(color: Colors.green),
+                      ),
+                    ]),
+              ),
             ),
           ],
         ),

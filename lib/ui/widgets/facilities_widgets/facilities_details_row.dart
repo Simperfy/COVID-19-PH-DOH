@@ -56,7 +56,7 @@ Widget _buildMeter(
   final int _vacant = vacant;
 
   return (_occupanyRate == null
-      ? Container(child: Text('loading...'))
+      ? Container(child: AutoSizeText('loading...'))
       : LayoutBuilder(
           builder: (context, constaints) => Row(
             children: [
