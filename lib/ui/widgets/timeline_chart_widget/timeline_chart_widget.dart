@@ -1,6 +1,6 @@
 import 'package:Covid19_PH/ui/widgets/timeline_chart_widget/time_series.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 /// Controls how the timeline chart renders
 class TimelineChartWidget extends charts.TimeSeriesChart {

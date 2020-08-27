@@ -11,8 +11,8 @@ final Color activeCasesBgColor = Color(0xffF2C94C);
 final Color recoveredBgColor = Color(0xff6FCF97).withOpacity(0.65);
 final Color diedBgColor = Color(0xffBDBDBD).withOpacity(0.80);
 
-final double summarySubFontSize = 20;
-final double summaryMainFontSize = 52;
+final double summaryLabelFontSizeMultiplier = 0.20;
+final double summaryCountFontSizeMultiplier = 0.50;
 // ./Summary
 
 // Timeline

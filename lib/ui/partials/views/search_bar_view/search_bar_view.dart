@@ -18,7 +18,7 @@ class SearchBarView extends StatelessWidget implements PreferredSizeWidget {
         builder: (context, model, child) => AppBar(
           title: _buildTitle(context),
           backgroundColor: Colors.white,
-          titleSpacing: 30,
+          titleSpacing: SizeConfig.getCardsPadding,
           actions: _buildActions(context),
         ),
       );
@@ -34,7 +34,7 @@ class SearchBarView extends StatelessWidget implements PreferredSizeWidget {
         child: Container(
           width: MediaQuery.of(context).size.width / 1.5,
           height: SizeConfig.getAppbarHeight * 0.677,
-          padding: EdgeInsets.only(left: 15.0),
+          padding: EdgeInsets.only(left: SizeConfig.getCardsPadding / 2),
           decoration: BoxDecoration(color: searchBarBgColor),
           child: Align(
             alignment: Alignment.centerLeft,
@@ -48,7 +48,7 @@ class SearchBarView extends StatelessWidget implements PreferredSizeWidget {
 
   List<Widget> _buildActions(BuildContext context) => <Widget>[
         Padding(
-          padding: const EdgeInsets.only(right: 30),
+          padding: EdgeInsets.only(right: SizeConfig.getCardsPadding),
           child: IconButton(
             icon: Helper.buildSvg(
                 svgFileName: 'search', color: searchBarPrimaryColor, width: SizeConfig.getAppbarIconSize),

@@ -2,7 +2,6 @@ import 'package:Covid19_PH/ui/pages/views/facilities_view/facilities_view_model.
 import 'package:Covid19_PH/ui/widgets/facilities_widgets/facilities_details_row.dart';
 import 'package:Covid19_PH/ui/widgets/facilities_widgets/facilitites_title.dart';
 import 'package:Covid19_PH/util/constants.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
