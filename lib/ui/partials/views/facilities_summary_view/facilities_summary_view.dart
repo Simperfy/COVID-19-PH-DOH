@@ -3,6 +3,7 @@ import 'package:Covid19_PH/ui/partials/views/facilities_summary_view/facilities_
 import 'package:Covid19_PH/ui/widgets/facilities_widgets/facilities_details_row.dart';
 import 'package:Covid19_PH/ui/widgets/facilities_widgets/facilitites_title.dart';
 import 'package:Covid19_PH/util/constants.dart';
+import 'package:Covid19_PH/util/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -29,7 +30,7 @@ class FacilitiesSummaryView extends StatelessWidget {
               children: <Widget>[
                 Text('Facilities Data',
                     style:
-                        TextStyle(fontSize: 18, fontWeight: FontWeight.w300)),
+                        TextStyle(fontSize: SizeConfig.getFontSize1, fontWeight: FontWeight.w300)),
                 SizedBox(height: 10),
                 FacilitiesTitle(
                     title: 'Availability of Beds', enableLegends: true),

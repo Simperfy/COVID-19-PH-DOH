@@ -29,7 +29,7 @@ class FacilitiesDetailsRow extends StatelessWidget {
               child: AutoSizeText(title,
                   maxLines: 1,
                   style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.width * 0.05,
+                      fontSize: SizeConfig.getFontSize2,
                       fontWeight: FontWeight.w300)),
             ),
             _buildMeter(
@@ -64,14 +64,14 @@ Widget _buildMeter(
                 _occupied?.toString() ?? '...',
                 maxLines: 1,
                 style: TextStyle(
-                    fontSize: MediaQuery.of(context).size.width * 0.05,
+                    fontSize: SizeConfig.getFontSize6,
                     color: Colors.red,
                     fontWeight: FontWeight.w300),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 4.0),
                 child: Container(
-                  height: constaints.maxHeight,
+                  height: SizeConfig.getFontSize6,
                   width: MediaQuery.of(context).size.width * 0.25,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
@@ -90,7 +90,7 @@ Widget _buildMeter(
                 _vacant?.toString() ?? '...',
                 maxLines: 1,
                 style: TextStyle(
-                    fontSize: MediaQuery.of(context).size.width * 0.05,
+                    fontSize: SizeConfig.getFontSize6,
                     color: Colors.green,
                     fontWeight: FontWeight.w300),
               ),

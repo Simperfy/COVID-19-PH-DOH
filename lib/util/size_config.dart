@@ -75,13 +75,19 @@ class SizeConfig {
 
   // FIGMA FONT SIZES
   /// 18 px in figma
-  static double get getFontSize1 => getCardsHeight * 0.096; // used in TopRegions, Facilities Card
+  static double get getFontSize1 => getCardsHeight * 0.096;
   /// 16 px in figma
-  static double get getFontSize2 => getCardsHeight * 0.086; // used in Timeline, Facilities Card
+  static double get getFontSize2 => getCardsHeight * 0.086;
   /// 15 px in figma
-  static double get getFontSize3 => getCardsHeight * 0.080; // used in Timeline, Facilities Card
+  static double get getFontSize3 => getCardsHeight * 0.080;
   /// 14 px in figma
-  static double get getFontSize4 => getCardsHeight * 0.075; // used in Timeline, Facilities Card
+  static double get getFontSize4 => getCardsHeight * 0.075;
+  /// 12 px in figma
+  static double get getFontSize5 => getCardsHeight * 0.064;
+  /// 11 px in figma
+  static double get getFontSize6 => getCardsHeight * 0.059;
+  /// 5 px in figma
+  static double get getFontSize7 => getCardsHeight * 0.026;
   // ./FIGMA FONT SIZES
 
   static double _calculateSize(double min, double max, double multiplier) {

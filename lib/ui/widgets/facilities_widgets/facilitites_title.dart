@@ -1,3 +1,4 @@
+import 'package:Covid19_PH/util/size_config.dart';
 import 'package:flutter/material.dart';
 
 class FacilitiesTitle extends StatelessWidget {
@@ -16,7 +17,7 @@ class FacilitiesTitle extends StatelessWidget {
         children: <Widget>[
           Text(title,
               style: TextStyle(
-                  fontSize: MediaQuery.of(context).size.width * 0.05,
+                  fontSize: SizeConfig.getFontSize2,
                   fontWeight: FontWeight.bold)),
           (enableLegends ? _buildLegends(context) : Container())
         ],
@@ -28,28 +29,28 @@ class FacilitiesTitle extends StatelessWidget {
 Widget _buildLegends(BuildContext context) => Row(
       children: <Widget>[
         Container(
-          width: 10,
-          height: 10,
+          width: SizeConfig.getFontSize7,
+          height: SizeConfig.getFontSize7,
           color: Color(0xffEB5757),
           margin: EdgeInsets.only(right: 3),
         ),
         Text(
           'Occupied',
           style: TextStyle(
-              fontSize: MediaQuery.of(context).size.width * 0.03,
+              fontSize: SizeConfig.getFontSize5,
               fontWeight: FontWeight.w300),
         ),
         SizedBox(width: 10),
         Container(
-          width: 10,
-          height: 10,
+          width: SizeConfig.getFontSize7,
+          height: SizeConfig.getFontSize7,
           color: Color(0xff27AE60),
           margin: EdgeInsets.only(right: 3),
         ),
         Text(
           'Vacant',
           style: TextStyle(
-              fontSize: MediaQuery.of(context).size.width * 0.03,
+              fontSize: SizeConfig.getFontSize5,
               fontWeight: FontWeight.w300),
         ),
       ],
