@@ -1,5 +1,6 @@
 import 'package:Covid19_PH/model/hospital_summary.dart';
 import 'package:Covid19_PH/services/hospital_database.dart';
+import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 class FutureFacilitiesViewModel extends FutureViewModel<HospitalSummary> {
@@ -40,7 +41,7 @@ class FutureFacilitiesViewModel extends FutureViewModel<HospitalSummary> {
     }
   }
 
-  double calculateOccupancyRate(int occupied, int vacant) {
+  double calculateOccupancyRate({@required int occupied, @required int vacant}) {
     return (occupied == null || vacant == null)
         ? null
         : occupied / (vacant + occupied);

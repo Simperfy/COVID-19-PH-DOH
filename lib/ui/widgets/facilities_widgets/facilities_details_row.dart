@@ -49,7 +49,9 @@ Widget _buildMeter(
     @required num occupanyRate,
     @required int occupied,
     @required int vacant}) {
-  final double _occupanyRate = occupanyRate.isNaN ? 0 : occupanyRate;
+  final double _occupanyRate = (occupanyRate?.isNaN == null) // return null if null
+      ? null
+      : (occupanyRate.isNaN ? 0 : occupanyRate); // else if isNaN return 0 else return occupancyRate
   final int _occupied = occupied;
   final int _vacant = vacant;
 
