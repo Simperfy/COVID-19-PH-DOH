@@ -33,3 +33,5 @@ final Color bottomNavBarIdleColor = Color(0xff8C8C8C);
 // Common TextStyles
 final TextStyle whiteTextStyle = TextStyle(color: Colors.white);
 final TextStyle blackTextStyle = TextStyle(color: Colors.black);
+
+enum SEARCH_BAR { HOME, FACILITIES, MAPS, NONE }

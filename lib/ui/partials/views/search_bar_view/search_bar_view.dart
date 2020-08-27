@@ -1,4 +1,3 @@
-import 'package:Covid19_PH/ui/partials/views/search_bar_view/delegate/search_bar_delegate.dart';
 import 'package:Covid19_PH/ui/partials/views/search_bar_view/search_bar_view_model.dart';
 import 'package:Covid19_PH/util/constants.dart';
 import 'package:Covid19_PH/util/helper.dart';
@@ -7,6 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 class SearchBarView extends StatelessWidget implements PreferredSizeWidget {
+  final SearchDelegate<String> searchDelegate;
+  SearchBarView({@required this.searchDelegate});
+
   @override
   Widget build(BuildContext context) =>
       ViewModelBuilder<SearchBarViewModel>.reactive(
@@ -27,7 +29,7 @@ class SearchBarView extends StatelessWidget implements PreferredSizeWidget {
   Widget _buildTitle(BuildContext context) => GestureDetector(
         onTap: () => showSearch(
           context: context,
-          delegate: SearchBarDelegate(),
+          delegate: searchDelegate,
         ),
         child: Container(
           width: MediaQuery.of(context).size.width / 1.5,
@@ -52,7 +54,7 @@ class SearchBarView extends StatelessWidget implements PreferredSizeWidget {
                 svgFileName: 'search', color: searchBarPrimaryColor, width: SizeConfig.getAppbarIconSize),
             onPressed: () => showSearch(
               context: context,
-              delegate: SearchBarDelegate(),
+              delegate: searchDelegate,
             ),
           ),
         ),

@@ -11,7 +11,7 @@ class ViewManagerModel extends IndexTrackingViewModel {
   ViewManagerModel._internal();
 
   initialise() {
-    print('Home View Model Initialized');
+    // print('Home View Model Initialized');
     notifyListeners();
   }
 

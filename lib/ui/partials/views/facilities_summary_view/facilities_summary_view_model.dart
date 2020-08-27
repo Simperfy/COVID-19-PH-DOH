@@ -10,13 +10,12 @@ class FacilitiesSummaryViewModel extends FutureViewModel<HospitalSummary> {
 
   @override
   Future<HospitalSummary> futureToRun() {
-    print('FIRING FACILITIES VIEW MODEL');
+    // print('FIRING FACILITIES VIEW MODEL');
     return _getFacilitiesSummary();
   }
 
   Future<HospitalSummary> _getFacilitiesSummary() async {
     final HospitalDatabase database = HospitalDatabase.instance;
-    print('the query: $regionQuery');
     return (await database.fetchHospitalRecordsSummary(region: regionQuery)).getData();
   }
 

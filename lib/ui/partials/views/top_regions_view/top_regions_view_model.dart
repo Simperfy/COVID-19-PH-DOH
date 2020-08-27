@@ -11,7 +11,7 @@ class TopRegionsViewModel extends FutureViewModel<List<Widget>> {
 
   @override
   Future<List<Widget>> futureToRun() {
-    print('FIRING TOP REGIONS VIEW MODEL');
+    // print('FIRING TOP REGIONS VIEW MODEL');
     return _getTopRegions();
   }
 

@@ -1,8 +1,9 @@
 import 'package:Covid19_PH/model/base/jsonBase.dart';
 
 class HospitalSummary implements JsonBase {
+  String hospitalName;
   int totalFacilities;
-  double occupanyRate;
+  num occupanyRate;
   int totalVacant;
   int totalOccupied;
 
@@ -23,6 +24,7 @@ class HospitalSummary implements JsonBase {
   int mechventOccupiedNc;
 
   HospitalSummary({
+    this.hospitalName,
     this.totalFacilities,
     this.occupanyRate,
     this.totalVacant,
@@ -48,8 +50,9 @@ class HospitalSummary implements JsonBase {
     if (map == null) return null;
 
     return HospitalSummary(
+      hospitalName: map['data']['hospital_name'],
       totalFacilities: map['data']['total_facilities'],
-      occupanyRate: map['data']['occupancy_rate'],
+      occupanyRate: (map['data']['occupancy_rate']),
       totalVacant: map['data']['beds']['total_vacant'],
       totalOccupied: map['data']['beds']['total_occupied'],
       icuVacant: map['data']['beds']['covid']['icu_v'],
@@ -71,7 +74,7 @@ class HospitalSummary implements JsonBase {
 
   @override
   String toString() {
-    return 'HospitalSummary(totalFacilities: $totalFacilities, occupanyRate: $occupanyRate, totalVacant: $totalVacant, totalOccupied: $totalOccupied, icuVacant: $icuVacant, icuOccupied: $icuOccupied, isolbedVacant: $isolbedVacant, isolbedOccupied: $isolbedOccupied, bedwardVacant: $bedwardVacant, bedwardOccupied: $bedwardOccupied, mechventVacant: $mechventVacant, mechventOccupied: $mechventOccupied, icuVacantNc: $icuVacantNc, icuOccupiedNc: $icuOccupiedNc, nonIcuVacantNc: $nonIcuVacantNc, nonIcuOccupiedNc: $nonIcuOccupiedNc, mechventVacantNc: $mechventVacantNc, mechventOccupiedNc: $mechventOccupiedNc)';
+    return 'HospitalSummary(hospitalName: $hospitalName, totalFacilities: $totalFacilities, occupanyRate: $occupanyRate, totalVacant: $totalVacant, totalOccupied: $totalOccupied, icuVacant: $icuVacant, icuOccupied: $icuOccupied, isolbedVacant: $isolbedVacant, isolbedOccupied: $isolbedOccupied, bedwardVacant: $bedwardVacant, bedwardOccupied: $bedwardOccupied, mechventVacant: $mechventVacant, mechventOccupied: $mechventOccupied, icuVacantNc: $icuVacantNc, icuOccupiedNc: $icuOccupiedNc, nonIcuVacantNc: $nonIcuVacantNc, nonIcuOccupiedNc: $nonIcuOccupiedNc, mechventVacantNc: $mechventVacantNc, mechventOccupiedNc: $mechventOccupiedNc)';
   }
 
   @override
@@ -79,6 +82,7 @@ class HospitalSummary implements JsonBase {
     if (identical(this, o)) return true;
 
     return o is HospitalSummary &&
+        o.hospitalName == hospitalName &&
         o.totalFacilities == totalFacilities &&
         o.occupanyRate == occupanyRate &&
         o.totalVacant == totalVacant &&
@@ -101,7 +105,8 @@ class HospitalSummary implements JsonBase {
 
   @override
   int get hashCode {
-    return totalFacilities.hashCode ^
+    return hospitalName.hashCode ^
+        totalFacilities.hashCode ^
         occupanyRate.hashCode ^
         totalVacant.hashCode ^
         totalOccupied.hashCode ^
