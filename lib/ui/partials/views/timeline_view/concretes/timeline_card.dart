@@ -1,4 +1,5 @@
 import 'package:Covid19_PH/ui/partials/base/abstracts/abstract_home_view_card.dart';
+import 'package:Covid19_PH/util/size_config.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,7 @@ class TimelineCard extends AbstractHomeViewCard {
             children: [
               Text(
                 'Daily Cases',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w300),
+                style: TextStyle(fontSize: SizeConfig.getCardsHeight * 0.086, fontWeight: FontWeight.w300),
               ),
               Expanded(child: timelineChartWidget),
             ],

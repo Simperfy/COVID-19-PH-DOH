@@ -73,6 +73,17 @@ class SizeConfig {
   static double get getCardsPadding => screenWidth * 0.072;
   // ./CARDS
 
+  // FIGMA FONT SIZES
+  /// 18 px in figma
+  static double get getFontSize1 => getCardsHeight * 0.096; // used in TopRegions, Facilities Card
+  /// 16 px in figma
+  static double get getFontSize2 => getCardsHeight * 0.086; // used in Timeline, Facilities Card
+  /// 15 px in figma
+  static double get getFontSize3 => getCardsHeight * 0.080; // used in Timeline, Facilities Card
+  /// 14 px in figma
+  static double get getFontSize4 => getCardsHeight * 0.075; // used in Timeline, Facilities Card
+  // ./FIGMA FONT SIZES
+
   static double _calculateSize(double min, double max, double multiplier) {
     double res = screenHeight * multiplier;
     if (res < min) res = min;
