@@ -29,7 +29,7 @@ class FacilitiesDetailsRow extends StatelessWidget {
               child: AutoSizeText(title,
                   maxLines: 1,
                   style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.width * 0.05,
+                      fontSize: SizeConfig.getFigmaCardsFontSize16,
                       fontWeight: FontWeight.w300)),
             ),
             _buildMeter(
@@ -56,7 +56,7 @@ Widget _buildMeter(
   final int _vacant = vacant;
 
   return (_occupanyRate == null
-      ? Container(child: Text('loading...'))
+      ? Container(child: AutoSizeText('loading...'))
       : LayoutBuilder(
           builder: (context, constaints) => Row(
             children: [
@@ -64,14 +64,14 @@ Widget _buildMeter(
                 _occupied?.toString() ?? '...',
                 maxLines: 1,
                 style: TextStyle(
-                    fontSize: MediaQuery.of(context).size.width * 0.05,
+                    fontSize: SizeConfig.getFigmaCardsFontSize11,
                     color: Colors.red,
                     fontWeight: FontWeight.w300),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 4.0),
                 child: Container(
-                  height: constaints.maxHeight,
+                  height: SizeConfig.getFigmaCardsFontSize11,
                   width: MediaQuery.of(context).size.width * 0.25,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
@@ -90,7 +90,7 @@ Widget _buildMeter(
                 _vacant?.toString() ?? '...',
                 maxLines: 1,
                 style: TextStyle(
-                    fontSize: MediaQuery.of(context).size.width * 0.05,
+                    fontSize: SizeConfig.getFigmaCardsFontSize11,
                     color: Colors.green,
                     fontWeight: FontWeight.w300),
               ),

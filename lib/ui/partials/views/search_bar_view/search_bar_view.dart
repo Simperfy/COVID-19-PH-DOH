@@ -2,6 +2,7 @@ import 'package:Covid19_PH/ui/partials/views/search_bar_view/search_bar_view_mod
 import 'package:Covid19_PH/util/constants.dart';
 import 'package:Covid19_PH/util/helper.dart';
 import 'package:Covid19_PH/util/size_config.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -16,6 +17,7 @@ class SearchBarView extends StatelessWidget implements PreferredSizeWidget {
         initialiseSpecialViewModelsOnce: true,
         viewModelBuilder: () => SearchBarViewModel(),
         builder: (context, model, child) => AppBar(
+          toolbarHeight: SizeConfig.getAppbarHeight,
           title: _buildTitle(context),
           backgroundColor: Colors.white,
           titleSpacing: SizeConfig.getCardsPadding,
@@ -38,7 +40,7 @@ class SearchBarView extends StatelessWidget implements PreferredSizeWidget {
           decoration: BoxDecoration(color: searchBarBgColor),
           child: Align(
             alignment: Alignment.centerLeft,
-            child: Text(
+            child: AutoSizeText(
               'Search',
               style: TextStyle(fontSize: SizeConfig.getAppbarTextSize, color: searchBarPrimaryColor),
             ),

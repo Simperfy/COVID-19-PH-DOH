@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class SubTextCountWidget extends StatelessWidget {
@@ -7,7 +8,10 @@ class SubTextCountWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text((count != null ? count.toString() : "..."),
-        style: TextStyle(fontSize: fontSize));
+    return Expanded(
+      child: AutoSizeText((count != null ? count.toString() : "..."),
+          style: TextStyle(fontSize: fontSize),
+          overflow: TextOverflow.ellipsis),
+    );
   }
 }

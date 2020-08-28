@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-final double mainHeight = 62.0;
-
 // Summary
 final Color searchBarBgColor = Color(0xfff2f2f2);
 final Color searchBarPrimaryColor = Color(0xFF828282);
