@@ -79,6 +79,8 @@ class SizeConfig {
   // FIGMA FONT SIZES
   /// 30 px in figma
   static double get getFigmaCardsFontSize30 => getCardsHeight * 0.161;
+  /// 24 px in figma
+  static double get getFigmaCardsFontSize24 => getCardsHeight * 0.129;
   /// 20 px in figma
   static double get getFigmaCardsFontSize20 => getCardsHeight * 0.107;
   /// 18 px in figma

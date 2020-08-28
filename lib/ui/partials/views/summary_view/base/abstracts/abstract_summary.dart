@@ -28,7 +28,7 @@ abstract class AbstractSummary extends StatelessWidget {
   Widget build(BuildContext context) {
     final double subWidth = SizeConfig.screenWidth / 3;
     final double leftPadding = SizeConfig.getCardsPadding;
-    final double verticalPadding = subWidth * 0.079;
+    final double verticalPadding = SizeConfig.getSummaryCardSubHeight * 0.079;
     return Container(
       width: subWidth,
       height: subSummaryCardHeight,
@@ -40,18 +40,10 @@ abstract class AbstractSummary extends StatelessWidget {
         children: [
           SubTextLabelWidget(
               label: label,
-              fontSize: Helper.calculateSummaryCardFontSize(
-                current: subSummaryCardHeight * 0.193,
-                min: _subMinLabelFontSize,
-                max: _subMaxLabelFontSize,
-              )),
+              fontSize: SizeConfig.getFigmaCardsFontSize16),
           SubTextCountWidget(
               count: count,
-              fontSize: Helper.calculateSummaryCardFontSize(
-                current: subSummaryCardHeight * 0.354,
-                min: _subMinCountFontSize,
-                max: _subMaxCountFontSize,
-              ))
+              fontSize: SizeConfig.getFigmaCardsFontSize24)
         ],
       ),
     );
