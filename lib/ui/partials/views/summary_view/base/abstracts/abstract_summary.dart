@@ -1,7 +1,5 @@
 import 'package:Covid19_PH/ui/partials/views/summary_view/sub/sub_text/sub_text_count.dart';
 import 'package:Covid19_PH/ui/partials/views/summary_view/sub/sub_text/sub_text_label.dart';
-import 'package:Covid19_PH/util/constants.dart';
-import 'package:Covid19_PH/util/helper.dart';
 import 'package:Covid19_PH/util/size_config.dart';
 import 'package:flutter/material.dart';
 
@@ -13,13 +11,11 @@ abstract class AbstractSummary extends StatelessWidget {
   final double mainSummaryCardHeight = SizeConfig.getSummaryCardMainHeight;
   final double subSummaryCardHeight = SizeConfig.getSummaryCardSubHeight;
 
-  final double _subMinLabelFontSize = 10;
-  final double _subMaxLabelFontSize =
-      SizeConfig.getSummaryCardSubHeight * summaryLabelFontSizeMultiplier;
+  // final double _subMinLabelFontSize = 10;
+  // final double _subMaxLabelFontSize = SizeConfig.getSummaryCardSubHeight * summaryLabelFontSizeMultiplier;
 
-  final double _subMinCountFontSize = 16;
-  final double _subMaxCountFontSize =
-      SizeConfig.getSummaryCardSubHeight * summaryCountFontSizeMultiplier;
+  // final double _subMinCountFontSize = 16;
+  // final double _subMaxCountFontSize = SizeConfig.getSummaryCardSubHeight * summaryCountFontSizeMultiplier;
 
   AbstractSummary(
       {@required this.count, @required this.color, @required this.label});
