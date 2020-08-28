@@ -6,7 +6,7 @@
 
 ## 🌐 Website App Demo
 
-[Link to the website](https://simperfy.github.io/COVID-19-PH-DOH/)
+[Link to the website](https://simperfy.github.io/COVID-19-PH-DOH/) - (Not Fully Supported)
 
 <br>
 
@@ -21,7 +21,7 @@ Features:
 - [x] View timeline curve
 - [x] View top regions
 - [x] View facilities summary (beds occupancy rate)
-- [ ] View hospitals in-depth data
+- [x] View hospitals in-depth data
 - [ ] View maps with geographic data of covid cases
 
 <br>
@@ -30,8 +30,9 @@ Features:
 
 Implemented:
 - [x] First Page
-- [ ] Second Page
+- [x] Second Page
 - [ ] Third Page
+- ~~[ ] Fourth Page~~
 
 ![ScreenShot](docs/screenshots/overview.png)
 ### Protoype was developed from scratch with UX principle in mind.
