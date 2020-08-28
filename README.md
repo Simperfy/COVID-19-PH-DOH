@@ -32,7 +32,7 @@ Implemented:
 - [x] First Page
 - [x] Second Page
 - [ ] Third Page
-- ~~[ ] Fourth Page~~
+- [ ] ~~Fourth Page~~
 
 ![ScreenShot](docs/screenshots/overview.png)
 ### Protoype was developed from scratch with UX principle in mind.
