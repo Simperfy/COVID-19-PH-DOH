@@ -3,14 +3,14 @@ import 'package:flutter/widgets.dart';
 class SizeConfig {
   // APPBAR
   static double _minAppbarHeight = 56;
-  static double _maxAppbarHeight = 62;
+  static double _maxAppbarHeight = 100;
   static double _multiplierAppbarHeight = 0.069;
 
   static double _minAppbarTextSize = 24;
   static double _maxAppbarTextSize = 30;
   static double _multiplierAppbarTextSize = 0.033;
 
-  static double _maxAppbarIconSize = 36;
+  static double _maxAppbarIconSize = 48;
   static double _minAppbarIconSize = 24;
   static double _multiplierAppbarIconSize = getAppbarHeight * 0.677;
   // ./APPBAR

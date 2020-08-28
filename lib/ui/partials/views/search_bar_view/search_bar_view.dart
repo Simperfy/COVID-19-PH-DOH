@@ -17,6 +17,7 @@ class SearchBarView extends StatelessWidget implements PreferredSizeWidget {
         initialiseSpecialViewModelsOnce: true,
         viewModelBuilder: () => SearchBarViewModel(),
         builder: (context, model, child) => AppBar(
+          toolbarHeight: SizeConfig.getAppbarHeight,
           title: _buildTitle(context),
           backgroundColor: Colors.white,
           titleSpacing: SizeConfig.getCardsPadding,
