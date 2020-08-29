@@ -26,10 +26,4 @@ class ViewManagerModel extends IndexTrackingViewModel {
     @required String filename,
     @required Color color,
   }) => Helper.buildSvg(svgFileName: filename, color: color, width: SizeConfig.getBotNavbarIconSize);
-      // SvgPicture.asset(
-      //   'assets/icons/$filename.svg',
-      //   color: color,
-      //   placeholderBuilder: (context) => Icon(Icons.error),
-      //   width: 42,
-      // );
 }

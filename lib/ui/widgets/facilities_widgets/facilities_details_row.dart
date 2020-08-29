@@ -29,7 +29,7 @@ class FacilitiesDetailsRow extends StatelessWidget {
               child: AutoSizeText(title,
                   maxLines: 1,
                   style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.width * 0.05,
+                      fontSize: SizeConfig.getFigmaCardsFontSize16,
                       fontWeight: FontWeight.w300)),
             ),
             _buildMeter(
@@ -49,14 +49,17 @@ Widget _buildMeter(
     @required num occupanyRate,
     @required int occupied,
     @required int vacant}) {
-  final double _occupanyRate = (occupanyRate?.isNaN == null) // return null if null
+  final double _occupanyRate = (occupanyRate?.isNaN ==
+          null) // return null if null
       ? null
-      : (occupanyRate.isNaN ? 0 : occupanyRate); // else if isNaN return 0 else return occupancyRate
+      : (occupanyRate.isNaN
+          ? 0
+          : occupanyRate); // else if isNaN return 0 else return occupancyRate
   final int _occupied = occupied;
   final int _vacant = vacant;
 
   return (_occupanyRate == null
-      ? Container(child: Text('loading...'))
+      ? Container(child: AutoSizeText('loading...'))
       : LayoutBuilder(
           builder: (context, constaints) => Row(
             children: [
@@ -64,24 +67,29 @@ Widget _buildMeter(
                 _occupied?.toString() ?? '...',
                 maxLines: 1,
                 style: TextStyle(
-                    fontSize: MediaQuery.of(context).size.width * 0.05,
+                    fontSize: SizeConfig.getFigmaCardsFontSize11,
                     color: Colors.red,
                     fontWeight: FontWeight.w300),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 4.0),
                 child: Container(
-                  height: constaints.maxHeight,
+                  height: SizeConfig.getFigmaCardsFontSize11,
                   width: MediaQuery.of(context).size.width * 0.25,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       stops: [_occupanyRate, _occupanyRate],
                       begin: Alignment.topLeft,
                       end: Alignment.topRight,
-                      colors: <Color>[
-                        const Color(0xffEB5757),
-                        const Color(0xff27AE60)
-                      ],
+                      colors: (vacant == 0 && occupied == 0)
+                          ? <Color>[
+                              Colors.grey[400],
+                              Colors.grey[400],
+                            ]
+                          : <Color>[
+                              const Color(0xffEB5757),
+                              const Color(0xff27AE60)
+                            ],
                     ),
                   ),
                 ),
@@ -90,7 +98,7 @@ Widget _buildMeter(
                 _vacant?.toString() ?? '...',
                 maxLines: 1,
                 style: TextStyle(
-                    fontSize: MediaQuery.of(context).size.width * 0.05,
+                    fontSize: SizeConfig.getFigmaCardsFontSize11,
                     color: Colors.green,
                     fontWeight: FontWeight.w300),
               ),

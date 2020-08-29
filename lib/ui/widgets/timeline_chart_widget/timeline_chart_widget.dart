@@ -1,4 +1,5 @@
 import 'package:Covid19_PH/ui/widgets/timeline_chart_widget/time_series.dart';
+import 'package:Covid19_PH/util/size_config.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
 
@@ -20,7 +21,7 @@ class TimelineChartWidget extends charts.TimeSeriesChart {
           primaryMeasureAxis: new charts.NumericAxisSpec(
             renderSpec: new charts.GridlineRendererSpec(
               labelStyle: new charts.TextStyleSpec(
-                fontSize: 14, // size in Pts.
+                fontSize: SizeConfig.getFigmaCardsFontSize14.toInt(), // size in Pts.
                 fontWeight:
                     'GOOGLE PLEASE FIX THIS', // @FIXME will cause error once updated
                 color: charts.MaterialPalette.black,
@@ -32,7 +33,7 @@ class TimelineChartWidget extends charts.TimeSeriesChart {
           domainAxis: new charts.DateTimeAxisSpec(
             renderSpec: new charts.SmallTickRendererSpec(
               labelStyle: new charts.TextStyleSpec(
-                fontSize: 15, // size in Pts.
+                fontSize: SizeConfig.getFigmaCardsFontSize15.toInt(), // size in Pts.
                 fontWeight:
                     'NOT WORKING ATM, GOOGLE', // @FIXME will cause error once updated
                 color: charts.MaterialPalette.black,

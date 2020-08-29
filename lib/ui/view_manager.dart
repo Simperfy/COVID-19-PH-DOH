@@ -82,15 +82,27 @@ class ViewManager extends StatelessWidget {
   Map<String, Widget> _getViewForIndex({@required int index}) {
     switch (index) {
       case 0:
-        return {_searchBar: SearchBarView(searchDelegate: HomeSearchBarDelegate()), _view: HomeView()};
+        return {
+          _searchBar: SearchBarView(searchDelegate: HomeSearchBarDelegate()),
+          _view: HomeView()
+        };
       case 1:
-        return {_searchBar: SearchBarView(searchDelegate: FacilitiesSearchBarDelegate()), _view: FacilitiesView()};
+        return {
+          _searchBar:
+              SearchBarView(searchDelegate: FacilitiesSearchBarDelegate()),
+          _view: FacilitiesView()
+        };
       case 2:
         return {_searchBar: SearchBarView(searchDelegate: null,), _view: MapsView()};
         break;
       case 3:
         // print('Settings button pressed');
-        return {_searchBar: SearchBarView(searchDelegate: null,), _view: Text('Settings page')};
+        return {
+          _searchBar: SearchBarView(
+            searchDelegate: null,
+          ),
+          _view: Text('Settings page')
+        };
         break;
       default:
         throw ('Cannot find index of Bottom Navigation Bar!');
