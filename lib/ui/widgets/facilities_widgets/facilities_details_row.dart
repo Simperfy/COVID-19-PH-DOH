@@ -49,9 +49,12 @@ Widget _buildMeter(
     @required num occupanyRate,
     @required int occupied,
     @required int vacant}) {
-  final double _occupanyRate = (occupanyRate?.isNaN == null) // return null if null
+  final double _occupanyRate = (occupanyRate?.isNaN ==
+          null) // return null if null
       ? null
-      : (occupanyRate.isNaN ? 0 : occupanyRate); // else if isNaN return 0 else return occupancyRate
+      : (occupanyRate.isNaN
+          ? 0
+          : occupanyRate); // else if isNaN return 0 else return occupancyRate
   final int _occupied = occupied;
   final int _vacant = vacant;
 
@@ -78,10 +81,15 @@ Widget _buildMeter(
                       stops: [_occupanyRate, _occupanyRate],
                       begin: Alignment.topLeft,
                       end: Alignment.topRight,
-                      colors: <Color>[
-                        const Color(0xffEB5757),
-                        const Color(0xff27AE60)
-                      ],
+                      colors: (vacant == 0 && occupied == 0)
+                          ? <Color>[
+                              Colors.grey[400],
+                              Colors.grey[400],
+                            ]
+                          : <Color>[
+                              const Color(0xffEB5757),
+                              const Color(0xff27AE60)
+                            ],
                     ),
                   ),
                 ),
