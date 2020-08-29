@@ -42,5 +42,5 @@ class APIPath {
 
   static fetchHospitalRecordsSummary({String region, String hospitalName}) =>
       '${baseUrl()}/api/facilities/summary' +
-      ((region != null) ? '?region=$region' : '') + ((hospitalName != null) ? '?hospital_name=$hospitalName' : '');
+      ((region != null) ? '?region=$region' : '') + ((hospitalName != null) ? '?hospital_name=${Uri.encodeComponent(hospitalName)}' : '');
 }
