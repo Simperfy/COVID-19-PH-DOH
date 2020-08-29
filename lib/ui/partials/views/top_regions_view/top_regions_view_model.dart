@@ -1,5 +1,7 @@
 import 'package:Covid19_PH/model/region.dart';
 import 'package:Covid19_PH/services/region_database.dart';
+import 'package:Covid19_PH/util/size_config.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -24,9 +26,9 @@ class TopRegionsViewModel extends FutureViewModel<List<Widget>> {
 
     data.forEach((region) {
       widgetList.add(
-        Text(
+        AutoSizeText(
           '${++index}. ${region.region} - ${region.cases}',
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w100),
+          style: TextStyle(fontSize: SizeConfig.getFigmaCardsFontSize14, fontWeight: FontWeight.w100),
         ),
       );
       widgetList.add(SizedBox(height: 15));

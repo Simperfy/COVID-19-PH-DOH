@@ -1,3 +1,5 @@
+import 'package:Covid19_PH/util/size_config.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class FacilitiesTitle extends StatelessWidget {
@@ -14,9 +16,9 @@ class FacilitiesTitle extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Text(title,
+          AutoSizeText(title,
               style: TextStyle(
-                  fontSize: MediaQuery.of(context).size.width * 0.05,
+                  fontSize: SizeConfig.getFigmaCardsFontSize16,
                   fontWeight: FontWeight.bold)),
           (enableLegends ? _buildLegends(context) : Container())
         ],
@@ -28,28 +30,30 @@ class FacilitiesTitle extends StatelessWidget {
 Widget _buildLegends(BuildContext context) => Row(
       children: <Widget>[
         Container(
-          width: 10,
-          height: 10,
+          width: SizeConfig.getFigmaCardsFontSize5,
+          height: SizeConfig.getFigmaCardsFontSize5,
           color: Color(0xffEB5757),
           margin: EdgeInsets.only(right: 3),
         ),
-        Text(
+        AutoSizeText(
           'Occupied',
+          overflow: TextOverflow.ellipsis,
           style: TextStyle(
-              fontSize: MediaQuery.of(context).size.width * 0.03,
+              fontSize: SizeConfig.getFigmaCardsFontSize5,
               fontWeight: FontWeight.w300),
         ),
         SizedBox(width: 10),
         Container(
-          width: 10,
-          height: 10,
+          width: SizeConfig.getFigmaCardsFontSize5,
+          height: SizeConfig.getFigmaCardsFontSize5,
           color: Color(0xff27AE60),
           margin: EdgeInsets.only(right: 3),
         ),
-        Text(
+        AutoSizeText(
           'Vacant',
+          overflow: TextOverflow.ellipsis,
           style: TextStyle(
-              fontSize: MediaQuery.of(context).size.width * 0.03,
+              fontSize: SizeConfig.getFigmaCardsFontSize5,
               fontWeight: FontWeight.w300),
         ),
       ],
