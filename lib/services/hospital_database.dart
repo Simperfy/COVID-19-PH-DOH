@@ -24,11 +24,12 @@ class HospitalDatabase {
 
   Future<JsonBase> fetchHospitalRecordsSummary(
       {String region, String hospitalName}) async {
-    String encoded = Uri.encodeFull(APIPath.fetchHospitalRecordsSummary(
-        region: region, hospitalName: hospitalName));
-    print('encoded: $encoded');
+    // String encoded = Uri.encodeFull(APIPath.fetchHospitalRecordsSummary(
+    //     region: region, hospitalName: hospitalName));
+    // print('encoded: $encoded');
 
-    NetworkHelper networkHelper = NetworkHelper('$encoded');
+    NetworkHelper networkHelper = NetworkHelper(APIPath.fetchHospitalRecordsSummary(
+        region: region, hospitalName: hospitalName));
 
     print('data:' + (await networkHelper.getData()).toString());
     return hospitalSummary.fromJson(await networkHelper.getData());
