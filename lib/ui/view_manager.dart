@@ -1,5 +1,6 @@
 import 'package:Covid19_PH/ui/pages/views/facilities_view/facilities_view.dart';
 import 'package:Covid19_PH/ui/pages/views/home_view/home_view.dart';
+import 'package:Covid19_PH/ui/partials/views/maps_view/maps_view.dart';
 import 'package:Covid19_PH/ui/partials/views/search_bar_view/_delegates/facilities_search_bar_delegate.dart';
 import 'package:Covid19_PH/ui/partials/views/search_bar_view/_delegates/home_search_bar_delegate.dart';
 import 'package:Covid19_PH/ui/partials/views/search_bar_view/search_bar_view.dart';
@@ -92,13 +93,7 @@ class ViewManager extends StatelessWidget {
           _view: FacilitiesView()
         };
       case 2:
-        // print('Map button pressed');
-        return {
-          _searchBar: SearchBarView(
-            searchDelegate: null,
-          ),
-          _view: Text('Map page')
-        };
+        return {_searchBar: SearchBarView(searchDelegate: null,), _view: MapsView()};
         break;
       case 3:
         // print('Settings button pressed');
