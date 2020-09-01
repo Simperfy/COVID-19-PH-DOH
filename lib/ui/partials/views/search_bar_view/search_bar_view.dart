@@ -1,11 +1,15 @@
-import 'package:Covid19_PH/ui/partials/views/search_bar_view/delegate/search_bar_delegate.dart';
 import 'package:Covid19_PH/ui/partials/views/search_bar_view/search_bar_view_model.dart';
 import 'package:Covid19_PH/util/constants.dart';
 import 'package:Covid19_PH/util/helper.dart';
+import 'package:Covid19_PH/util/size_config.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 class SearchBarView extends StatelessWidget implements PreferredSizeWidget {
+  final SearchDelegate<String> searchDelegate;
+  SearchBarView({@required this.searchDelegate});
+
   @override
   Widget build(BuildContext context) =>
       ViewModelBuilder<SearchBarViewModel>.reactive(
@@ -13,34 +17,32 @@ class SearchBarView extends StatelessWidget implements PreferredSizeWidget {
         initialiseSpecialViewModelsOnce: true,
         viewModelBuilder: () => SearchBarViewModel(),
         builder: (context, model, child) => AppBar(
+          toolbarHeight: SizeConfig.getAppbarHeight,
           title: _buildTitle(context),
           backgroundColor: Colors.white,
-          titleSpacing: 30,
+          titleSpacing: SizeConfig.getCardsPadding,
           actions: _buildActions(context),
         ),
       );
 
   @override
-  Size get preferredSize => Size.fromHeight(mainHeight);
+  Size get preferredSize => Size.fromHeight(SizeConfig.getAppbarHeight);
 
   Widget _buildTitle(BuildContext context) => GestureDetector(
         onTap: () => showSearch(
           context: context,
-          delegate: SearchBarDelegate(),
+          delegate: searchDelegate,
         ),
         child: Container(
           width: MediaQuery.of(context).size.width / 1.5,
-          height: 42.0,
-          padding: EdgeInsets.only(left: 15.0),
+          height: SizeConfig.getAppbarHeight * 0.677,
+          padding: EdgeInsets.only(left: SizeConfig.getCardsPadding / 2),
           decoration: BoxDecoration(color: searchBarBgColor),
-          child: Container(
-            height: 42.0,
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Search',
-                style: TextStyle(fontSize: 30.0, color: searchBarPrimaryColor),
-              ),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: AutoSizeText(
+              'Search',
+              style: TextStyle(fontSize: SizeConfig.getAppbarTextSize, color: searchBarPrimaryColor),
             ),
           ),
         ),
@@ -48,13 +50,13 @@ class SearchBarView extends StatelessWidget implements PreferredSizeWidget {
 
   List<Widget> _buildActions(BuildContext context) => <Widget>[
         Padding(
-          padding: const EdgeInsets.only(right: 30),
+          padding: EdgeInsets.only(right: SizeConfig.getCardsPadding),
           child: IconButton(
             icon: Helper.buildSvg(
-                svgFileName: 'search', color: searchBarPrimaryColor),
+                svgFileName: 'search', color: searchBarPrimaryColor, width: SizeConfig.getAppbarIconSize),
             onPressed: () => showSearch(
               context: context,
-              delegate: SearchBarDelegate(),
+              delegate: searchDelegate,
             ),
           ),
         ),

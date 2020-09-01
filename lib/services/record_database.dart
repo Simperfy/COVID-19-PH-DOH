@@ -31,7 +31,7 @@ class RecordDatabase {
     NetworkHelper networkHelper =
         NetworkHelper('${APIPath.fetchRecordByAgeGroup(minAge, maxAge)}');
 
-    print(await networkHelper.getData());
+    // print(await networkHelper.getData());
 
     return recordList.fromJson(await networkHelper.getData());
   }

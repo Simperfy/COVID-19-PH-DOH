@@ -3,20 +3,24 @@ import 'package:Covid19_PH/services/hospital_database.dart';
 import 'package:stacked/stacked.dart';
 
 class FacilitiesSummaryViewModel extends FutureViewModel<HospitalSummary> {
-  String query;
-  // static final FacilitiesSummaryViewModel _singleton = FacilitiesSummaryViewModel._internal();
-  // factory FacilitiesSummaryViewModel() => _singleton;
-  // FacilitiesSummaryViewModel._internal();
-
-  FacilitiesSummaryViewModel({this.query});
+  static String regionQuery;
+  static FacilitiesSummaryViewModel _singleton = FacilitiesSummaryViewModel._internal();
+  factory FacilitiesSummaryViewModel() => _singleton;
+  FacilitiesSummaryViewModel._internal();
 
   @override
   Future<HospitalSummary> futureToRun() {
+    // print('FIRING FACILITIES VIEW MODEL');
     return _getFacilitiesSummary();
   }
 
-  Future<HospitalSummary> _getFacilitiesSummary() async{
+  Future<HospitalSummary> _getFacilitiesSummary() async {
     final HospitalDatabase database = HospitalDatabase.instance;
-    return (await database.fetchHospitalRecordsSummary(region: query)).getData();
+    return (await database.fetchHospitalRecordsSummary(region: regionQuery)).getData();
+  }
+
+  static setRegionQuery(String rq) {
+    if (regionQuery != rq) _singleton = FacilitiesSummaryViewModel._internal();
+    regionQuery = rq;
   }
 }

@@ -4,6 +4,7 @@ import 'package:Covid19_PH/services/region_database.dart';
 import 'package:Covid19_PH/services/summary_database.dart';
 import 'package:Covid19_PH/services/timeline_database.dart';
 import 'package:Covid19_PH/ui/view_manager.dart';
+import 'package:Covid19_PH/util/size_config.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -12,7 +13,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: ViewManager(),
+      home: LayoutBuilder(builder: (context, constraints) {
+        SizeConfig.init(constraints);
+        return ViewManager();
+      }),
     );
   }
 }
@@ -104,13 +108,13 @@ Future<void> testDb() async {
 
     // TODO: @DOGGO model updates forgot to (add timelineRegion[cause it's in the other branch])
     print('\n\n\n');
-    var fetchHospitalRecordsSummary = await hospitalDatabase.fetchHospitalRecordsSummary();
+    var fetchHospitalRecordsSummary =
+        await hospitalDatabase.fetchHospitalRecordsSummary();
     print('fetchHospitalRecordsSummary : $fetchHospitalRecordsSummary \n');
     if (fetchHospitalRecordsSummary.getData()) {
       print(
           'fetchHospitalRecordsSummary record #1: ${fetchHospitalRecordsSummary.getData().hospitalList.first}');
     }
-
   } catch (e) {
     print(e);
     print('missing data in api');

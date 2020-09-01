@@ -1,13 +1,17 @@
-import 'package:flutter/cupertino.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/material.dart';
 
-class TextCountWidget extends StatelessWidget {
+class SubTextCountWidget extends StatelessWidget {
   final int count;
   final double fontSize;
-  TextCountWidget({@required this.count, @required this.fontSize});
+  SubTextCountWidget({@required this.count, @required this.fontSize});
 
   @override
   Widget build(BuildContext context) {
-    return Text((count != null ? count.toString() : "..."),
-        style: TextStyle(fontSize: fontSize));
+    return Expanded(
+      child: AutoSizeText((count != null ? count.toString() : "..."),
+          style: TextStyle(fontSize: fontSize),
+          overflow: TextOverflow.ellipsis),
+    );
   }
 }

@@ -24,6 +24,8 @@ environment:
 
 dependencies:
   flutter_svg: ^0.18.0
+  auto_size_text: ^2.1.0
+  flutter_map: ^0.10.1+1
   flutter:
     sdk: flutter
 
@@ -34,8 +36,10 @@ dependencies:
   charts_flutter: ^0.9.0
   stacked: ^1.7.6
   mockito: ^4.1.1
+  modal_progress_hud: ^0.1.3
 
 dev_dependencies:
+  test: null
   flutter_test:
     sdk: flutter
 
@@ -63,10 +67,11 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   # fonts:
-  #   - family: Schyler
+  #   - family: Roboto
   #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
+  #       - asset: assets/fonts/Roboto/Roboto-Regular.ttf
+  #       - asset: assets/fonts/Roboto/Roboto-Bold.ttf
+  #       - asset: assets/fonts/Roboto/Roboto-Light.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:

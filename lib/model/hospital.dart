@@ -150,8 +150,8 @@ class Hospital implements JsonBase {
       regionPsgc: map['region_psgc'],
       province: map['province'],
       provincePsgc: map['province_psgc'],
-      cityMun: map['cityMun'],
-      citiyMunPsgc: map['citiy_mun_psgc'],
+      cityMun: map['city_mun'],
+      citiyMunPsgc: map['city_mun_psgc'],
       northCoord: map['north_coord'],
       eastCoord: map['east_coord'],
     );

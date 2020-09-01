@@ -10,8 +10,10 @@ import 'network_helper.dart';
 class HospitalDatabase {
   HospitalList hospitalList;
   HospitalSummary hospitalSummary;
-  HospitalDatabase._({@required this.hospitalList, @required this.hospitalSummary});
-  static final instance = HospitalDatabase._(hospitalList: HospitalList(), hospitalSummary: HospitalSummary());
+  HospitalDatabase._(
+      {@required this.hospitalList, @required this.hospitalSummary});
+  static final instance = HospitalDatabase._(
+      hospitalList: HospitalList(), hospitalSummary: HospitalSummary());
 
   Future<JsonBase> fetchHospitalRecords() async {
     NetworkHelper networkHelper =
@@ -20,10 +22,16 @@ class HospitalDatabase {
     return hospitalList.fromJson(await networkHelper.getData());
   }
 
-  Future<JsonBase> fetchHospitalRecordsSummary({String region}) async {
-    NetworkHelper networkHelper =
-        NetworkHelper('${APIPath.fetchHospitalRecordsSummary(region: region)}');
+  Future<JsonBase> fetchHospitalRecordsSummary(
+      {String region, String hospitalName}) async {
+    // String encoded = Uri.encodeFull(APIPath.fetchHospitalRecordsSummary(
+    //     region: region, hospitalName: hospitalName));
+    // print('encoded: $encoded');
 
+    NetworkHelper networkHelper = NetworkHelper(APIPath.fetchHospitalRecordsSummary(
+        region: region, hospitalName: hospitalName));
+
+    print('data:' + (await networkHelper.getData()).toString());
     return hospitalSummary.fromJson(await networkHelper.getData());
   }
 }
