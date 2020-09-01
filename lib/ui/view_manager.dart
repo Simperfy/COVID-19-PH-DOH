@@ -61,21 +61,7 @@ class ViewManager extends StatelessWidget {
                 unselectedIconTheme:
                     IconThemeData(color: bottomNavBarIdleColor),
                 currentIndex: model.currentIndex,
-                onTap: (num) => num == 3 // Settings
-                    ? _scaffoldKey.currentState.showSnackBar(
-                        SnackBar(
-                          content: Text("Not Available..."),
-                          duration: Duration(seconds: 1),
-                        ),
-                      )
-                    : (num == 2) // Maps
-                        ? _scaffoldKey.currentState.showSnackBar(
-                            SnackBar(
-                              content: Text("This map contains fake data..."),
-                              duration: Duration(seconds: 2),
-                            ),
-                          )
-                        : model.setIndex(num),
+                onTap: (index) => _handleOnTap(index, model),
               ),
             ),
           ),
@@ -98,7 +84,12 @@ class ViewManager extends StatelessWidget {
           _view: FacilitiesView()
         };
       case 2:
-        return {_searchBar: SearchBarView(searchDelegate: null,), _view: MapsView()};
+        return {
+          _searchBar: SearchBarView(
+            searchDelegate: null,
+          ),
+          _view: MapsView()
+        };
         break;
       case 3:
         // print('Settings button pressed');
@@ -112,5 +103,27 @@ class ViewManager extends StatelessWidget {
       default:
         throw ('Cannot find index of Bottom Navigation Bar!');
     }
+  }
+
+  _handleOnTap(int index, ViewManagerModel model) {
+    if (index == 3) {
+      return _scaffoldKey.currentState.showSnackBar(
+        SnackBar(
+          content: Text("Not Available..."),
+          duration: Duration(seconds: 1),
+        ),
+      );
+    }
+
+    if (index == 2) {
+      _scaffoldKey.currentState.showSnackBar(
+          SnackBar(
+            content: Text("This map contains fake data..."),
+            duration: Duration(seconds: 2),
+          ),
+        );
+    }
+
+    model.setIndex(index);
   }
 }
